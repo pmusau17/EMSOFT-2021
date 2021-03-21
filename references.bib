@@ -1,0 +1,1515 @@
+% DDPG paper
+@inproceedings{lillicrap2015continuous,
+   abstract = {We adapt the ideas underlying the success of Deep Q-Learning to the continuous action domain. We present an actor-critic, model-free algorithm based on the deterministic policy gradient that can operate over continuous action spaces. Using the same learning algorithm, network architecture and hyper-parameters, our algorithm robustly solves more than 20 simulated physics tasks, including classic problems such as cartpole swing-up, dexterous manipulation, legged locomotion and car driving. Our algorithm is able to find policies whose performance is competitive with those found by a planning algorithm with full access to the dynamics of the domain and its derivatives. We further demonstrate that for many of the tasks the algorithm can learn policies “end-to-end”: directly from raw pixel inputs.},
+   author = {Timothy P. Lillicrap and Jonathan J. Hunt and Alexander Pritzel and Nicolas Heess and Tom Erez and Yuval Tassa and David Silver and Daan Wierstra},
+   journal = {4th International Conference on Learning Representations, ICLR 2016 - Conference Track Proceedings},
+   title = {Continuous control with deep reinforcement learning},
+   year = {2016},
+}
+
+%SAC
+@inproceedings{haarnoja2018soft,
+   abstract = {Model-free deep reinforcement learning (RL) algorithms have been demonstrated on a range of challenging decision making and control tasks. However, these methods typically suffer from two major challenges: very high sample complexity and brittle convergence properties, which necessitate meticulous hyperparameter tuning. Both of these challenges severely limit the applicability of such methods to complex, real-world domains. In this paper, we propose soft actor-critic, an off-policy actor-critic deep RL algorithm based on the maximum entropy reinforcement learning framework. In this framework, the actor aims to maximize expected reward while also maximizing entropy-that is, to succeed at the task while acting as randomly as possible. Prior deep RL methods based on this framework have been formulated as Q-learning methods. By combining off-policy updates with a stable stochastic actorcritic formulation, our method achieves state-ofthe-art performance on a range of continuous control benchmark tasks, outperforming prior onpolicy and off-policy methods. Furthermore, we demonstrate that, in contrast to other off-policy algorithms, our approach is very stable, achieving very similar performance across different random seeds.},
+   author = {Tuomas Haarnoja and Aurick Zhou and Pieter Abbeel and Sergey Levine},
+   journal = {35th International Conference on Machine Learning, ICML 2018},
+   title = {Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor},
+   volume = {5},
+   year = {2018},
+}
+
+% ARS paper
+@inproceedings{mania2018simple,
+ author = {Mania, Horia and Guy, Aurelia and Recht, Benjamin},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {S. Bengio and H. Wallach and H. Larochelle and K. Grauman and N. Cesa-Bianchi and R. Garnett},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {Simple random search of static linear policies is competitive for reinforcement learning},
+ url = {},
+ volume = {31},
+ year = {2018}
+}
+
+
+
+% TRPO paper
+@inproceedings{schulman2015trust,
+  title={Trust region policy optimization},
+  author={Schulman, John and Levine, Sergey and Abbeel, Pieter and Jordan, Michael and Moritz, Philipp},
+  booktitle={International conference on machine learning},
+  pages={1889--1897},
+  year={2015}
+}
+
+% PPO paper
+@article{schulman2017proximal,
+  title={Proximal policy optimization algorithms},
+  author={Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
+  journal={arXiv preprint arXiv:1707.06347},
+  year={2017}
+}
+
+% rllib
+@inproceedings{liang2018rllib,
+  title={RLlib: Abstractions for distributed reinforcement learning},
+  author={Liang, Eric and Liaw, Richard and Nishihara, Robert and Moritz, Philipp and Fox, Roy and Goldberg, Ken and Gonzalez, Joseph and Jordan, Michael and Stoica, Ion},
+  booktitle={International Conference on Machine Learning},
+  pages={3053--3062},
+  year={2018}
+}
+
+% Sim2real example from ICCPS
+@inproceedings{jang2019ICCPS,
+  author    = {Kathy Jang and
+               Eugene Vinitsky and
+               Behdad Chalaki and
+               Ben Remer and
+               Logan Beaver and
+               Andreas A. Malikopoulos and
+               Alexandre M. Bayen},
+  title     = {Simulation to scaled city: zero-shot policy transfer for traffic control
+               via autonomous vehicles},
+  booktitle = {Proceedings of the 10th {ACM/IEEE} International Conference on Cyber-Physical
+               Systems, {ICCPS} 2019, Montreal, QC, Canada, April 16-18, 2019},
+  pages     = {291--300},
+  year      = {2019},
+  url       = {},
+  doi ={},     %= {10.1145/3302509.3313784},
+  timestamp = {Sun, 07 Apr 2019 16:25:54 +0200},
+  biburl    = {https://dblp.org/rec/bib/conf/iccps/JangVCRBMB19},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+% Another sim2real example
+@article{kadian2019we,
+   abstract = {Does progress in simulation translate to progress on robots? If one method outperforms another in simulation, how likely is that trend to hold in reality on a robot? We examine this question for embodied PointGoal navigation - developing engineering tools and a research paradigm for evaluating a simulator by its sim2real predictivity. First, we develop Habitat-PyRobot Bridge (HaPy), a library for seamless execution of identical code on simulated agents and robots - transferring simulation-trained agents to a LoCoBot platform with a one-line code change. Second, we investigate the sim2real predictivity of Habitat-Sim M. Savva et al., for PointGoal navigation. We 3D-scan a physical lab space to create a virtualized replica, and run parallel tests of 9 different models in reality and simulation. We present a new metric called Sim-vs-Real Correlation Coefficient (SRCC) to quantify predictivity. We find that SRCC for Habitat as used for the CVPR19 challenge is low (0.18 for the success metric), suggesting that performance differences in this simulator-based challenge do not persist after physical deployment. This gap is largely due to AI agents learning to exploit simulator imperfections - abusing collision dynamics to 'slide' along walls, leading to shortcuts through otherwise non-navigable space. Naturally, such exploits do not work in the real world. Our experiments show that it is possible to tune simulation parameters to improve sim2real predictivity (e.g. improving SRCCSucc from 0.18 to 0.844) - increasing confidence that in-simulation comparisons will translate to deployed systems in reality.},
+   author = {Abhishek Kadian and Joanne Truong and Aaron Gokaslan and Alexander Clegg and Erik Wijmans and Stefan Lee and Manolis Savva and Sonia Chernova and Dhruv Batra},
+   doi ={}, %doi = {10.1109/LRA.2020.3013848},
+   issn = {23773766},
+   issue = {4},
+   journal = {IEEE Robotics and Automation Letters},
+   title = {Sim2Real Predictivity: Does Evaluation in Simulation Predict Real-World Performance?},
+   volume = {5},
+   year = {2020},
+}
+
+
+% Challenges of RL in real world
+@article{dulac2019challenges,
+  title={Challenges of real-world reinforcement learning},
+  author={Dulac-Arnold, Gabriel and Mankowitz, Daniel and Hester, Todd},
+  journal={arXiv preprint arXiv:1904.12901},
+  year={2019}
+}
+	  
+% HSCC Case Study
+@inproceedings{ivanov2020case, 
+	title={Case study: verifying the safety of an autonomous racing car with a neural network controller}, 
+	author={Ivanov, Radoslav and Carpenter, Taylor J and Weimer, James and Alur, Rajeev and Pappas, George J and Lee, Insup},
+	booktitle={Proceedings of the 23rd International Conference on Hybrid Systems: Computation and Control}, 
+	pages={1--7}, 
+	year={2020}
+}
+	
+%F1_10 Simulator
+@Misc{varundev_ros_19,
+            title={ROS F1/10 Autonomous Racecar Simulator},
+            author={Varundev Suresh Babu and Madhur Behl},
+            journal={ROSCon},
+            year={2019},
+            month={October},  
+            location = {Macau, China}
+}
+
+% Deep Drive
+@inproceedings{DeepDrive2015,
+author = {Chen, Chenyi and Seff, Ari and Kornhauser, Alain and Xiao, Jianxiong},
+title = {DeepDriving: Learning Affordance for Direct Perception in Autonomous Driving},
+year = {2015},
+isbn = {9781467383912},
+publisher = {IEEE Computer Society},
+address = {USA},
+url = {},
+doi ={}, %doi = {10.1109/ICCV.2015.312},
+abstract = {Today, there are two major paradigms for vision-based autonomous driving systems: mediated perception approaches that parse an entire scene to make a driving decision, and behavior reflex approaches that directly map an input image to a driving action by a regressor. In this paper, we propose a third paradigm: a direct perception approach to estimate the affordance for driving. We propose to map an input image to a small number of key perception indicators that directly relate to the affordance of a road/traffic state for driving. Our representation provides a set of compact yet complete descriptions of the scene to enable a simple controller to drive autonomously. Falling in between the two extremes of mediated perception and behavior reflex, we argue that our direct perception representation provides the right level of abstraction. To demonstrate this, we train a deep Convolutional Neural Network using recording from 12 hours of human driving in a video game and show that our model can work well to drive a car in a very diverse set of virtual environments. We also train a model for car distance estimation on the KITTI dataset. Results show that our direct perception approach can generalize well to real driving images. Source code and data are available on our project website.},
+booktitle = {Proceedings of the 2015 IEEE International Conference on Computer Vision (ICCV)},
+pages = {2722–2730},
+numpages = {9},
+series = {ICCV '15}
+}
+
+% Mediated vs End to End Learning Perception
+@INPROCEEDINGS{VisionBased2019, author={D. {Mantegazza} and J. {Guzzi} and L. M. {Gambardella} and A. {Giusti}}, booktitle={2019 International Conference on Robotics and Automation (ICRA)}, title={Vision-based Control of a Quadrotor in User Proximity: Mediated vs End-to-End Learning Approaches}, year={2019}, volume={}, number={}, pages={6489-6495},}
+
+% Simplex Architechture
+@techreport{RiveraAnArchitectural1996,
+title={An Architectural Description of the Simplex Architecture},
+author={Jose Rivera and Alejandro Danylyszyn and Charles Weinstock and Lui Sha and Michael Gagliardi},
+year={1996},
+number={CMU/SEI-96-TR-006},
+institution={Software Engineering Institute, Carnegie Mellon University},
+address={Pittsburgh, PA},
+ url       = {},
+} 
+
+% DeepPi Car
+@inproceedings{DeepPiCar2017,
+   abstract = {We present DeepPicar, a low-cost deep neural network based autonomous car platform. DeepPicar is a small scale replication of a real self-driving car called DAVE-2 by NVIDIA. DAVE-2 uses a deep convolutional neural network (CNN), which takes images from a front-facing camera as input and produces car steering angles as output. DeepPicar uses the same network architecture - 9 layers, 27 million connections and 250K parameters - and can drive itself in real-time using a web camera and a Raspberry Pi 3 quad-core platform. Using DeepPicar, we analyze the Pi 3's computing capabilities to support end-to-end deep learning based real-time control of autonomous vehicles. We also systematically compare other contemporary embedded computing platforms using the DeepPicar's CNN-based real-time control workload. We find that all tested platforms, including the Pi 3, are capable of supporting the CNN-based real-time control, from 20 Hz up to 100 Hz, depending on hardware platform. However, we find that shared resource contention remains an important issue that must be considered in applying CNN models on shared memory based embedded computing platforms; we observe up to 11.6X execution time increase in the CNN based control loop due to shared resource contention. To protect the CNN workload, we also evaluate state-of-the-art cache partitioning and memory bandwidth throttling techniques on the Pi 3. We find that cache partitioning is ineffective, while memory bandwidth throttling is an effective solution.},
+   author = {Michael G. Bechtel and Elise McEllhiney and Minje Kim and Heechul Yun},
+   doi ={}, %doi = {10.1109/RTCSA.2018.00011},
+   journal = {Proceedings - 2018 IEEE 24th International Conference on Embedded and Real-Time Computing Systems and Applications, RTCSA 2018},
+   title = {DeepPicar: A low-cost deep neural network-based autonomous car},
+   year = {2019},
+}
+
+
+%AlexNet 
+
+@incollection{AlexNet2012,
+title = {ImageNet Classification with Deep Convolutional Neural Networks},
+author = {Alex Krizhevsky and Sutskever, Ilya and Hinton, Geoffrey E},
+booktitle = {Advances in Neural Information Processing Systems 25},
+editor = {F. Pereira and C. J. C. Burges and L. Bottou and K. Q. Weinberger},
+pages = {1097--1105},
+year = {2012},
+publisher = {Curran Associates, Inc.},
+ url       = {},
+}
+
+% The Disparity Extender
+@misc{otterness_2019, title={The "Disparity Extender" Algorithm, and F1/Tenth}, url={https://www.nathanotterness.com/2019/04/the-disparity-extender-algorithm-and.html}, journal={The "Disparity Extender" Algorithm, and F1/Tenth}, author={Otterness, Nathan}, year={2019}, month={Apr}}
+
+% Boudette
+@misc{boudette_2019, title={Despite High Hopes, Self-Driving Cars Are 'Way in the Future'}, url={https://www.nytimes.com/2019/07/17/business/self-driving-autonomous-cars.html}, journal={The New York Times}, publisher={The New York Times}, author={Boudette, Neal E.}, year={2019}, month={Jul}}
+
+% Badue
+@article{Badue2019,
+title = {Self-driving cars: A survey},
+journal = {Expert Systems with Applications},
+volume = {165},
+pages = {113816},
+year = {2021},
+issn = {0957-4174},
+doi ={}, %doi = {https://doi.org/10.1016/j.eswa.2020.113816},
+url = {},
+author = {Claudine Badue and Rânik Guidolini and Raphael Vivacqua Carneiro and Pedro Azevedo and Vinicius B. Cardoso and Avelino Forechi and Luan Jesus and Rodrigo Berriel and Thiago M. Paixão and Filipe Mutz and Lucas {de Paula Veronese} and Thiago Oliveira-Santos and Alberto F. {De Souza}},
+keywords = {Self-driving cars, Robot localization, Occupancy grid mapping, Road mapping, Moving objects detection, Moving objects tracking, Traffic signalization detection, Traffic signalization recognition, Route planning, Behavior selection, Motion planning, Obstacle avoidance, Robot control},
+abstract = {We survey research on self-driving cars published in the literature focusing on autonomous cars developed since the DARPA challenges, which are equipped with an autonomy system that can be categorized as SAE level 3 or higher. The architecture of the autonomy system of self-driving cars is typically organized into the perception system and the decision-making system. The perception system is generally divided into many subsystems responsible for tasks such as self-driving-car localization, static obstacles mapping, moving obstacles detection and tracking, road mapping, traffic signalization detection and recognition, among others. The decision-making system is commonly partitioned as well into many subsystems responsible for tasks such as route planning, path planning, behavior selection, motion planning, and control. In this survey, we present the typical architecture of the autonomy system of self-driving cars. We also review research on relevant methods for perception and decision making. Furthermore, we present a detailed description of the architecture of the autonomy system of the self-driving car developed at the Universidade Federal do Espírito Santo (UFES), named Intelligent Autonomous Robotics Automobile (IARA). Finally, we list prominent self-driving car research platforms developed by academia and technology companies, and reported in the media.}
+}
+
+@InProceedings{DARPA_Challenge,
+author="Thrun, Sebastian",
+editor="F{\"u}rnkranz, Johannes
+and Scheffer, Tobias
+and Spiliopoulou, Myra",
+title="Winning the DARPA Grand Challenge",
+booktitle="Machine Learning: ECML 2006",
+year="2006",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="4--4",
+abstract="The DARPA Grand Challenge has been the most significant challenge to the mobile robotics community in more than a decade. The challenge was to build an autonomous robot capable of traversing 132 miles of unrehearsed desert terrain in less than 10 hours. In 2004, the best robot only made 7.3 miles. In 2005, Stanford won the challenge and the {\$}2M prize money by successfully traversing the course in less than 7 hours. This talk, delivered by the leader of the Stanford Racing Team, will provide insights in the software architecture of Stanford's winning robot. The robot massively relied on machine learning and probabilistic modeling for sensor interpretation, and robot motion planning algorithms for vehicle guidance and control. The speaker will explain some of the basic algorithms and share some of the excitement characterizing this historic event. He will also discuss the implications of this work for the future of the transportation.",
+isbn="978-3-540-46056-5"
+}
+
+
+@ARTICLE{Companies, author={N. A. {Greenblatt}}, journal={IEEE Spectrum}, title={Self-driving cars and the law}, year={2016}, volume={53}, number={2}, pages={46-51},}
+
+@incollection{Sculley2015,
+title = {Hidden Technical Debt in Machine Learning Systems},
+author = {Sculley, D. and Holt, Gary and Golovin, Daniel and Davydov, Eugene and Phillips, Todd and Ebner, Dietmar and Chaudhary, Vinay and Young, Michael and Crespo, Jean-Fran\c{c}ois and Dennison, Dan},
+booktitle = {Advances in Neural Information Processing Systems 28},
+editor = {C. Cortes and N. D. Lawrence and D. D. Lee and M. Sugiyama and R. Garnett},
+pages = {2503--2511},
+year = {2015},
+publisher = {Curran Associates, Inc.},
+ url       = {},
+}
+
+@INPROCEEDINGS{VariationalMIT2018, author={A. {Amini} and W. {Schwarting} and G. {Rosman} and B. {Araki} and S. {Karaman} and D. {Rus}}, booktitle={2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, title={Variational Autoencoder for End-to-End Control of Autonomous Driving with Novelty Detection and Training De-biasing}, year={2018}, volume={}, number={}, pages={568-575},}
+
+@misc{driverless_challenges, title={Driverless Cars Are Taking Longer Than We Expected. Here's Why.}, url={https://www.nytimes.com/2019/07/14/us/driverless-cars.html},
+journal={The New York Times}, publisher={The New York Times}, year={2019}, month={Jul}}
+
+% F1/10
+@article{F1102019,
+  author    = {Matthew O'Kelly and
+               Varundev Sukhil and
+               Houssam Abbas and
+               Jack Harkins and
+               Chris Kao and
+               Yash Vardhan Pant and
+               Rahul Mangharam and
+               Dipshil Agarwal and
+               Madhur Behl and
+               Paolo Burgio and
+               Marko Bertogna},
+  title     = {{F1/10:} An Open-Source Autonomous Cyber-Physical Platform},
+  journal   = {CoRR},
+  volume    = {abs/1901.08567},
+  year      = {2019},
+  url       = {},
+  archivePrefix = {arXiv},
+  eprint    = {1901.08567},
+  timestamp = {Sat, 02 Feb 2019 16:56:00 +0100},
+  biburl    = {https://dblp.org/rec/journals/corr/abs-1901-08567.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@INPROCEEDINGS{ROS, author={J. {Kerr} and K. {Nickels}}, booktitle={Proceedings of the 2012 44th Southeastern Symposium on System Theory (SSST)}, title={Robot operating systems: Bridging the gap between human and robot}, year={2012}, volume={}, number={}, pages={99-104},}
+
+@INPROCEEDINGS{Gazebo, author={N. {Koenig} and A. {Howard}}, booktitle={2004 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (IEEE Cat. No.04CH37566)}, title={Design and use paradigms for Gazebo, an open-source multi-robot simulator}, year={2004}, volume={3}, number={}, pages={2149-2154 vol.3},}
+
+% Neural Network Verification Surveys
+
+@article{Liu2019,
+  author    = {Changliu Liu and
+               Tomer Arnon and
+               Christopher Lazarus and
+               Clark W. Barrett and
+               Mykel J. Kochenderfer},
+  title     = {Algorithms for Verifying Deep Neural Networks},
+  journal   = {CoRR},
+  volume    = {abs/1903.06758},
+  year      = {2019},
+   url       = {},
+  archivePrefix = {arXiv},
+  eprint    = {1903.06758},
+  timestamp = {Mon, 24 Jun 2019 15:54:16 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1903-06758},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{xiang20118survey,
+  author    = {Weiming Xiang and
+               Patrick Musau and
+               Ayana A. Wild and
+               Diego Manzanas Lopez and
+               Nathaniel Hamilton and
+               Xiaodong Yang and
+               Joel A. Rosenfeld and
+               Taylor T. Johnson},
+  title     = {Verification for Machine Learning, Autonomy, and Neural Networks Survey},
+  journal   = {CoRR},
+  volume    = {abs/1810.01989},
+  year      = {2018},
+  url       = {},
+  archivePrefix = {arXiv},
+  eprint    = {1810.01989},
+  timestamp = {Tue, 30 Oct 2018 10:49:09 +0100},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1810-01989},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+%SOTER
+@inproceedings{Desai2018,
+   abstract = {The recent drive towards achieving greater autonomy and intelligence in robotics has led to high levels of complexity. Autonomous robots increasingly depend on third-party off-The-shelf components and complex machine-learning techniques. This trend makes it challenging to provide strong design-Time certification of correct operation. To address these challenges, we present SOTER, a robotics programming framework with two key components: (1) a programming language for implementing and testing high-level reactive robotics software, and (2) an integrated runtime assurance (RTA) system that helps enable the use of uncertified components, while still providing safety guarantees. SOTER provides language primitives to declaratively construct a RTA module consisting of an advanced, high-performance controller (uncertified), a safe, lower-performance controller (certified), and the desired safety specification. The framework provides a formal guarantee that a well-formed RTA module always satisfies the safety specification, without completely sacrificing performance by using higher performance uncertified components whenever safe. SOTER allows the complex robotics software stack to be constructed as a composition of RTA modules, where each uncertified component is protected using a RTA module. To demonstrate the efficacy of our framework, we consider a real-world case-study of building a safe drone surveillance system. Our experiments both in simulation and on actual drones show that the SOTER-enabled RTA ensures the safety of the system, including when untrusted third-party components have bugs or deviate from the desired behavior.},
+   author = {Ankush Desai and Shromona Ghosh and Sanjit A. Seshia and Natarajan Shankar and Ashish Tiwari},
+   doi ={},  %doi = {10.1109/DSN.2019.00027},
+   journal = {Proceedings - 49th Annual IEEE/IFIP International Conference on Dependable Systems and Networks, DSN 2019},
+   title = {SOTER: A Runtime Assurance Framework for Programming Safe Robotics Systems},
+   year = {2019},
+}
+
+
+% Real-Time Reachability for Verified Simplex Design
+@article{Johnson2016,
+author = {Johnson, Taylor T. and Bak, Stanley and Caccamo, Marco and Sha, Lui},
+title = {Real-Time Reachability for Verified Simplex Design},
+year = {2016},
+issue_date = {May 2016},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {15},
+number = {2},
+issn = {1539-9087},
+ url       = {},
+doi ={}, %doi = {10.1145/2723871},
+abstract = {The Simplex architecture ensures the safe use of an unverifiable complex/smart controller by using it in conjunction with a verified safety controller and verified supervisory controller (switching logic). This architecture enables the safe use of smart, high-performance, untrusted, and complex control algorithms to enable autonomy without requiring the smart controllers to be formally verified or certified. Simplex incorporates a supervisory controller that will take over control from the unverified complex/smart controller if it misbehaves and use a safety controller. The supervisory controller should (1) guarantee that the system never enters an unsafe state (safety), but should also (2) use the complex/smart controller as much as possible (minimize conservatism). The problem of precisely and correctly defining the switching logic of the supervisory controller has previously been considered either using a control-theoretic optimization approach or through an offline hybrid-systems reachability computation. In this work, we show that a combined online/offline approach that uses aspects of the two earlier methods, along with a real-time reachability computation, also maintains safety, but with significantly less conservatism, allowing the complex controller to be used more frequently. We demonstrate the advantages of this unified approach on a saturated inverted pendulum system, in which the verifiable region of attraction is over twice as large compared to the earlier approach. Additionally, to validate the claims that the real-time reachability approach may be implemented on embedded platforms, we have ported and conducted embedded hardware studies using both ARM processors and Atmel AVR microcontrollers. This is the first ever demonstration of a hybrid-systems reachability computation in real time on actual embedded platforms, which required addressing significant technical challenges.},
+journal = {ACM Trans. Embed. Comput. Syst.},
+month = feb,
+articleno = {26},
+numpages = {27},
+keywords = {cyber-physical systems, hybrid systems, Formal verification}
+}
+
+% rtreach RTSS Paper
+@INPROCEEDINGS{Bak2014,
+author={S. {Bak} and T. T. {Johnson} and M. {Caccamo} and L. {Sha}},
+booktitle={2014 IEEE Real-Time Systems Symposium}, 
+title={Real-Time Reachability for Verified Simplex Design}, 
+year={2014},
+volume={},
+number={},
+pages={138-148},}
+
+% Tran RTSS De-Centralized
+@InProceedings{Tran2020,
+author="Tran, Hoang-Dung
+and Nguyen, Luan Viet
+and Musau, Patrick
+and Xiang, Weiming
+and Johnson, Taylor T.",
+editor="P{\'e}rez, Jorge A.
+and Yoshida, Nobuko",
+title="Decentralized Real-Time Safety Verification for Distributed Cyber-Physical Systems",
+booktitle="Formal Techniques for Distributed Objects, Components, and Systems",
+year="2019",
+publisher="Springer International Publishing",
+address="Cham",
+pages="261--277",
+abstract="Safety-critical distributed cyber-physical systems (CPSs) have been found in a wide range of applications. Notably, they have displayed a great deal of utility in intelligent transportation, where autonomous vehicles communicate and cooperate with each other via a high-speed communication network. Such systems require an ability to identify maneuvers in real-time that cause dangerous circumstances and ensure the implementation always meets safety-critical requirements. In this paper, we propose a real-time decentralized safety verification approach for a distributed multi-agent CPS with the underlying assumption that all agents are time-synchronized with a low degree of error. In the proposed approach, each agent periodically computes its local reachable set and exchanges this reachable set with the other agents with the goal of verifying the system safety. Our method, implemented in Java, takes advantages of the timing information and the reachable set information that are available in the exchanged messages to reason about the safety of the whole system in a decentralized manner. Any particular agent can also perform local safety verification tasks based on their local clocks by analyzing the messages it receives. We applied the proposed method to verify, in real-time, the safety properties of a group of quadcopters performing a distributed search mission.",
+isbn="978-3-030-21759-4"
+}
+
+
+
+
+% Anytime Algorithm 
+@Inbook{Liu1991,
+author="Liu, J. W. S.
+and Lin, K. J.
+and Shih, W. K.
+and Yu, A. C.
+and Chung, J. Y.
+and Zhao, W.",
+editor="van Tilborg, Andr{\'e} M.
+and Koob, Gary M.",
+title="Algorithms for Scheduling Imprecise Computations",
+bookTitle="Foundations of Real-Time Computing: Scheduling and Resource Management",
+year="1991",
+publisher="Springer US",
+address="Boston, MA",
+pages="203--249",
+abstract="The imprecise computation technique ensures that all time-critical tasks produce their results before their deadlines by trading off the quality of the results for the computation time requirements of the tasks. This paper provides an overview of the problems in scheduling imprecise computations. It describes several workload models of imprecise computation that explicitly characterize the costs and benefits of the tradeoff and the scheduling algorithms that have been developed to achieve the desired tradeoff.",
+isbn="978-1-4615-3956-8",
+doi ={},  %doi="10.1007/978-1-4615-3956-8_8",
+ url       = {},
+}
+
+%Thao Dang Thesis (My savior lol)
+@phdthesis{dang2000,
+  TITLE = {{Verification and Synthesis of Hybrid Systems}},
+  AUTHOR = {Dang, Thi Xuan Thao},
+  URL = {https://tel.archives-ouvertes.fr/tel-00006738},
+  HAL_LOCAL_REFERENCE = {theses/2000/Dang.Thi-Xuan-Thao},
+  SCHOOL = {{Institut National Polytechnique de Grenoble - INPG}},
+  YEAR = {2000},
+  MONTH = Oct,
+  KEYWORDS = {Hybrid systems ; Hybrid automata ; Differential equations ; Reachability analysis ; Formal verification ; Controller synthesis ; Syst{\`e}mes hybrides ; Automates hybrides ; Equations diff{\'e}rentielles ; Analyse d'atteignabilit{\'e} ; V{\'e}rification formelle ; Synth{\`e}se de contr{\^o}leurs},
+  TYPE = {Theses},
+  PDF = {https://tel.archives-ouvertes.fr/tel-00006738/file/tel-00006738.pdf},
+  HAL_ID = {tel-00006738},
+  HAL_VERSION = {v1},
+}
+
+% The kinematic bicycle model 
+@INPROCEEDINGS{Polack2017,
+  author={P. {Polack} and F. {Altché} and B. {d'Andréa-Novel} and A. {de La Fortelle}},
+  booktitle={2017 IEEE Intelligent Vehicles Symposium (IV)}, 
+  title={The kinematic bicycle model: A consistent model for planning feasible trajectories for autonomous vehicles?}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={812-818},}
+  
+% Rajesh Rajamani
+@Inbook{Rajamani2012,
+author="Rajamani, Rajesh",
+title="Lateral Vehicle Dynamics",
+bookTitle="Vehicle Dynamics and Control",
+year="2012",
+publisher="Springer US",
+address="Boston, MA",
+pages="15--46",
+abstract="The first section in this chapter provides a review of several types of lateral control systems that are currently under development by automotive manufacturers and researchers. The subsequent sections in the chapter study kinematic and dynamic models for lateral vehicle motion. Control system design for lateral vehicle applications is studied later in Chapter 3.",
+isbn="978-1-4614-1433-9",
+doi ={},  %doi="10.1007/978-1-4614-1433-9_2",
+ url       = {},
+}
+
+%Hybrid Systems Rechability Papers
+@INPROCEEDINGS{Johnson2012,
+  author={T. T. {Johnson} and S. {Mitra}},
+  booktitle={2012 IEEE/ACM Third International Conference on Cyber-Physical Systems}, 
+  title={Parametrized Verification of Distributed Cyber-Physical Systems: An Aircraft Landing Protocol Case Study}, 
+  year={2012},
+  volume={},
+  number={},
+  pages={161-170},}
+  
+@InProceedings{Girard2006,
+author="Girard, Antoine
+and Le Guernic, Colas
+and Maler, Oded",
+editor="Hespanha, Jo{\~a}o P.
+and Tiwari, Ashish",
+title="Efficient Computation of Reachable Sets of Linear Time-Invariant Systems with Inputs",
+booktitle="Hybrid Systems: Computation and Control",
+year="2006",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="257--271",
+abstract="This work is concerned with the problem of computing the set of reachable states for linear time-invariant systems with bounded inputs. Our main contribution is a novel algorithm which improves significantly the computational complexity of reachability analysis. Algorithms to compute over and under-approximations of the reachable sets are proposed as well. These algorithms are not subject to the wrapping effect and therefore our approximations are tight. We show that these approximations are useful in the context of hybrid systems verification and control synthesis. The performance of a prototype implementation of the algorithm confirms its qualities and gives hope for scaling up verification technology for continuous and hybrid systems.",
+isbn="978-3-540-33171-1"
+}
+
+@InProceedings{Chen2013,
+author="Chen, Xin
+and {\'A}brah{\'a}m, Erika
+and Sankaranarayanan, Sriram",
+editor="Sharygina, Natasha
+and Veith, Helmut",
+title="Flow*: An Analyzer for Non-linear Hybrid Systems",
+booktitle="Computer Aided Verification",
+year="2013",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="258--263",
+abstract="The tool Flow* performs Taylor model-based flowpipe construction for non-linear (polynomial) hybrid systems. Flow* combines well-known Taylor model arithmetic techniques for guaranteed approximations of the continuous dynamics in each mode with a combination of approaches for handling mode invariants and discrete transitions. Flow* supports a wide variety of optimizations including adaptive step sizes, adaptive selection of approximation orders and the heuristic selection of template directions for aggregating flowpipes. This paper describes Flow* and demonstrates its performance on a series of non-linear continuous and hybrid system benchmarks. Our comparisons show that Flow* is competitive with other tools.",
+isbn="978-3-642-39799-8"
+}
+
+@inproceedings{AlthoffCORA2015,
+  author    = {Matthias Althoff},
+  title     = {An Introduction to CORA 2015},
+  booktitle = {ARCH14-15. 1st and 2nd International Workshop on Applied veRification for Continuous and Hybrid Systems},
+  editor    = {Goran Frehse and Matthias Althoff},
+  series    = {EPiC Series in Computing},
+  volume    = {34},
+  pages     = {120--151},
+  year      = {2015},
+  publisher = {EasyChair},
+  bibsource = {EasyChair, https://easychair.org},
+  issn      = {2398-7340},
+   url       = {},
+  doi ={}, %doi       = {10.29007/zbkv}
+  }
+
+
+@inproceedings{manzanas2019arch_ainncs,
+  author    = {Diego Manzanas Lopez and Patrick Musau and Hoang-Dung Tran and Souradeep Dutta and Taylor J. Carpenter and Radoslav Ivanov and Taylor T. Johnson},
+  title     = {ARCH-COMP19 Category Report: Artificial Intelligence and Neural Network Control Systems (AINNCS) for Continuous and Hybrid Systems Plants},
+  booktitle = {ARCH19. 6th International Workshop on Applied Verification of Continuous and Hybrid Systems},
+  editor    = {Goran Frehse and Matthias Althoff},
+  series    = {EPiC Series in Computing},
+  volume    = {61},
+  pages     = {103--119},
+  year      = {2019},
+  publisher = {EasyChair},
+  bibsource = {EasyChair, https://easychair.org},
+  issn      = {2398-7340},
+   url       = {},
+  doi ={}, %doi       = {10.29007/rgv8},
+  month="April",
+}
+
+
+% F1Tenth Picture Hannah O'Leary
+ @misc{marshall_2019, title={These Small Cars Can Help Drive the Autonomous Future}, url={https://www.wired.com/story/small-cars-help-drive-autonomous-future/}, journal={Wired}, publisher={Conde Nast}, author={Marshall, Aarian}, year={2019}, month={Oct}} 
+ 
+ %F1Tenth Hardware Specicifation and Reinforcement Learning
+@InProceedings{okelly2020,
+title={F1TENTH: An Open-source Evaluation Environment for Continuous Control and Reinforcement Learning},
+author={O'Kelly, Matthew and Zheng, Hongrui and Karthik, Dhurv and Mangharam, Rahul},
+booktitle={Post Proceedings of the NeurIPS 2019 Demonstration and Competition Track},
+year={2020},
+editor={Hugo Jair Escalante and  Raia Hadsell},
+series={Proceedings of Machine Learning Research},
+publisher={PMLR}
+}
+
+% Simulation to Reality Gap
+@ARTICLE{Muratore2019,
+  author={F. {Muratore} and M. {Gienger} and J. {Peters}},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Assessing Transferability From Simulation to Reality for Reinforcement Learning}, 
+  year={2021},
+  volume={43},
+  number={4},
+  pages={1172-1183},
+  doi ={}, %doi={10.1109/TPAMI.2019.2952353}
+  }
+
+
+
+
+@article{Dai2020,
+title = "Period adaptation of real-time control tasks with fixed-priority scheduling in cyber-physical systems",
+journal = "Journal of Systems Architecture",
+volume = "103",
+pages = "101691",
+year = "2020",
+issn = "1383-7621",
+doi ={}, %doi = "https://doi.org/10.1016/j.sysarc.2019.101691",
+  url       = {},
+author = "Xiaotian Dai and Alan Burns",
+keywords = "Cyber-physical systems, Control-scheduling co-design, Period adaptation, Adaptive scheduling, Digital twin, Model-based engineering, Ada",
+abstract = "Long-lived, non-stop cyber-physical systems (CPS) are subject to evolutionary changes that can undermine the guarantees of schedulability that were verified at the time of deployment. At the same time, knowledge gleamed from extended periods of execution can be exploited to reduce the uncertainties that were inevitably presented in the system models that are used to define the temporal behaviours of the control tasks. In this paper we utilise this knowledge and present an adaptation method that actively extends the period of control tasks at run-time based on historical measurements. This can lead to lower power consumption or to the accommodation of increased computation resource demands from other components of the CPS. The method relies on online monitoring and model-based prediction to degrade control performance while having a minimal and acceptable impact on ongoing operations. Cloud-based computing is used to facilitate decision making and offload the local computation. We evaluate the effectiveness of the proposed method through control-scheduling co-simulation."
+}
+
+@INPROCEEDINGS{Bak2009Simplex,
+  author={S. {Bak} and D. K. {Chivukula} and O. {Adekunle} and M. {Sun} and M. {Caccamo} and L. {Sha}},
+  booktitle={2009 15th IEEE Real-Time and Embedded Technology and Applications Symposium}, 
+  title={The System-Level Simplex Architecture for Improved Real-Time Embedded System Safety}, 
+  year={2009},
+  volume={},
+  number={},
+  pages={99-107},}
+  
+% System Assurance Paper
+@InProceedings{Jha2020,
+author="Jha, Susmit
+and Rushby, John
+and Shankar, Natarajan",
+editor="Casimiro, Ant{\'o}nio
+and Ortmeier, Frank
+and Bitsch, Friedemann
+and Ferreira, Pedro",
+title="Model-Centered Assurance for Autonomous Systems",
+booktitle="Computer Safety, Reliability, and Security",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="228--243",
+abstract="The functions of an autonomous system can generally be partitioned into those concerned with perception and those concerned with action. Perception builds and maintains an internal model of the world (i.e., the system's environment) that is used to plan and execute actions to accomplish a goal established by human supervisors.",
+isbn="978-3-030-54549-9"
+}
+
+% Safety concept for Autonomous Systems
+@Inbook{Reschka2016,
+author="Reschka, Andreas",
+editor="Maurer, Markus
+and Gerdes, J. Christian
+and Lenz, Barbara
+and Winner, Hermann",
+title="Safety Concept for Autonomous Vehicles",
+bookTitle="Autonomous Driving: Technical, Legal and Social Aspects",
+year="2016",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="473--496",
+abstract="The development of autonomous vehicles currently focuses on the functionality of vehicle guidance systems.",
+isbn="978-3-662-48847-8",
+doi ={}, %doi="10.1007/978-3-662-48847-8_23",
+  url       = {},
+}
+
+% Formal Specification for Deep Neural Networks
+% Specifications for neural network verification are hard to 
+% generate
+@InProceedings{SeshiaSpecifications,
+author="Seshia, Sanjit A.
+and Desai, Ankush
+and Dreossi, Tommaso
+and Fremont, Daniel J.
+and Ghosh, Shromona
+and Kim, Edward
+and Shivakumar, Sumukh
+and Vazquez-Chanlatte, Marcell
+and Yue, Xiangyu",
+editor="Lahiri, Shuvendu K.
+and Wang, Chao",
+title="Formal Specification for Deep Neural Networks",
+booktitle="Automated Technology for Verification and Analysis",
+year="2018",
+publisher="Springer International Publishing",
+address="Cham",
+pages="20--34",
+abstract="The increasing use of deep neural networks in a variety of applications, including some safety-critical ones, has brought renewed interest in the topic of verification of neural networks. However, verification is most meaningful when performed with high-quality formal specifications. In this paper, we survey the landscape of formal specification for deep neural networks, and discuss the opportunities and challenges for formal methods for this domain.",
+isbn="978-3-030-01090-4"
+}
+
+% Time to Collision
+@article{Jimnez2013,
+  title={An Improved Method to Calculate the Time-to-Collision of Two Vehicles},
+  author={F. Jim{\'e}nez and J. Naranjo and Fernando Garc{\'i}a},
+  journal={International Journal of Intelligent Transportation Systems Research},
+  year={2013},
+  volume={11},
+  pages={34-42}
+}
+
+@article{TranRL2019,
+author = {Tran, Hoang-Dung and Cai, Feiyang and Diego, Manzanas Lopez and Musau, Patrick and Johnson, Taylor T. and Koutsoukos, Xenofon},
+title = {Safety Verification of Cyber-Physical Systems with Reinforcement Learning Control},
+year = {2019},
+issue_date = {October 2019},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {18},
+number = {5s},
+issn = {1539-9087},
+  url       = {},
+doi ={}, %doi = {10.1145/3358230},
+abstract = {This paper proposes a new forward reachability analysis approach to verify safety of cyber-physical systems (CPS) with reinforcement learning controllers. The foundation of our approach lies on two efficient, exact and over-approximate reachability algorithms for neural network control systems using star sets, which is an efficient representation of polyhedra. Using these algorithms, we determine the initial conditions for which a safety-critical system with a neural network controller is safe by incrementally searching a critical initial condition where the safety of the system cannot be established. Our approach produces tight over-approximation error and it is computationally efficient, which allows the application to practical CPS with learning enable components (LECs). We implement our approach in NNV, a recent verification tool for neural networks and neural network control systems, and evaluate its advantages and applicability by verifying safety of a practical Advanced Emergency Braking System (AEBS) with a reinforcement learning (RL) controller trained using the deep deterministic policy gradient (DDPG) method. The experimental results show that our new reachability algorithms are much less conservative than existing polyhedra-based approaches. We successfully determine the entire region of the initial conditions of the AEBS with the RL controller such that the safety of the system is guaranteed, while a polyhedra-based approach cannot prove the safety properties of the system.},
+journal = {ACM Trans. Embed. Comput. Syst.},
+month = oct,
+articleno = {105},
+numpages = {22},
+keywords = {verification, reinforcement learning, Formal methods}
+}
+
+
+ @misc{cannis_2020, title={Issues in Autonomous Vehicle Testing and Deployment}, url={https://crsreports.congress.gov/product/pdf/R/R45985}, journal={Federation of American Scientists}, publisher={Congressional Research Service}, author={Cannis, Bill}, year={2020}, month={Feb}} 
+
+
+ %Waymo Team
+ @misc{waymo, title={The Waymo Driver Handbook: How our highly-detailed maps help unlock new locations for autonomous driving}, url={https://blog.waymo.com/2020/09/the-waymo-driver-handbook-mapping.html}, journal={Waymo Blog}, year={2020}, month={Sep}} 
+ 
+ % Kwon Reachability Analysis
+ @ARTICLE{Kwon2018,
+  author={C. {Kwon} and I. {Hwang}},
+  journal={IEEE Transactions on Automatic Control}, 
+  title={Reachability Analysis for Safety Assurance of Cyber-Physical Systems Against Cyber Attacks}, 
+  year={2018},
+  volume={63},
+  number={7},
+  pages={2272-2279},}
+
+
+% Model checking of real-time reachability analysis
+@InProceedings{Daws1998,
+author="Daws, Conrado
+and Tripakis, Stavros",
+editor="Steffen, Bernhard",
+title="Model checking of real-time reachability properties using abstractions",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+year="1998",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="313--329",
+abstract="Practical real-time model checking suffers from the stateexplosion problem: the size of the state space grows exponentially with many system parameters: number of clocks, size of constants, number of system components. To cope with state explosion, we propose to use abstractions reducing the state-space while preserving reachability properties. Four exact, plus one safe abstractions are defined. In the main abstraction (simulation) a concrete state is mapped to a symbolic abstract state (a set of concrete states). The other four abstractions are defined on top of the simulation one. They can be computed on-the-fly in a completely orthogonal manner and thus can be combined to yield better reductions. A prototype implementation in the tool Kronos has permitted to verify two benchmark examples with a significant scale-up in size.",
+isbn="978-3-540-69753-4"
+}
+
+% Simplex Fault Detection
+@INPROCEEDINGS{Crenshaw2007,
+  author={T. L. {Crenshaw} and E. {Gunter} and C. L. {Robinson} and L. {Sha} and P. R. {Kumar}},
+  booktitle={28th IEEE International Real-Time Systems Symposium (RTSS 2007)}, 
+  title={The Simplex Reference Model: Limiting Fault-Propagation Due to Unreliable Components in Cyber-Physical System Architectures}, 
+  year={2007},
+  volume={},
+  number={},
+  pages={400-412},}
+  
+  % Industrial Simplex Architechture
+  @msthesis{bak2009uiuc,
+  title={Industrial Application of the System-Level Simplex Architecture for Real-Time Embedded System Safety},
+  author={Bak, Stanley Zbigniew},
+  year={2009},
+  school={University of Illinois at Urbana-Champaign}
+}
+
+% Simplex Case Study F16
+@techreport{SetoCaseStudy2000,
+title={Case Study: Development of a Baseline Controller for Automatic Landing of an F-16 Aircraft Using Linear Matrix Inequalities (LMIs)},
+author={Danbing Seto and Enrique Ferriera and Theodore Marz},
+year={2000},
+number={CMU/SEI-99-TR-020},
+institution={Software Engineering Institute, Carnegie Mellon University},
+address={Pittsburgh, PA},
+  url       = {}, 
+}
+
+
+
+% Runtime Verification Papers
+
+% Execution Monitoring in Robotics 
+
+@article{PETTERSSON200573,
+   abstract = {Research on execution monitoring in its own is still not very common within the field of robotics and autonomous systems. It is more common that researchers interested in control architectures or execution planning include monitoring as a small part of their work when they realize that it is needed. On the other hand, execution monitoring has been a well studied topic within industrial control, although control theorists seldom use this term. Instead they refer to the problem of fault detection and isolation (FDI). This survey will use the knowledge and terminology from industrial control in order to classify different execution monitoring approaches applied to robotics. The survey is particularly focused on autonomous mobile robotics. © 2005 Elsevier B.V. All rights reserved.},
+   author = {Ola Pettersson},
+   do- = {}, %doi = {10.1016/j.robot.2005.09.004},
+   issn = {09218890},
+   issue = {2},
+   journal = {Robotics and Autonomous Systems},
+   title = {Execution monitoring in robotics: A survey},
+   volume = {53},
+   year = {2005},
+}
+
+% Combining Model Checking and Runtime Verification for Safe Robotics
+@InProceedings{DesaiRV2017,
+author="Desai, Ankush
+and Dreossi, Tommaso
+and Seshia, Sanjit A.",
+editor="Lahiri, Shuvendu
+and Reger, Giles",
+title="Combining Model Checking and Runtime Verification for Safe Robotics",
+booktitle="Runtime Verification",
+year="2017",
+publisher="Springer International Publishing",
+address="Cham",
+pages="172--189",
+abstract="A major challenge towards large scale deployment of autonomous mobile robots is to program them with formal guarantees and high assurance of correct operation. To this end, we present a framework for building safe robots. Our approach for validating the end-to-end correctness of robotics system consists of two parts: (1) a high-level programming language for implementing and systematically testing the reactive robotics software via model checking; (2) a signal temporal logic (STL) based online monitoring system to ensure that the assumptions about the low-level controllers (discrete models) used during model checking hold at runtime. Combining model checking with runtime verification helps us bridge the gap between software verification (discrete) that makes assumptions about the low-level controllers and the physical world, and the actual execution of the software on a real robotic platform in the physical world. To demonstrate the efficacy of our approach, we build a safe adaptive surveillance system and present software-in-the-loop simulations of the application.",
+isbn="978-3-319-67531-2"
+}
+
+% Robust Online Monitoring of Signal Temporal Logic
+@article{Deshmukh2015,
+   abstract = {Signal temporal logic (STL) is a formalism used to rigorously specify requirements of cyberphysical systems (CPS), i.e., systems mixing digital or discrete components in interaction with a continuous environment or analog components. STL is naturally equipped with a quantitative semantics which can be used for various purposes: from assessing the robustness of a specification to guiding searches over the input and parameter space with the goal of falsifying the given property over system behaviors. Algorithms have been proposed and implemented for offline computation of such quantitative semantics, but only few methods exist for an online setting, where one would want to monitor the satisfaction of a formula during simulation. In this paper, we formalize a semantics for robust online monitoring of partial traces, i.e., traces for which there might not be enough data to decide the Boolean satisfaction (and to compute its quantitative counterpart). We propose an efficient algorithm to compute it and demonstrate its usage on two large scale real-world case studies coming from the automotive domain and from CPS education in a Massively Open Online Course setting. We show that savings in computationally expensive simulations far outweigh any overheads incurred by an online approach.},
+   author = {Jyotirmoy V. Deshmukh and Alexandre Donzé and Shromona Ghosh and Xiaoqing Jin and Garvit Juniwal and Sanjit A. Seshia},
+   doi ={}, %doi = {10.1007/s10703-017-0286-7},
+   issn = {15728102},
+   issue = {1},
+   journal = {Formal Methods in System Design},
+   title = {Robust online monitoring of signal temporal logic},
+   volume = {51},
+   year = {2017},
+}
+
+
+
+
+% ROSRV runtime verification framework
+@InProceedings{Huang2014,
+author="Huang, Jeff
+and Erdogan, Cansu
+and Zhang, Yi
+and Moore, Brandon
+and Luo, Qingzhou
+and Sundaresan, Aravind
+and Rosu, Grigore",
+editor="Bonakdarpour, Borzoo
+and Smolka, Scott A.",
+title="ROSRV: Runtime Verification for Robots",
+booktitle="Runtime Verification",
+year="2014",
+publisher="Springer International Publishing",
+address="Cham",
+pages="247--254",
+abstract="We present ROSRV, a runtime verification framework for robotic applications on top of the Robot Operating System (ROS[8]), a widely used open-source framework for robot software development. ROSRV aims to address the safety and security issues of robots by providing a transparent monitoring infrastructure that intercepts and monitors the commands and messages passing through the system. Safety and security properties can be defined in a formal specification language, and are ensured by automatically generated monitors. ROSRV integrates seamlessly with ROS---no change in ROS nor the application code is needed. ROSRV has been applied and evaluated on a commercial robot.",
+isbn="978-3-319-11164-3"
+}
+
+% Tuning Permissiveness of Active Safety Monitors for Autonomous Systems
+@InProceedings{Masson2018,
+author="Masson, Lola
+and Guiochet, J{\'e}r{\'e}mie
+and Waeselynck, H{\'e}l{\`e}ne
+and Cabrera, Kalou
+and Cassel, Sofia
+and T{\"o}rngren, Martin",
+editor="Dutle, Aaron
+and Mu{\~{n}}oz, C{\'e}sar
+and Narkawicz, Anthony",
+title="Tuning Permissiveness of Active Safety Monitors for Autonomous Systems",
+booktitle="NASA Formal Methods",
+year="2018",
+publisher="Springer International Publishing",
+address="Cham",
+pages="333--348",
+abstract="Robots and autonomous systems have become a part of our everyday life, therefore guaranteeing their safety is crucial. Among the possible ways to do so, monitoring is widely used, but few methods exist to systematically generate safety rules to implement such monitors. Particularly, building safety monitors that do not constrain excessively the system's ability to perform its tasks is necessary as those systems operate with few human interventions. We propose in this paper a method to take into account the system's desired tasks in the specification of strategies for monitors and apply it to a case study. We show that we allow more strategies to be found and we facilitate the reasoning about the trade-off between safety and availability.",
+isbn="978-3-319-77935-5"
+}
+
+% Reachability-based safe learning with Gaussian processes
+@INPROCEEDINGS{Akametalu2014,
+  author={A. K. {Akametalu} and J. F. {Fisac} and J. H. {Gillula} and S. {Kaynama} and M. N. {Zeilinger} and C. J. {Tomlin}},
+  booktitle={53rd IEEE Conference on Decision and Control}, 
+  title={Reachability-based safe learning with Gaussian processes}, 
+  year={2014},
+  volume={},
+  number={},
+  pages={1424-1431},}
+  
+ %Provably Safe and Robust Learning-Based Model Predictive Control
+@article{aswani2012provably,
+   abstract = {Controller design faces a trade-off between robustness and performance, and the reliability of linear controllers has caused many practitioners to focus on the former. However, there is renewed interest in improving system performance to deal with growing energy constraints. This paper describes a learning-based model predictive control (LBMPC) scheme that provides deterministic guarantees on robustness, while statistical identification tools are used to identify richer models of the system in order to improve performance; the benefits of this framework are that it handles state and input constraints, optimizes system performance with respect to a cost function, and can be designed to use a wide variety of parametric or nonparametric statistical tools. The main insight of LBMPC is that safety and performance can be decoupled under reasonable conditions in an optimization framework by maintaining two models of the system. The first is an approximate model with bounds on its uncertainty, and the second model is updated by statistical methods. LBMPC improves performance by choosing inputs that minimize a cost subject to the learned dynamics, and it ensures safety and robustness by checking whether these same inputs keep the approximate model stable when it is subject to uncertainty. Furthermore, we show that if the system is sufficiently excited, then the LBMPC control action probabilistically converges to that of an MPC computed using the true dynamics. © 2013 Elsevier Ltd. All rights reserved.},
+   author = {Anil Aswani and Humberto Gonzalez and S. Shankar Sastry and Claire Tomlin},
+   doi ={}, %doi = {10.1016/j.automatica.2013.02.003},
+   issn = {00051098},
+   issue = {5},
+   journal = {Automatica},
+   title = {Provably safe and robust learning-based model predictive control},
+   volume = {49},
+   year = {2013},
+}
+
+% Modelplex
+@article{mitsch,
+	Abstract = {Formal verification and validation play a crucial role in making cyber-physical systems (CPS) safe. Formal methods make strong guarantees about the system behavior if accurate models of the system can be obtained, including models of the controller and of the physical dynamics. In CPS, models are essential; but any model we could possibly build necessarily deviates from the real world. If the real system fits to the model, its behavior is guaranteed to satisfy the correctness properties verified with respect to the model. Otherwise, all bets are off. This article introduces ModelPlex, a method ensuring that verification results about models apply to CPS implementations. ModelPlex provides correctness guarantees for CPS executions at runtime: it combines offline verification of CPS models with runtime validation of system executions for compliance with the model. ModelPlex ensures in a provably correct way that the verification results obtained for the model apply to the actual system runs by monitoring the behavior of the world for compliance with the model. If, at some point, the observed behavior no longer complies with the model so that offline verification results no longer apply, ModelPlex initiates provably safe fallback actions, assuming the system dynamics deviation is bounded. This article, furthermore, develops a systematic technique to synthesize provably correct monitors automatically from CPS proofs in differential dynamic logic by a correct-by-construction approach, leading to verifiably correct runtime model validation. Overall, ModelPlex generates provably correct monitor conditions that, if checked to hold at runtime, are provably guaranteed to imply that the offline safety verification results about the CPS model apply to the present run of the actual CPS implementation.},
+	Author = {Mitsch, Stefan and Platzer, Andr{\'e}},
+	Da = {2016/10/01},
+	Date-Added = {2020-10-19 19:27:14 +0000},
+	Date-Modified = {2020-10-19 19:27:14 +0000},
+	doi ={}, %Doi = {10.1007/s10703-016-0241-z},
+	Id = {Mitsch2016},
+	Isbn = {1572-8102},
+	Journal = {Formal Methods in System Design},
+	Number = {1},
+	Pages = {33--74},
+	Title = {ModelPlex: verified runtime validation of verified cyber-physical system models},
+	Ty = {JOUR},
+    url       = {},
+	Volume = {49},
+	Year = {2016}
+	%Bdsk-Url-1 = {https://doi.org/10.1007/s10703-016-0241-z}
+	}
+	
+	
+	
+% Drona: A framework for safe distributed mobile robotics
+@inproceedings{Desai2017,
+author = {Desai, Ankush and Saha, Indranil and Yang, Jianqiao and Qadeer, Shaz and Seshia, Sanjit A.},
+title = {DRONA: A Framework for Safe Distributed Mobile Robotics},
+year = {2017},
+isbn = {9781450349659},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url       = {},
+doi ={}, %doi = {10.1145/3055004.3055022},
+abstract = {Distributed mobile robotics (DMR) involves teams of networked robots navigating in a physical space to achieve tasks in a coordinated fashion. A major challenge in DMR is to program the ensemble of robots with formal guarantees and high assurance of correct operation. To this end, we introduce Drona, a framework for building reliable DMR applications.This paper makes three central contributions: (1) We present a novel and provably correct decentralized asynchronous motion planner that can perform on-the-fly collision-free planning for dynamically generated tasks. Moreover, the motion planner is the first to take into account the fact that distributed robots may have clocks that are only synchronized up to a tolerance, i.e., they are almost synchronous; (2) We formalize the DMR system as a mixed-synchronous system, and present a sound abstraction-based verification approach for DMR systems, and (3) Drona provides a state-machine based language for safe event-driven programming of a DMR system and the code generated by the compiler can be executed on platforms such as the robot operating system (ROS).To demonstrate the efficacy of Drona, we build and verify a priority mail delivery system. Using our abstraction-based verification approach we were able to find, within a few minutes, bugs which could not be found by performing random simulation for several hours. Our verified decentralized motion-planner scales efficiently for large number of robots (upto 128 robots) and workspace sizes (upto a 256\texttimes{}256 grid).},
+booktitle = {Proceedings of the 8th International Conference on Cyber-Physical Systems},
+pages = {239–248},
+numpages = {10},
+keywords = {multi-robot motion planning, programming language for robotics, distributed robotics, verification, safe mobile robotics},
+location = {Pittsburgh, Pennsylvania},
+series = {ICCPS '17}
+}
+
+% Reachability Papers
+
+% Algorithmic Verification of Continuous and Hybrid Systems
+@inproceedings{Maler14,
+  author    = {Oded Maler},
+  editor    = {Luk{\'{a}}s Hol{\'{\i}}k and
+               Lorenzo Clemente},
+  title     = {Algorithmic Verification of Continuous and Hybrid Systems},
+  booktitle = {Proceedings 15th International Workshop on Verification of Infinite-State
+               Systems, {INFINITY} 2013, Hanoi, Vietnam, 14th October 2013},
+  series    = {{EPTCS}},
+  volume    = {140},
+  pages     = {48--69},
+  year      = {2013},
+  url       = {},
+  doi ={}, %doi       = {10.4204/EPTCS.140.4},
+  timestamp = {Wed, 12 Sep 2018 01:05:15 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/Maler14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+% Computational techniques for the verification of hybrid systems
+@ARTICLE{Tomlin2003,
+  author={C. J. {Tomlin} and I. {Mitchell} and A. M. {Bayen} and M. {Oishi}},
+  journal={Proceedings of the IEEE}, 
+  title={Computational techniques for the verification of hybrid systems}, 
+  year={2003},
+  volume={91},
+  number={7},
+  pages={986-1001},}
+
+% Verification of Hybrid Systems
+@Inbook{Doyen2018,
+author="Doyen, Laurent
+and Frehse, Goran
+and Pappas, George J.
+and Platzer, Andr{\'e}",
+editor="Clarke, Edmund M.
+and Henzinger, Thomas A.
+and Veith, Helmut
+and Bloem, Roderick",
+title="Verification of Hybrid Systems",
+bookTitle="Handbook of Model Checking",
+year="2018",
+publisher="Springer International Publishing",
+address="Cham",
+pages="1047--1110",
+abstract="Hybrid systems are models which combine discrete and continuous behavior. They occur frequently in safety-critical applications in various domains such as health care, transportation, and robotics, as a result of interactions between a digital controller and a physical environment. They also have relevance in other areas such as systems biology, in which the discrete dynamics arises as an abstraction of fast continuous processes. One of the prominent models is that of hybrid automata, where differential equations are associated with each node, and jump constraints such as guards and resets are associated with each edge.",
+isbn="978-3-319-10575-8",
+doi ={}, %doi="10.1007/978-3-319-10575-8_30",
+url       = {},
+}
+
+
+% A Simplex Architecture for Hybrid Systems Using Barrier Certificates
+@InProceedings{Yang2017,
+author="Yang, Junxing
+and Islam, Md. Ariful
+and Murthy, Abhishek
+and Smolka, Scott A.
+and Stoller, Scott D.",
+editor="Tonetta, Stefano
+and Schoitsch, Erwin
+and Bitsch, Friedemann",
+title="A Simplex Architecture for Hybrid Systems Using Barrier Certificates",
+booktitle="Computer Safety, Reliability, and Security",
+year="2017",
+publisher="Springer International Publishing",
+address="Cham",
+pages="117--131",
+abstract="This paper shows how to use Barrier Certificates (BaCs) to design Simplex Architectures for hybrid systems. The Simplex architecture entails switching control of a plant over to a provably safe Baseline Controller when a safety violation is imminent under the control of an unverified Advanced Controller. A key step of determining the switching condition is identifying a recoverable region, where the Baseline Controller guarantees recovery and keeps the plant invariably safe. BaCs, which are Lyapunov-like proofs of safety, are used to identify a recoverable region. At each time step, the switching logic samples the state of the plant and uses bounded-time reachability analysis to conservatively check whether any states outside the zero-level set of the BaCs, which therefore might be non-recoverable, are reachable in one decision period under control of the Advanced Controller. If so, failover is initiated.",
+isbn="978-3-319-66266-4"
+}
+
+@inproceedings{Clark2013,
+  title={A Study on Run Time Assurance for Complex Cyber Physical Systems},
+  author={M. Clark and X. Koutsoukos and Joseph Porter and R. Kumar and George J. Pappas and O. Sokolsky and I. Lee and Lee Pike},
+  year={2013}
+}
+
+%State Explosion Problem
+@Inbook{Valmari1998,
+author="Valmari, Antti",
+editor="Reisig, Wolfgang
+and Rozenberg, Grzegorz",
+title="The state explosion problem",
+bookTitle="Lectures on Petri Nets I: Basic Models: Advances in Petri Nets",
+year="1998",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="429--528",
+abstract="State space methods are one of the most important approaches to computer-aided analysis and verification of the behaviour of concurrent systems. In their basic form, they consist of enumerating and analysing the set of the states the system can ever reach. Unfortunately, the number of states of even a relatively small system is often far greater than can be handled in a realistic computer. The goal of this article is to analyse this state explosion problem from several perspectives. Many advanced state space methods alleviate the problem by using a subset or an abstraction of the set of states. Unfortunately, their use tends to restrict the set of analysis or verification questions that can be answered, making it impossible to discuss the methods without some taxonomy of the questions. Therefore, the article contains a lengthy discussion on alternative ways of stating analysis and verification questions, and algorithms for answering them. After that, many advanced state space methods are briefly described. The state explosion problem is investigated also from the computational complexity point of view.",
+isbn="978-3-540-49442-3",
+doi ={}, %doi="10.1007/3-540-65306-6_21",
+url       = {},
+}
+
+@INPROCEEDINGS{boursinos2020trusted,
+  author={D. {Boursinos} and X. {Koutsoukos}},
+  booktitle={2020 IEEE Security and Privacy Workshops (SPW)}, 
+  title={Trusted Confidence Bounds for Learning Enabled Cyber-Physical Systems}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={228-233},
+  doi ={}, %doi={10.1109/SPW50608.2020.00053}
+  }
+
+
+
+
+% Machine Learning real-time rechability
+@INPROCEEDINGS{Allen2014,
+  author={R. E. {Allen} and A. A. {Clark} and J. A. {Starek} and M. {Pavone}},
+  booktitle={2014 IEEE/RSJ International Conference on Intelligent Robots and Systems}, 
+  title={A machine learning approach for real-time reachability analysis}, 
+  year={2014},
+  volume={},
+  number={},
+  pages={2202-2208},}
+  
+  
+  
+  % Claire Tomlin Papers
+@inproceedings{Herbert2019,
+   abstract = {Hamilton-Jacobi-Isaacs (HJI) reachability analysis is a powerful tool for analyzing the safety of autonomous systems. This analysis is computationally intensive and typically performed offline. Online, however, the autonomous system may experience changes in system dynamics, external disturbances, and/or the surrounding environment, requiring updated safety guarantees. Rather than restarting the safety analysis, we propose a method of warm-start reachability, which uses a user-defined initialization (typically the previously computed solution). By starting with an HJI function that is closer to the solution than the standard initialization, the analysis may take fewer iterations. In this paper we prove that warm-starting will result in guaranteed conservative solutions by over-approximating the states that must be avoided to maintain safety. We additionally prove that for many common problem formulations, warm-starting will result in exact solutions. We demonstrate our method on several illustrative examples with a double integrator, and also with a more practical 10D quadcopter model that experiences changes in mass and disturbances and must update its safety guarantees accordingly. We compare our approach to standard reachability and a recently proposed discounted reachability method, and find for our examples that warm-starting is 1:6 times faster than standard and 6:2 times faster than (untuned) discounted reachability.},
+   author = {Sylvia L. Herbert and Somil Bansal and Shromona Ghosh and Claire J. Tomlin},
+   doi ={}, %doi = {10.1109/CDC40024.2019.9029575},
+   issn = {07431546},
+   journal = {Proceedings of the IEEE Conference on Decision and Control},
+   title = {Reachability-Based Safety Guarantees using Efficient Initializations},
+   volume = {2019-December},
+   year = {2019},
+}
+
+
+@inproceedings{Bajcsy2018,
+   abstract = {Robust motion planning is a well-studied problem in the robotics literature, yet current algorithms struggle to operate scalably and safely in the presence of other moving agents, such as humans. This paper introduces a novel framework for robot navigation that accounts for high-order system dynamics and maintains safety in the presence of external disturbances, other robots, and humans. Our approach precomputes a tracking error margin for each robot, generates confidence-aware human motion predictions, and coordinates multiple robots with a sequential priority ordering, effectively enabling scalable safe trajectory planning and execution. We demonstrate our approach in hardware with two robots and two humans, and showcase scalability in a larger simulation.},
+   author = {Andrea Bajcsy and Sylvia L. Herbert and David Fridovich-Keil and Jaime F. Fisac and Sampada Deglurkar and Anca D. Dragan and Claire J. Tomlin},
+   doi ={}, %doi = {10.1109/ICRA.2019.8794457},
+   issn = {10504729},
+   journal = {Proceedings - IEEE International Conference on Robotics and Automation},
+   title = {A scalable framework for real-time multi-robot, multi-human collision avoidance},
+   volume = {2019-May},
+   year = {2019},
+}
+
+% An online approach to active set invariance
+@INPROCEEDINGS{Gurriet2018,
+  author={T. {Gurriet} and M. {Mote} and A. D. {Ames} and E. {Feron}},
+  booktitle={2018 IEEE Conference on Decision and Control (CDC)}, 
+  title={An Online Approach to Active Set Invariance}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={3592-3599},
+  doi ={}, %doi={10.1109/CDC.2018.8619139}
+  }
+  
+  % Online Verification Analysis
+  @ARTICLE{Althoff2014,
+  author={M. {Althoff} and J. M. {Dolan}},
+  journal={IEEE Transactions on Robotics}, 
+  title={Online Verification of Automated Road Vehicles Using Reachability Analysis}, 
+  year={2014},
+  volume={30},
+  number={4},
+  pages={903-918},
+  doi ={}, %doi={10.1109/TRO.2014.2312453}
+  }
+  
+ 
+@inproceedings{Bajcsy2019Provably,
+   abstract = {Real-world autonomous vehicles often operate in a priori unknown environments. Since most of these systems are safety-critical, it is important to ensure they operate safely even when faced with environmental uncertainty. Current safety analysis tools enable autonomous systems to reason about safety given full information about the state of the environment a priori. However, these tools do not scale well to scenarios where the environment is being sensed in real time, such as during navigation tasks. In this work, we propose a novel, real-time safety analysis method based on Hamilton-Jacobi reachability that provides strong safety guarantees despite the unknown parts of the environment. Our safety method is planner-agnostic and provides guarantees for a variety of mapping sensors. We demonstrate our approach in simulation and in hardware to provide safety guarantees around a state-of-the-art vision-based, learning-based planner. Videos of our approach and experiments are available on the project website.},
+   author = {Andrea Bajcsy and Somil Bansal and Eli Bronstein and Varun Tolani and Claire J. Tomlin},
+   doi ={}, %doi = {10.1109/CDC40024.2019.9030133},
+   issn = {07431546},
+   journal = {Proceedings of the IEEE Conference on Decision and Control},
+   title = {An Efficient Reachability-Based Framework for Provably Safe Autonomous Navigation in Unknown Environments},
+   volume = {2019-December},
+   year = {2019},
+}
+
+@inproceedings{bansal2020hamiltonjacobi,
+   abstract = {Real-world autonomous systems often employ probabilistic predictive models of human behavior during planning to reason about their future motion. Since accurately modeling human behavior a priori is challenging, such models are often parameterized, enabling the robot to adapt predictions based on observations by maintaining a distribution over the model parameters. Although this enables data and priors to improve the human model, observation models are difficult to specify and priors may be incorrect, leading to erroneous state predictions that can degrade the safety of the robot motion plan. In this work, we seek to design a predictor which is more robust to misspecified models and priors, but can still leverage human behavioral data online to reduce conservatism in a safe way. To do this, we cast human motion prediction as a Hamilton-Jacobi reachability problem in the joint state space of the human and the belief over the model parameters. We construct a new continuous-time dynamical system, where the inputs are the observations of human behavior, and the dynamics include how the belief over the model parameters change. The results of this reachability computation enable us to both analyze the effect of incorrect priors on future predictions in continuous state and time, as well as to make predictions of the human state in the future. We compare our approach to the worst-case forward reachable set and a stochastic predictor which uses Bayesian inference and produces full future state distributions. Our comparisons in simulation and in hardware demonstrate how our framework can enable robust planning while not being overly conservative, even when the human model is inaccurate. Videos of our experiments can be found at the project website1.},
+   author = {Somil Bansal and Andrea Bajcsy and Ellis Ratner and Anca D. Dragan and Claire J. Tomlin},
+   doi ={}, %doi = {10.1109/ICRA40945.2020.9197257},
+   issn = {10504729},
+   journal = {Proceedings - IEEE International Conference on Robotics and Automation},
+   title = {A Hamilton-Jacobi Reachability-Based Framework for Predicting and Analyzing Human Motion for Safe Planning},
+   year = {2020},
+}
+
+
+@article{Fisac2017,
+   abstract = {The proven efficacy of learning-based control schemes strongly motivates their application to robotic systems operating in the physical world. However, guaranteeing correct operation during the learning process is currently an unresolved issue, which is of vital importance in safety-critical systems. We propose a general safety framework based on Hamilton-Jacobi reachability methods that can work in conjunction with an arbitrary learning algorithm. The method exploits approximate knowledge of the system dynamics to guarantee constraint satisfaction while minimally interfering with the learning process. We further introduce a Bayesian mechanism that refines the safety analysis as the system acquires new evidence, reducing initial conservativeness when appropriate while strengthening guarantees through real-Time validation. The result is a least-restrictive, safety-preserving control law that intervenes only when the computed safety guarantees require it, or confidence in the computed guarantees decays in light of new observations. We prove theoretical safety guarantees combining probabilistic and worst-case analysis and demonstrate the proposed framework experimentally on a quadrotor vehicle. Even though safety analysis is based on a simple point-mass model, the quadrotor successfully arrives at a suitable controller by policy-gradient reinforcement learning without ever crashing, and safely retracts away from a strong external disturbance introduced during flight.},
+   author = {Jaime F. Fisac and Anayo K. Akametalu and Melanie N. Zeilinger and Shahab Kaynama and Jeremy Gillula and Claire J. Tomlin},
+   doi ={}, %doi = {10.1109/TAC.2018.2876389},
+   issn = {15582523},
+   issue = {7},
+   journal = {IEEE Transactions on Automatic Control},
+   title = {A General Safety Framework for Learning-Based Control in Uncertain Robotic Systems},
+   volume = {64},
+   year = {2019},
+}
+
+
+@InProceedings{Bansal2019,
+  title = 	 {Combining Optimal Control and Learning for Visual Navigation in Novel Environments},
+  author =       {Bansal, Somil and Tolani, Varun and Gupta, Saurabh and Malik, Jitendra and Tomlin, Claire},
+  booktitle = 	 {Proceedings of the Conference on Robot Learning},
+  pages = 	 {420--429},
+  year = 	 {2020},
+  editor = 	 {Leslie Pack Kaelbling and Danica Kragic and Komei Sugiura},
+  volume = 	 {100},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {},
+  month = 	 {30 Oct--01 Nov},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v100/bansal20a/bansal20a.pdf},
+  url = 	 {},
+  abstract = 	 {Model-based control is a popular paradigm for robot navigation because it can leverage a known dynamics model to efficiently plan robust robot trajectories. However, it is challenging to use model-based methods in settings where the environment is a priori unknown and can only be observed partially through onboard sensors on the robot. In this work, we address this short-coming by coupling model-based control with learning-based perception. The learning-based perception module produces a series of waypoints that guide the robot to the goal via a collision-free path. These waypoints are used by a model-based planner to generate a smooth and dynamically feasible trajectory that is executed on the physical system using feedback control. Our experiments in simulated real-world cluttered environments and on an actual ground vehicle demonstrate that the proposed approach can reach goal locations more reliably and efficiently in novel environments as compared to purely geometric mapping-based or end-to-end learning-based alternatives. Our approach does not rely on detailed explicit 3D maps of the environment, works well with low frame rates, and generalizes well from simulation to the real world. Videos describing our approach and experiments are available on the project website4.}
+}
+
+
+@inproceedings{Gilula2014,
+author = {Gillula, Jeremy H. and Kaynama, Shahab and Tomlin, Claire J.},
+title = {Sampling-Based Approximation of the Viability Kernel for High-Dimensional Linear Sampled-Data Systems},
+year = {2014},
+isbn = {9781450327329},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+  url       = {},
+doi ={}, % doi = {10.1145/2562059.2562117},
+abstract = {Proving that systems satisfy hard input and state constraints is frequently desirable when designing cyber-physical systems. One method for doing so is to compute the viability kernel, the subset of the state space for which a control signal exists that is guaranteed to keep the system within the constraints over some time horizon. In this paper we present a novel method for approximating the viability kernel for linear sampled-data systems using a sampling-based algorithm, which by its construction offers a direct trade-off between scalability and accuracy. We also prove that the algorithm is correct, that its convergence properties are optimal, and demonstrate it on a simple example. We conclude by briefly describing additional results which are omitted due to space constraints.},
+booktitle = {Proceedings of the 17th International Conference on Hybrid Systems: Computation and Control},
+pages = {173–182},
+numpages = {10},
+keywords = {constrained sampled-data systems, sampling-based algorithms, viability kernel approximations},
+location = {Berlin, Germany},
+series = {HSCC '14}
+}
+
+
+@article{Yurtsever2019,
+   abstract = {Automated driving systems (ADSs) promise a safe, comfortable and efficient driving experience. However, fatalities involving vehicles equipped with ADSs are on the rise. The full potential of ADSs cannot be realized unless the robustness of state-of-the-art is improved further. This paper discusses unsolved problems and surveys the technical aspect of automated driving. Studies regarding present challenges, high-level system architectures, emerging methodologies and core functions including localization, mapping, perception, planning, and human machine interfaces, were thoroughly reviewed. Furthermore, many state-of-the-art algorithms were implemented and compared on our own platform in a real-world driving setting. The paper concludes with an overview of available datasets and tools for ADS development.},
+   author = {Ekim Yurtsever and Jacob Lambert and Alexander Carballo and Kazuya Takeda},
+   doi ={}, %doi = {10.1109/ACCESS.2020.2983149},
+   issn = {21693536},
+   journal = {IEEE Access},
+   title = {A Survey of Autonomous Driving: Common Practices and Emerging Technologies},
+   volume = {8},
+   year = {2020},
+}
+
+
+@inproceedings{BallesterGoogLeNet,
+ author = {Ballester, Pedro and Araujo, Ricardo Matsumura},
+ title = {On the Performance of GoogLeNet and AlexNet Applied to Sketches},
+ booktitle = {Proceedings of the Thirtieth AAAI Conference on Artificial Intelligence},
+ series = {AAAI'16},
+ year = {2016},
+ location = {Phoenix, Arizona},
+ pages = {1124--1128},
+ numpages = {5},
+ url       = {},
+ acmid = {3015979},
+ publisher = {AAAI Press},
+} 
+
+@inproceedings{SimonyanVeryDeep,
+   abstract = {In this work we investigate the effect of the convolutional network depth on its accuracy in the large-scale image recognition setting. Our main contribution is a thorough evaluation of networks of increasing depth using an architecture with very small (3 × 3) convolution filters, which shows that a significant improvement on the prior-art configurations can be achieved by pushing the depth to 16–19 weight layers. These findings were the basis of our ImageNet Challenge 2014 submission, where our team secured the first and the second places in the localisation and classification tracks respectively. We also show that our representations generalise well to other datasets, where they achieve state-of-the-art results. We have made our two best-performing ConvNet models publicly available to facilitate further research on the use of deep visual representations in computer vision.},
+   author = {Karen Simonyan and Andrew Zisserman},
+   journal = {3rd International Conference on Learning Representations, ICLR 2015 - Conference Track Proceedings},
+   title = {Very deep convolutional networks for large-scale image recognition},
+   year = {2015},
+}
+
+@inproceedings{Jin2019,
+author = {Li, Yihao and Wang, Jin},
+title = {Online Updating Algorithms of Statistical Methods for Big Data},
+year = {2019},
+isbn = {9781450372909},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url       = {},
+doi ={}, %doi = {10.1145/3366650.3366667},
+abstract = {In this paper, we discuss online updating algorithms for Big Data. One of the main challenges of Big Data is the limitation of data storage. In the Big Data stream environment, online computation sometimes requires fast updates without the use of historical data. The focus of this research is on efficient online update algorithms for basic statistical computations, including mean, variance, covariance, skewness, kurtosis, confidence interval, test statistic, and linear regression. We demonstrate the implementation of R Language through a linear regress example.},
+booktitle = {Proceedings of the 2nd International Conference on Computing and Big Data},
+pages = {81–85},
+numpages = {5},
+keywords = {Kurtosis, Online Algorithm, Skewness, Big Data, Linear Regression, Sample Moment},
+location = {Taichung, Taiwan},
+series = {ICCBD 2019}
+}
+
+@article{goodfellow2014,
+  author    = {Ian J. Goodfellow and
+               Jean Pouget{-}Abadie and
+               Mehdi Mirza and
+               Bing Xu and
+               David Warde{-}Farley and
+               Sherjil Ozair and
+               Aaron C. Courville and
+               Yoshua Bengio},
+  title     = {Generative adversarial networks},
+  journal   = {Commun. {ACM}},
+  volume    = {63},
+  number    = {11},
+  pages     = {139--144},
+  year      = {2020},
+  url       = {},
+ doi ={}, % doi       = {},
+  timestamp = {Wed, 11 Nov 2020 11:39:04 +0100},
+  biburl    = {https://dblp.org/rec/journals/cacm/GoodfellowPMXWO20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Radford2016,
+  title={Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks},
+  author={A. Radford and Luke Metz and Soumith Chintala},
+  journal={CoRR},
+  year={2016},
+  volume={abs/1511.06434}
+}
+
+@inproceedings{Brock2018,
+   abstract = {Despite recent progress in generative image modeling, successfully generating high-resolution, diverse samples from complex datasets such as ImageNet remains an elusive goal. To this end, we train Generative Adversarial Networks at the largest scale yet attempted, and study the instabilities specific to such scale. We find that applying orthogonal regularization to the generator renders it amenable to a simple “truncation trick,” allowing fine control over the trade-off between sample fidelity and variety by reducing the variance of the Generator's input. Our modifications lead to models which set the new state of the art in class-conditional image synthesis. When trained on ImageNet at 128×128 resolution, our models (BigGANs) achieve an Inception Score (IS) of 166.5 and Fréchet Inception Distance (FID) of 7.4, improving over the previous best IS of 52.52 and FID of 18.65.},
+   author = {Andrew Brock and Jeff Donahue and Karen Simonyan},
+   journal = {7th International Conference on Learning Representations, ICLR 2019},
+   title = {Large scale GaN training for high fidelity natural image synthesis},
+   year = {2019},
+}
+
+@article{LeungReach2020,
+author = {Karen Leung and Edward Schmerling and Mengxuan Zhang and Mo Chen and John Talbot and J Christian Gerdes and Marco Pavone},
+title ={On Infusing Reachability-Based Safety Assurance within Probabilistic Planning Frameworks for Human-Robot Vehicle Interactions},
+journal = {The International Journal of Robotics Research},
+volume = {39},
+number = {10-11},
+pages = {1326-1345},
+year = {2020},
+doi = {},
+url       = {},
+    abstract = { Action anticipation, intent prediction, and proactive behavior are all desirable characteristics for autonomous driving policies in interactive scenarios. Paramount, however, is ensuring safety on the road: a key challenge in doing so is accounting for uncertainty in human driver actions without unduly impacting planner performance. This article introduces a minimally interventional safety controller operating within an autonomous vehicle control stack with the role of ensuring collision-free interaction with an externally controlled (e.g., human-driven) counterpart while respecting static obstacles such as a road boundary wall. We leverage reachability analysis to construct a real-time (100 Hz) controller that serves the dual role of (i) tracking an input trajectory from a higher-level planning algorithm using model predictive control, and (ii) assuring safety by maintaining the availability of a collision-free escape maneuver as a persistent constraint regardless of whatever future actions the other car takes. A full-scale steer-by-wire platform is used to conduct traffic-weaving experiments wherein two cars, initially side-by-side, must swap lanes in a limited amount of time and distance, emulating cars merging onto/off of a highway. We demonstrate that, with our control stack, the autonomous vehicle is able to avoid collision even when the other car defies the planners expectations and takes dangerous actions, either carelessly or with the intent to collide, and otherwise deviates minimally from the planned trajectory to the extent required to maintain safety. }
+}
+
+% More HJI Reachability 
+@article{GATTAMI2011,
+title = "Establishing Safety for Heavy Duty Vehicle Platooning: A Game Theoretical Approach",
+journal = "IFAC Proceedings Volumes",
+volume = "44",
+number = "1",
+pages = "3818 - 3823",
+year = "2011",
+note = "18th IFAC World Congress",
+issn = "1474-6670",
+doi = "",
+url       = {},
+author = "Ather Gattami and Assad {Al Alam} and Karl H. Johansson and Claire J. Tomlin",
+keywords = "Game theory, Reachability, Optimal Control, Safety analysis, Heavy Duty Vehicle, Platooning",
+abstract = "Abstract
+It is fuel efficient to minimize the relative distance between vehicles to achieve a maximum reduction in air drag. However, the relative distance can only be reduced to a certain extent without endangering a collision. Factors such as the vehicle velocity, the relative velocity, and the characteristics of the vehicle ahead has a strong impact on what minimum relative distance can be obtained. In this paper, we utilize optimal control and game theory to establish safety criteria for heavy duty vehicle platooning applications. The derived results show that a minimum relative distance of 1.2 m can be obtained for two identical vehicles without endangering a collision, assuming that there is no delay present in the feedback system. If a worst case delay is present in the system, a minimum relative distance is deduced based upon the vehicle's maximum deceleration ability. The relative distance can be reduced if the follower vehicle has a greater overall braking capability, which suggests that vehicle heterogeneity and order has substantial impact. The findings are verified by simulations and the main conclusion is that the relative distance utilized in commercial applications today can be reduced significantly with a suitable advanced cruise control system."
+}
+
+
+@article{Olivier2010,
+author = {Bokanowski, Olivier and Forcadel, Nicolas and Zidani, Hasnaa},
+title = {Reachability and Minimal Times for State Constrained Nonlinear Problems without Any Controllability Assumption},
+year = {2010},
+issue_date = {June 2010},
+publisher = {Society for Industrial and Applied Mathematics},
+address = {USA},
+volume = {48},
+number = {7},
+issn = {0363-0129},
+url       = {},
+doi = {},
+abstract = {We consider a target problem for a nonlinear system under state constraints. We give a new continuous level-set approach for characterizing the optimal times and the backward-reachability sets. This approach leads to a characterization via a Hamilton-Jacobi equation, without assuming any controllability assumption. We also treat the case of time-dependent state constraints, as well as a target problem for a two-player game with state constraints. Our method gives a good framework for numerical approximations, and some numerical illustrations are included in the paper.},
+journal = {SIAM J. Control Optim.},
+month = jun,
+pages = {4292–4316},
+numpages = {25},
+keywords = {level-set method, attainable set, reachability set, minimal time problem, Hamilton-Jacobi-Bellman equations, two-player game, state constraints}
+}
+
+
+
+@INPROCEEDINGS{Chen2016,
+  author={M. {Chen} and Q. {Hu} and C. {Mackin} and J. F. {Fisac} and C. J. {Tomlin}},
+  booktitle={2015 54th IEEE Conference on Decision and Control (CDC)}, 
+  title={Safe platooning of unmanned aerial vehicles via reachability}, 
+  year={2015},
+  volume={},
+  number={},
+  pages={4695-4701},
+  doi ={}, %doi={10.1109/CDC.2015.7402951}
+  }
+
+
+@inproceedings{dhinakaran2017hybrid,
+   abstract = {With the recent surge of interest in UAVs for civilian services, the importance of developing tractable multiagent analysis techniques that provide safety and performance guarantees has drastically increased. Hamilton-Jacobi (HJ) reachability has successfully provided these guarantees to small-scale systems and is flexible in terms of system dynamics. However, the exponential complexity scaling of HJ reachability with respect to system dimension prevents its direct application to larger-scale problems where the number of vehicles is greater than two. In this paper, we propose a collision avoidance algorithm using a hybrid framework for N + 1 vehicles through higher-level control logic given any N-vehicle collision avoidance algorithm. Our algorithm conservatively approximates a guaranteed-safe region in the joint state space of the N + 1 vehicles and produces a safety-preserving controller. In addition, our algorithm does not incur significant additional computation cost. We demonstrate our method in simulation.},
+   author = {Aparna Dhinakaran and Mo Chen and Glen Chou and Jennifer C. Shih and Claire J. Tomlin},
+   doi ={}, %doi = {10.1109/CDC.2017.8264092},
+   journal = {2017 IEEE 56th Annual Conference on Decision and Control, CDC 2017},
+   booktitle = {A hybrid framework for multi-vehicle collision avoidance},
+   volume = {2018-January},
+   year = {2018},
+}
+
+
+% New papers per taylor's comments
+
+@inproceedings{Lin2020,
+author = {Lin, Qin and Chen, Xin and Khurana, Aman and Dolan, John},
+title = {ReachFlow: An Online Safety Assurance Framework for Waypoint-Following of Self-driving Cars},
+ booktitle = {International Conference on Intelligent Robots and systems (IROS)},
+ series = {IROS'2020},
+ year = {2020},
+ location = {Las Vegas, Nevada},
+ pages = {},
+ numpages = {8},
+ url       = {},
+ publisher = {IEEE},
+} 
+
+@ARTICLE{BU2020,
+  author={L. {Bu} and Q. {Wang} and X. {Ren} and S. {Xing} and X. {Li}},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems}, 
+  title={Scenario-Based Online Reachability Validation for CPS Fault Prediction}, 
+  year={2020},
+  volume={39},
+  number={10},
+  pages={2081-2094},
+  doi ={}, %doi={10.1109/TCAD.2019.2935062}
+  }
+  
+@article{Bu2011,
+author = {Bu, Lei and Wang, Qixin and Chen, Xin and Wang, Linzhang and Zhang, Tian and Zhao, Jianhua and Li, Xuandong},
+title = {Toward Online Hybrid Systems Model Checking of Cyber-Physical Systems' Time-Bounded Short-Run Behavior},
+year = {2011},
+issue_date = {June 2011},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {8},
+number = {2},
+url       = {},
+doi ={}, %doi = {10.1145/2000367.2000368},
+abstract = {Many Cyber-Physical Systems (CPS) are highly nondeterministic. This often makes it impractical to model and predict the complete system behavior. To address this problem, we propose that instead of offline modeling and verification, many CPS systems should be modeled and verified online, and we shall focus on the system's time-bounded behavior in short-run future, which is more describable and predictable. Meanwhile, as the system model is generated/updated online, the verification has to be fast. It is meaningless to tell an online model is unsafe when it is already out-dated. To demonstrate the feasibility of our proposal, we study two cases of our ongoing projects, one on the modeling and verification of a train control system, and the other on a Medical Device Plug-and-Play (MDPnP) application. Both cases are about safety-critical CPS systems. Through these two cases, we exemplify how to build online models that describe the time-bounded short-run behavior of CPS systems; and we show that fast online modeling and verification is possible.},
+journal = {SIGBED Rev.},
+month = jun,
+pages = {7–10},
+numpages = {4}
+}
+
+@ARTICLE{Ti2014,
+  author={T. {Li} and F. {Tan} and Q. {Wang} and L. {Bu} and J. {Cao} and X. {Liu}},
+  journal={IEEE Transactions on Parallel and Distributed Systems}, 
+  title={From Offline toward Real Time: A Hybrid Systems Model Checking and CPS Codesign Approach for Medical Device Plug-and-Play Collaborations}, 
+  year={2014},
+  volume={25},
+  number={3},
+  pages={642-652},
+  doi ={}, %doi={10.1109/TPDS.2013.50}
+  }
+  
+
+@InProceedings{Phan2020,
+author="Phan, Dung T.
+and Grosu, Radu
+and Jansen, Nils
+and Paoletti, Nicola
+and Smolka, Scott A.
+and Stoller, Scott D.",
+editor="Lee, Ritchie
+and Jha, Susmit
+and Mavridou, Anastasia",
+title="Neural Simplex Architecture",
+booktitle="NASA Formal Methods",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="97--114",
+abstract="We present the Neural Simplex Architecture (NSA), a new approach to runtime assurance that provides safety guarantees for neural controllers (obtained e.g. using reinforcement learning) of autonomous and other complex systems without unduly sacrificing performance. NSA is inspired by the Simplex control architecture of Sha et al., but with some significant differences. In the traditional approach, the advanced controller (AC) is treated as a black box; when the decision module switches control to the baseline controller (BC), the BC remains in control forever. There is relatively little work on switching control back to the AC, and there are no techniques for correcting the AC's behavior after it generates a potentially unsafe control input that causes a failover to the BC. Our NSA addresses both of these limitations. NSA not only provides safety assurances in the presence of a possibly unsafe neural controller, but can also improve the safety of such a controller in an online setting via retraining, without overly degrading its performance. To demonstrate NSA's benefits, we have conducted several significant case studies in the continuous control domain. These include a target-seeking ground rover navigating an obstacle field, and a neural controller for an artificial pancreas system.",
+isbn="978-3-030-55754-6"
+}
+
+
+@article{Reinhard2008,
+author = {Wilhelm, Reinhard and Engblom, Jakob and Ermedahl, Andreas and Holsti, Niklas and Thesing, Stephan and Whalley, David and Bernat, Guillem and Ferdinand, Christian and Heckmann, Reinhold and Mitra, Tulika and Mueller, Frank and Puaut, Isabelle and Puschner, Peter and Staschulat, Jan and Stenstr\"{o}m, Per},
+title = {The Worst-Case Execution-Time Problem—Overview of Methods and Survey of Tools},
+year = {2008},
+issue_date = {April 2008},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {7},
+number = {3},
+issn = {1539-9087},
+url       = {},
+doi ={}, %doi = {10.1145/1347375.1347389},
+abstract = {The determination of upper bounds on execution times, commonly called worst-case execution times (WCETs), is a necessary step in the development and validation process for hard real-time systems. This problem is hard if the underlying processor architecture has components, such as caches, pipelines, branch prediction, and other speculative components. This article describes different approaches to this problem and surveys several commercially available tools1 and research prototypes.},
+journal = {ACM Trans. Embed. Comput. Syst.},
+month = may,
+articleno = {36},
+numpages = {53},
+keywords = {Hard real time, worst-case execution times}
+}
+
+
+@misc{holmes2020reachable,
+      title={Reachable Sets for Safe, Real-Time Manipulator Trajectory Design}, 
+      author={Patrick Holmes and Shreyas Kousik and Bohao Zhang and Daphna Raz and Corina Barbalata and Matthew Johnson-Roberson and Ram Vasudevan},
+      year={2020},
+      eprint={2002.01591},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
+
+
+@INPROCEEDINGS{Srinivasa2003,
+  author={N. {Srinivasa} and  {Yang Chen} and C. {Daniell}},
+  booktitle={Proceedings of the 2003 IEEE International Conference on Intelligent Transportation Systems}, 
+  title={A fusion system for real-time forward collision warning in automobiles}, 
+  year={2003},
+  volume={1},
+  number={},
+  pages={457-462 vol.1},
+ doi ={}, % doi={10.1109/ITSC.2003.1251996}
+  }
+
+
+% IL
+@article{Hussein2017ImitationL,
+  title={Imitation Learning},
+  author={A. Hussein and M. Gaber and Eyad Elyan and C. Jayne},
+  journal={ACM Computing Surveys (CSUR)},
+  year={2017},
+  volume={50},
+  pages={1 - 35}
+}
+
+
+% Pure pursuit
+@techreport{coulter1992implementation,
+  title={Implementation of the pure pursuit path tracking algorithm},
+  author={Coulter, R Craig},
+  year={1992},
+  institution={Carnegie-Mellon UNIV Pittsburgh PA Robotics INST}
+} 
+
+
+% alvinn
+@techreport{pomerleau1989alvinn,
+  title={Alvinn: An autonomous land vehicle in a neural network},
+  author={Pomerleau, Dean A},
+  year={1989},
+  institution={Carnegie-Mellon UNIV Pittsburgh PA Robotics INST}
+}
+
+% behavior cloning
+@article{pomerleau1991efficient,
+  title={Efficient training of artificial neural networks for autonomous navigation},
+  author={Pomerleau, Dean A},
+  journal={Neural computation},
+  volume={3},
+  number={1},
+  pages={88--97},
+  year={1991},
+  publisher={MIT Press}
+}
+
+% bojarski
+
+@inproceedings{bojarski2016end,
+   abstract = {This paper proposes a new method, that we call VisualBackProp, for visualizing which sets of pixels of the input image contribute most to the predictions made by the convolutional neural network (CNN). The method heavily hinges on exploring the intuition that the feature maps contain less and less irrelevant information to the prediction decision when moving deeper into the network. The technique we propose is dedicated for CNN-based systems for steering self-driving cars and is therefore required to run in real-time. This makes the proposed visualization method a valuable debugging tool which can be easily used during both training and inference. We justify our approach with theoretical arguments and confirm that the proposed method identifies sets of input pixels, rather than individual pixels, that collaboratively contribute to the prediction. We utilize the proposed visualization tool in the NVIDIA neural-network-based end-to-end learning system for autonomous driving, known as PilotNet. We demonstrate that VisualBackProp determines which elements in the road image most influence PilotNet's steering decision and indeed captures relevant objects on the road. The empirical evaluation furthermore shows the plausibility of the proposed approach on public road video data as well as in other applications and reveals that it compares favorably to the layer-wise relevance propagation approach, i.e. it obtains similar visualization results and achieves order of magnitude speed-ups.},
+   author = {Mariusz Bojarski and Anna Choromanska and Krzysztof Choromanski and Bernhard Firner and Larry J. Ackel and Urs Muller and Phil Yeres and Karol Zieba},
+   doi ={}, %doi = {10.1109/ICRA.2018.8461053},
+   issn = {10504729},
+   journal = {Proceedings - IEEE International Conference on Robotics and Automation},
+   title = {VisualBackProp: Efficient visualization of CNNs for autonomous driving},
+   year = {2018},
+}
+
+% Safe CPS from Unsafe Controllers
+@ARTICLE{Mehmood2021,
+       author = {{Mehmood}, Usama and {Bak}, Stanley and {Smolka}, Scott A. and {Stoller}, Scott D.},
+        title = "{Safe CPS from Unsafe Controllers}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Software Engineering, Electrical Engineering and Systems Science - Systems and Control},
+         year = 2021,
+        month = feb,
+          eid = {arXiv:2102.12981},
+        pages = {arXiv:2102.12981},
+archivePrefix = {arXiv},
+       eprint = {2102.12981},
+ primaryClass = {cs.SE},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2021arXiv210212981M},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{Koopman2017,
+   abstract = {Ensuring the safety of fully autonomous vehicles requires a multi-disciplinary approach across all the levels of functional hierarchy, from hardware fault tolerance, to resilient machine learning, to cooperating with humans driving conventional vehicles, to validating systems for operation in highly unstructured environments, to appropriate regulatory approaches. Significant open technical challenges include validating inductive learning in the face of novel environmental inputs and achieving the very high levels of dependability required for full-scale fleet deployment. However, the biggest challenge may be in creating an end-to-end design and deployment process that integrates the safety concerns of a myriad of technical specialties into a unified approach.},
+   author = {Philip Koopman and Michael Wagner},
+   doi ={}, %doi = {10.1109/MITS.2016.2583491},
+   issn = {19391390},
+   issue = {1},
+   journal = {IEEE Intelligent Transportation Systems Magazine},
+   title = {Autonomous Vehicle Safety: An Interdisciplinary Challenge},
+   volume = {9},
+   year = {2017},
+}
+
+@InProceedings{Majumdar2017,
+author="Majumdar, Anirudha
+and Pavone, Marco",
+editor="Amato, Nancy M.
+and Hager, Greg
+and Thomas, Shawna
+and Torres-Torriti, Miguel",
+title="How Should a Robot Assess Risk? Towards an Axiomatic Theory of Risk in Robotics",
+booktitle="Robotics Research",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="75--84",
+abstract="Endowing robots with the capability of assessing risk and making risk-aware decisions is widely considered a key step toward ensuring safety for robots operating under uncertainty. But, how should a robot quantify risk? A natural and common approach is to consider the framework whereby costs are assigned to stochastic outcomes--an assignment captured by a cost random variable. Quantifying risk then corresponds to evaluating a risk metric, i.e., a mapping from the cost random variable to a real number. Yet, the question of what constitutes a ``good'' risk metric has received little attention within the robotics community. The goal of this paper is to explore and partially address this question by advocating axioms that risk metrics in robotics applications should satisfy in order to be employed as rational assessments of risk. We provide instantiations of the class of risk metrics that satisfy these axioms (referred to as distortion risk metrics) and also discuss pitfalls of commonly used risk metrics in robotics that do not satisfy these axioms. Our hope is that the ideas presented here will lead to a foundational framework for quantifying risk (and hence safety) in robotics applications.",
+isbn="978-3-030-28619-4"
+}
+
+
+@ARTICLE{Rasouli2020,
+  author={A. {Rasouli} and J. K. {Tsotsos}},
+  journal={IEEE Transactions on Intelligent Transportation Systems}, 
+  title={Autonomous Vehicles That Interact With Pedestrians: A Survey of Theory and Practice}, 
+  year={2020},
+  volume={21},
+  number={3},
+  pages={900-918},
+  doi ={}, %doi={10.1109/TITS.2019.2901817}
+  }
+
+
