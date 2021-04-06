@@ -65,6 +65,7 @@
 
 
 
+
 %%
 %% The majority of ACM publications use numbered citations and
 %% references.  The command \citestyle{authoryear} switches to the
@@ -152,6 +153,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
+  \vspace{-6.5 mm}
   Recent advances in Artificial Intelligence research has led to the emergence of machine learning models deployed within safety critical systems, where they are often used for sensing, actuation, and control. Despite the prolific advances enabled by machine learning methods, such systems are notoriously difficult to assure. The challenge here is some models, such as neural networks, are "black box" in nature, making verification and validation difficult and sometimes infeasible. One approach to provide assurance of systems with unverified components is the simplex architecture, where an unverified component is wrapped with a safety controller and a switching logic designed to prevent dangerous behavior. In this manuscript, we evaluate such an architecture for the safety assurance of a one-tenth scale autonomous car through the use of a real-time reachability algorithm to (a) provide provable guarantees of safety and (b) detect potentially unsafe scenarios. We demonstrate the efficacy of the proposed runtime verification approach through experiments conducted both in simulation and on an embedded hardware platform. Furthermore, we present a characterization of the execution times on both platforms, validating the real-time aspects of our approach.
 \end{abstract}
 
@@ -202,7 +204,7 @@
 
 The vision of a "driverless" future has riveted many technology enthusiasts, researchers, and corporations for decades \cite{Badue2019}. The prevailing sensitivity is that there are relatively few technologies that hold as much promise as autonomous vehicles (AVs) in bringing about safe, accessible, and convenient transportation. Particulary, when the status-quo is considered, far too many individuals still lose their lives to traffic fatalities each year \cite{Rasouli2020}. As Koopman et al. write, "The question is not whether or not autonomous vehicles will be perfect. The question is when [will] we be able to deploy a fleet of fully autonomous driving systems that are actually safe enough to leave the human completely out of the driving loop" \cite{Koopman2017}. 
 
-The two fundamental challenges that are widely regarded as limiting the arrival and widespread adoption of AVs are safety and reliability \cite{Majumdar2017}. Reasoning about safety requires an understanding of the joint dynamics of computers, networks, and physical dynamics, in uncertain and variable environments \cite{Yurtsever2019}. Consequently, it is a notoriously difficult problem. Additionally, to handle the complexities of their environments, many AVs make use of \emph{Machine Learning} (ML) components to make sense of information observed from an ever-evolving configuration of on-board sensors \cite{Yurtsever2019}. Despite the impressive capabilities of these components, there are reservations about using them within safety-critical settings due to their largely opaque nature. This prevents meaningful statements about their behavior from being made. Utilizing a "black-box" model within a system that is safety-critical constitutes the highest form of technical debt \cite{Sculley2015} and, as a result, the last several years have witnessed a significant increase in the development of methods that seek to reason about the safety and robustness of machine learning methods \cite{xiang20118survey}.
+The two fundamental challenges that are widely regarded as limiting the arrival and widespread adoption of AVs are safety and reliability \cite{Majumdar2017}. Reasoning about safety requires an understanding of the joint dynamics of computers, networks, and physical dynamics, in uncertain and variable environments \cite{Yurtsever2019}. Consequently, it is a notoriously difficult problem. To handle the complexities of their environments, many AVs make use of \emph{Machine Learning} (ML) components to make sense of information observed from an ever-evolving configuration of on-board sensors \cite{Yurtsever2019}. Despite the impressive capabilities of these components, there are reservations about using them within safety-critical settings due to their largely opaque nature. This prevents meaningful statements about their behavior from being made. Utilizing a "black-box" model within a system that is safety-critical constitutes the highest form of technical debt \cite{Sculley2015} and, as a result, the last several years have witnessed a significant increase in the development of methods that seek to reason about the safety and robustness of machine learning methods \cite{xiang20118survey}.
 
 
 
@@ -214,9 +216,9 @@ The two fundamental challenges that are widely regarded as limiting the arrival 
 
 
 
-Unfortunately, while numerous works have been proposed in the past few years for the formal analysis of machine learning methods, the vast majority of these efforts have not been able to scale to the complexity found in real world applications where models, such as neural networks, may be characterized by millions or even billions of parameters \cite{BallesterGoogLeNet,SimonyanVeryDeep}. Thus, designing solutions that are both practical and rigorous is extremely challenging. One approach that has enabled the assurance of systems with unverified components is the \textit{simplex architecture}. In this framework, an unverified component is wrapped with a safety controller and switching logic designed to transfer control to the safety controller in certain situations \cite{Bak2014}. The key challenge in this regime is to design a switching logic that allows the dynamic capabilities of the unverified, complex controller to be exploited without compromising safety. In this manuscript, we extend a real-time reachability algorithm \cite{Bak2014,Johnson2016} to design a simplex architecture for a $1/10$ scale autonomous racing car called the F1/10 platform. %\diego{I see the point of this paragraph, but it could be confusing. Simplex is an architecture used to switch controllers, it is not a formal analysis of NNs. I will add maybe one more sentence clarifying that there are other ways of dealing with nn controllers such as simplex, or other runtime monitoring/assurance methods that reason about the system while operating, instead of reasoning about the controller at design/offline time. You mention that this work is runtime assurance in the next paragraph, but if I did not know what you are trying to do, I'd be confused}
+Unfortunately, while numerous works have been proposed in the past few years for the formal analysis of machine learning methods, the vast majority of these efforts have not been able to scale to the complexity found in real world applications where models, such as neural networks, may be characterized by millions or even billions of parameters \cite{SimonyanVeryDeep}. Thus, designing solutions that are both practical and rigorous is extremely challenging. One approach that has enabled the assurance of systems with unverified components is the \textit{simplex architecture}. In this framework, an unverified component is wrapped with a safety controller and switching logic designed to transfer control to the safety controller in certain situations \cite{Bak2014}. The key challenge in this regime is to design a switching logic that allows the dynamic capabilities of the unverified, complex controller to be exploited without compromising safety. In this manuscript, we extend a real-time reachability algorithm \cite{Bak2014,Johnson2016} to design a simplex architecture for a $1/10$ scale autonomous racing car called the F1/10 platform. %\diego{I see the point of this paragraph, but it could be confusing. Simplex is an architecture used to switch controllers, it is not a formal analysis of NNs. I will add maybe one more sentence clarifying that there are other ways of dealing with nn controllers such as simplex, or other runtime monitoring/assurance methods that reason about the system while operating, instead of reasoning about the controller at design/offline time. You mention that this work is runtime assurance in the next paragraph, but if I did not know what you are trying to do, I'd be confused}
 
-In order to put our work into context, this work falls within the \textit{run-time verification} or \textit{run-time assurance} realm. Our aim is to construct an architecture that allows us to ensure that an autonomous vehicle, controlled using machine learning strategies, never enters unsafe states as it navigates within an environment. Specifically, the set of control strategies presented herein were synthesized using reinforcement learning and imitation learning, which have generated a considerable amount of excitement in recent years \cite{bojarski2016end,lillicrap2015continuous}. The approach proposed herein abstracts away the need to analyze the underlying nature of the controller and instead observes the influence of control actions on the system behavior at runtime. %This makes it particularly applicable to machine learning systems. 
+In order to put our work into context, this work falls within the \textit{run-time verification} or \textit{run-time assurance} realm. Our aim is to construct an architecture that allows us to ensure that an autonomous vehicle, controlled using machine learning strategies, never enters unsafe states as it navigates an environment. Specifically, the set of control strategies presented herein were synthesized using reinforcement learning and imitation learning, which have generated a considerable amount of excitement in recent years \cite{bojarski2016end,lillicrap2015continuous}. The approach proposed herein abstracts away the need to analyze the underlying nature of the controller and instead observes the influence of control actions on the system behavior at runtime. %This makes it particularly applicable to machine learning systems. 
 %\todo{I can replace this figure of the F1Tenth with another one. This one has already been submitted to another conference.}
 %\begin{figure}%[htp!]
 %  \centering
@@ -231,12 +233,14 @@ To perform the verification, we first identify a dynamical model of the car and 
 In summary, the contributions of this manuscript are: \raggedbottom
 \begin{itemize}%
     \item We extend a previous simplex control architecture that makes use of a real-time reachability algorithm based on mixed face-lifting to an autonomous race car both in simulation and on an embedded platform.
+    \item We modify the real-time reachability algorithm presented in \cite{Bak2014} to handle static obstacles in a sound and real-time manner.
     \item We present a regime that abstracts away the need to analyze opaque machine learning models, and instead observes the influence of their decisions on the system during operation.
     %\item We train two learning-enabled, or "black-box", controllers.
     \item We demonstrate success using the simplex architecture to safely navigate through obstacles, with which the trained controllers have no prior experience.
     \item We evaluate the safety of machine learning components transferred to real-world hardware without additional training.
+    
 \end{itemize}%
-\vspace{-1.5mm}
+
 
 
 \section{Background: The Simplex Architecture and Real-Time Reachability}
@@ -248,38 +252,32 @@ One paradigm for dealing with untrustworthy components is the \emph{simplex arch
 
 Typically, in simplex architectures, the switching logic is primarily designed either from a control theoretic perspective through the solution of linear matrix inequalities (LMI) \cite{SetoCaseStudy2000}, or using a formal analysis hybrid-systems reachability technique \cite{Bak2009Simplex}. In this manuscript, our simplex design necessitates computing the set of reachable states online through the use of a real-time reachability algorithm for short time horizons.
 
+
 \subsection{Real-Time Reachability}
 
 Reachability algorithms have traditionally been executed offline and are typically computationally intensive endeavors \cite{Chen2013,AlthoffCORA2015,manzanas2019arch_ainncs}. However, in \cite{Bak2014,Johnson2016}, Bak et al., and Johnson et al. presented a reachability algorithm, based on the influential mixed face-lifting algorithm \cite{dang2000}, capable of running in real-time on embedded processors. The algorithm is implemented as a standalone C-package that does not rely on sophisticated (non-portable) libraries, recursion, or dynamic data structures and is amenable to the anytime computation model in the real-time scheduling literature \cite{Liu1991}. In this regime, each task produces a partial result that is improved upon as more computation time is added \cite{Johnson2016}. 
 
- 
+The controllers used in our experiments are designed to sample sensor data and compute control actions at fixed time intervals as typically done in the control community \cite{Dai2020}. During each control period, we take the corresponding control action and compute the reachable set of states into the future as defined by the current state and a specified finite-time horizon. An example of this computation is shown in Figure~\ref{fig:reachset}. We assume a fixed control action throughout the reachable set computation. Based on the obtained reachable set, we determine if the system will collide with objects in its environment and, if necessary, switch to a safety controller optimized for obstacle avoidance. If the system falls back to using a safety controller, we only allow a switch back to the complex controller if the complex controller has demonstrated safe behavior for a fixed number of control periods\footnote{In our experiments we allowed a switch back to the safety controller after 25 control periods. This corresponds to 1.25 seconds using a $20\ Hz$ control period.}. This prevents arbitrary switching and incorporates a sense of hysteresis into our control strategy. Additionally, by not switching back until consistently safe behavior has been demonstrated, we enforce a notion of dwell time, which reduces instabilities caused by switching too frequently. %Our approach has successfully been deployed to ensure safety both in simulation and on the F1/10 hardware platform.
+
+
 \begin{figure}[htpb]%[!htb]
   \centering
     % \hspace*{-8mm}  
-    \includegraphics[width=0.95\linewidth]{figures/viz_option_two.pdf}
-   \caption{Visualization of the set of reachable states using the current control action. For illustration purposes we only display a subset of the hyper-rectangles making up the reachable set. This example corresponds to a safe scenario, as there is no intersection with obstacles or the the racetrack walls. The orange squares represent the location of cones and their corresponding bounding box.}
+    \includegraphics[width=0.75\linewidth]{figures/viz_option_two.pdf}
+   \caption{Visualization of the set of reachable states using the current control action. For illustration purposes we display only a subset of the hyper-rectangles making up the reachable set. This example corresponds to a safe scenario, as there is no intersection with obstacles or the the racetrack walls. The orange squares represent the location of cones and their corresponding bounding box.}
   \label{fig:reachset}
 \end{figure}
-
-The controllers used in our experiments are designed to sample sensor data and compute control actions at fixed time intervals as typically done in the control community \cite{Dai2020}. During each control period, we take the corresponding control action and compute the reachable set of states into the future as defined by the current state and a specified finite-time horizon. An example of this computation is shown in Figure~\ref{fig:reachset}. We assume a fixed control action throughout the reachable set computation. Based on the obtained reachable set, we determine if the system will collide with objects in its environment and, if necessary, switch to a safety controller optimized for obstacle avoidance. If the system falls back to using a safety controller, we only allow a switch back to the complex controller if the complex controller has demonstrated safe behavior for a fixed number of control periods\footnote{In our experiments we allowed a switch back to the safety controller after 25 control periods. This corresponds to 1.25 seconds using a $20\ Hz$ control period.}. This prevents arbitrary switching and incorporates a sense of hysteresis into our control strategy. Additionally, by not switching back until consistently safe behavior has been demonstrated, we enforce a notion of dwell time, which reduces instabilities caused by switching too frequently. Our approach has successfully been deployed to ensure safety both in simulation and on the F1/10 hardware platform.
-
-
 
 
 
 \section{Experimental Overview}
 
-In order to build and assure the safety of our system at runtime, we perform the following steps. First, we construct a mathematical model of the F1/10 car's physical dynamics using system identification techniques. We then deploy one of our machine learning controllers into the control architecture. These controllers are: (1) Imitation Learning controllers trained to mimic driving behavior using data collected from a series of experimental runs of driving with a baseline controller and (2) Reinforcement Learning controllers, i.e. a control policy trained using an RL algorithm. The RLcs use lidar sensor information to determine the desired steering angle. At runtime, using the mathematical model that we obtained through system identification and our real-time reachability algorithm, we compute the reachable set of states from the current state and the control input given by our controller, for a specified reach time. During the construction of the reachable set, we perform safety checking in order to gauge whether the reachable set of states intersects with known obstacles or the walls defining the track environment. Lastly, based on the results of the safety checking, we design a simplex strategy to maintain safe operation of the F1/10 model. 
+To build and assure the safety of our system at runtime, we perform the following steps. First, we construct a mathematical model of the F1/10 car's physical dynamics using system identification techniques. We then deploy one of our machine learning (ML) controllers into the control architecture. These controllers are: (1) Imitation Learning controllers trained to mimic driving behavior using data collected from a series of experimental runs of driving with a baseline controller and (2) Reinforcement Learning controllers (RLc), i.e. a control policy trained using an RL algorithm. The controllers use sensor information to determine the desired steering angle for the vehicle. At runtime the mathematical model obtained through system identification is used within the reachability algorithm to reason about safety of the control actions selected by the ML controllers. The simplex architecture provides the framework for ensuring safe operation of the F1/10.
+
+
+%At runtime, using the mathematical model that we obtained through system identification and our real-time reachability algorithm, we compute the reachable set of states from the current state and the control input given by our controller, for a specified reach time. During the construction of the reachable set, we perform safety checking in order to gauge whether the reachable set of states intersects with known obstacles or the walls defining the track environment. Lastly, based on the results of the safety checking, we design a simplex strategy to maintain safe operation of the F1/10 model. 
 
 \subsection{The F1/10 Autonomous Platform}
-
-\begin{figure}[htbp]%
-  \centering
-    % \hspace*{-8mm}  
-    \includegraphics[width=0.85\linewidth]{figures/sys_id2_2.pdf}
-  \caption{Vehicle Position (map frame). Model validation for the F1/10 Hardware Model using data collected from a manual set of experimental runs. \emph{Init} corresponds to the starting position of the vehicle in the considered experiment.}
-  \label{fig:validation}
-\end{figure}%
 
 The F1/10 platform proposed by Matthew O'Kelly et al. in \cite{F1102019} was originally designed to emulate the hardware and software capabilities of full scale autonomous vehicles. The platform is equipped with a standard suite of sensors such as stereo cameras, LiDAR (light detection and ranging), and inertial measurement units (IMU). The platform uses an NVIDIA Jetson TX2 as its compute platform, and its software stack is built on the \emph{Robot Operating System} (ROS)\footnote{It is worth noting that ROS is not an operating system in the traditional sense but rather a meta-operating system that primarily provides the message passing interface for various components within robot software development \cite{Huang2014}.} \cite{ROS}. The result is a platform that allows researchers to conduct real-world experiments that investigate planning, networking, and intelligent control on a relatively low-cost, open-source test-bed \cite{F1102019}. Additionally, in order to promote rapid prototyping and consider research questions around closing the simulation to reality gap\cite{Muratore2019}, Varundev Suresh et al. designed a Gazebo-based simulation environment \cite{Gazebo} that includes a realistic model of the F1/10 platform and its sensor stack \cite{varundev_ros_19}. We utilize this simulation environment for a number of experiments and training our controllers.
 
@@ -287,6 +285,14 @@ The F1/10 platform proposed by Matthew O'Kelly et al. in \cite{F1102019} was ori
 
 \subsection{Vehicle Dynamics Model and System Identification}
 
+
+\begin{figure}[htbp]%
+  \centering
+    % \hspace*{-8mm}  
+    \includegraphics[width=0.70\linewidth]{figures/sys_id2_2.pdf}
+  \caption{Vehicle Position (map frame). Model validation for the F1/10 Hardware Model using data collected from a manual set of experimental runs. \emph{Init} corresponds to the starting position of the vehicle in the considered experiment.}
+  \label{fig:validation}
+\end{figure}%
 
 
 The physical dynamics of the F1/10 vehicle are modeled using a kinematic bicycle model \cite{Rajamani2012}, which is described by a set of four-dimensional nonlinear ordinary differential equations (ODEs). The kinematic bicycle model is characterized by relatively few parameters and tracks reasonably well at low speeds.\footnote{ The kinematic bicycle model typically tracks well under $5 m/s$ \cite{ivanov2020case}} The model has four states: Euclidean positions $x$ and $y$, linear velocity $v$, and heading $\theta$. The dynamics are given by the following ODEs: 
@@ -300,9 +306,17 @@ The physical dynamics of the F1/10 vehicle are modeled using a kinematic bicycle
 
 
 
+
 \noindent where $v$ is the car's linear velocity, $\theta$ is the car's orientation, $\beta$ is the car's slip angle, $x$ and $y$ are the car's position, $u$ is the throttle input, $\delta$ is the steering input, $c_a$ is an acceleration constant, $c_m$ is a motor constant, $c_h$ is a hysteresis constant, and $l_f$ and $l_r$ are the distances from the car's center of mass to the front and rear respectively \cite{ivanov2020case}. For simplicity, since the slip angle is fairly small at low speeds, we assume that $\beta = 0$.
 Using MATLAB's Grey-Box System Identification toolbox, we obtained the following parameters for the simulation model: $c_a = 1.9569$, $c_m = 0.0342$, $c_h = -37.1967$, $l_f =0.225$, $l_r = 0.225$. The model was validated using a series of experiments %\footnote{The code used for system identification and model validation can be found at: \url{https://github.com/pmusau17/Platooning-F1Tenth/tree/master/src/race/sys_id}}
-with an average \emph{Mean Squared Error} (MSE) of $0.003$. A sample experimental simulation is shown in \ref{fig:validation}. For the hardware platform, we obtained the following parameters: $c_a = 2.9820$, $c_m = 0.0037$, $c_h = -222.1874$, $l_f =0.225$, $l_r = 0.225$, with a validation MSE of $6.75 \times 10^{-4}$.
+with an average \emph{Mean Squared Error} (MSE) of $0.003$. A sample experimental simulation is shown in Figure~\ref{fig:validation}. For the hardware platform, we obtained the following parameters: $c_a = 2.9820$, $c_m = 0.0037$, $c_h = -222.1874$, $l_f =0.225$, $l_r = 0.225$, with a validation MSE of $6.75 \times 10^{-4}$.
+
+
+
+
+
+
+
 % \begin{figure}[htbp]%
 %   \centering
 %     % \hspace*{-8mm}  
@@ -326,7 +340,7 @@ One of the most common imitation learning methods is \textit{Behavior Cloning}, 
 %This paradigm was first introduced to train a multilayer perceptron tasked with enabling a modified van to navigate paths at speeds of up to 20 miles an hour \cite{pomerleau1989alvinn}. The work was later replicated with a convolutional neural network architecture in \cite{bojarski2016end} with great success. 
 In this work, we utilize behavior cloning to train two neural network controllers to produce steering angles from sensor inputs. The first controller is trained on camera-images and leverages an architecture used by Bojarski et al. to control a real-world autonomous vehicle \cite{bojarski2016end}. The second controller utilizes a much smaller neural network model and is trained on a discrete sampling of lidar distance measurements. This network allows for more fair comparisons to the reinforcement learning approaches. %\todo{Our hypothesis is that controllers trained on images will experience greater challenges in zero-shot policy transfer? Maybe not a hypothesis but it would be an interesting result from our analysis}
 
-\subsubsection{Vision-Based Navigation (VBN?)}
+\subsubsection{Vision-Based Navigation (VBN)}
 %\diego{Isn't the lidar behavior cloning and E2E controller too? End to end means that the output of the controller is solely based on the inputs from the sensors/environments, right?. I would change the name of this subsection. And I guess RL (in this sense) it is also E2E.}
 %Vision-based perception systems for autonomous driving can be broadly classified into two categories: mediated-perception approaches and end-to-end, or behavioral-reflex, approaches \cite{DeepDrive2015}. Mediated perception approaches involve multiple sub-components for recognizing objects relevant to the driving task, that are then combined into a world representation utilized by a decision manager to issue control actions. In contrast, end-to-end approaches compute a direct mapping from images to control actions \cite{DeepDrive2015}. While end-to-end approaches have proven to be an elegant and effective reduction of a complex system, they are "black box" in nature which makes them difficult to debug. Within the context of this manuscript, we opted to use end-to-end approaches because of their straightforward incorporation within the simplex architecture, and they allow us to evaluate our safety regime more plainly.
 
@@ -353,7 +367,7 @@ The data we used to train DAVE-2 was collected from set of simulation experiment
 %   \label{fig:racetrack}
 % \end{figure}
 
-\subsubsection{Lidar Behavior Cloning (LBC?)}
+\subsubsection{Lidar Behavior Cloning (LBC)}
 \label{sec:lidar cloning}
 The second network considered for behavior cloning was a standard multi-layer perceptron network that consisted of an input layer, 2 fully connected hidden layers of 64 nodes with ReLU activation functions, and a fully connected output layer with a $\tanh$ activation function. The input layer accepts nine range values collected from the LiDAR at $-90^{\circ}$, $-60^{\circ}$, $-45^{\circ}$, $-30^{\circ}$, $0^{\circ}$, $30^{\circ}$, $45^{\circ}$, $60^{\circ}$, and $90^{\circ}$ from forward. The range values are clipped between $[0m, 10m]$. The data used to train this controller was collected in the same fashion as the end-to-end regime. 
 
@@ -392,9 +406,9 @@ using the architecture described in Section~\ref{sec:lidar cloning}. During the 
 
 \subsubsection{Augmented Random Search} 
 (ARS) was first proposed in 2018 as a random search method for training static, linear policies for continuous control problems \cite{mania2018simple}. Their simple method was able to match state-of-the-art sample efficiency on the benchmark MuJoCo locomotion tasks\footnote{These benchmark tasks are described in more detail at \url{https://gym.openai.com/envs/\#mujoco}}, demonstrating that deep neural networks might not be necessary for some complex control tasks. We chose to highlight this RL algorithm because %in comparison to algorithms such as Proximal Policy Optimization (PPO) \cite{schulman2017proximal} or Soft Actor-Critic (SAC) \cite{haarnoja2018soft}, ARS can achieve optimal results with simpler reward functions. Successfully training a PPO or SAC agent often requires considerable reward shaping or the use of a gate-based reward that is more difficult to construct within the simulation environment.
-it allowed us to experiment with a different control architecture. Both LBC and SAC are the same NN architecture differentiated by how the networks are trained. In contrast, ARS focuses on the use of a linear policy, i.e. a weight matrix. Instead of passing the input through multiple layers with non-linear activation functions as is done in the NN controllers, the input is multiplied by a single weight matrix to generate the control output. Thus, the control output can be calculated much more quickly than with a NN, so we can run the controller at faster rates. This allows us to push the bounds of our reachability stuff. \nate{<-- I wrote this explanation, but idk if it's a good one.}
+it allowed us to experiment with a different control architecture. Both LBC and SAC are the same NN architecture differentiated by how the networks are trained. In contrast, ARS focuses on the use of a linear policy, i.e. a weight matrix. Instead of passing the input through multiple layers with non-linear activation functions as is done in the NN controllers, the input is multiplied by a single weight matrix to generate the control output. %Thus, the control output can be calculated much more quickly than with a NN, so we can run the controller at faster rates. This allows us to push the bounds of our reachability stuff. \nate{<-- I wrote this explanation, but idk if it's a good one.}
 
-Similar to the SAC architecture, the output control signal of the ARS policy, $\delta = \pi(s)$, is the desired steering angle clipped between $\pm34^{\circ}$. However, the input, $s$, consists of $271$ lidar range values, clipped between $[0m, 10m]$, collected from between $\pm90^{\circ}$ from forward. During the training process, we halted training to evaluate the agent's performance after every batch of rollouts. The performance is then measured by how many laps the agent can complete within 50 seconds. The evaluation is repeated 5 times and training stops when the agent is able to complete at least 2 laps 5 times in a row. Once the agent is able to complete at least 2 laps 5 times, the training process is halted and control policy is saved for our experiments. We changed the cutoff requirements for this agent because when we trained the agent with the same requirements as the SAC agent, the ARS agent met the requirement very quickly, but the resulting policy was very inefficient. \nate{Do we want to retrain the SAC agent to have the same cutoff as ARS? or is this ok?}
+Similar to the SAC architecture, the output control signal of the ARS policy, $\delta = \pi(s)$, is the desired steering angle clipped between $\pm34^{\circ}$. However, the input, $s$, consists of $271$ lidar range values, clipped between $[0m, 10m]$, collected from between $\pm90^{\circ}$ from forward. During the training process, we halted training to evaluate the agent's performance after every batch of rollouts. The performance is then measured by how many laps the agent can complete within 50 seconds. The evaluation is repeated 5 times and training stops when the agent is able to complete at least 2 laps 5 times in a row. Once the agent is able to complete at least 2 laps 5 times, the training process is halted and control policy is saved for our experiments. We changed the cutoff requirements for this agent because when we trained the agent with the same requirements as the SAC agent, the ARS agent met the requirement very quickly, but the resulting policy was very inefficient. %\nate{Do we want to retrain the SAC agent to have the same cutoff as ARS? or is this ok?}
 
 
 
@@ -409,8 +423,8 @@ Before outlining the algorithm, let us define two key terms relevant to our appr
 \begin{definition}%
 (RUNTIME). The runtime, $T_{runtime}$, is the duration of (wall) time the algorithm is allowed to run.
 \end{definition}% \smallskip
-
-With that, the real-time reachability algorithm works as follows. Using the dynamics model obtained for the F1/10, the crux of the real-time reachability algorithm is computing the set of reachable states from the current time $t$ up until $(t+T_{reach})$, where $T_{reach}$ represents the reachability horizon. The algorithm utilized within this work is based on mixed face-lifting, which is part of a class of methods that deal with \textit{flow-pipe construction} or \textit{reachtube computation} \cite{Johnson2016}. This is done using snapshots of the set of reachable states that are enumerated at successive points in time. To formalise this concept, we define the reachable set below.
+%With that, the real-time reachability algorithm works as follows.
+ Using the dynamics model obtained for the F1/10, the crux of the real-time reachability algorithm is computing the set of reachable states from the current time $t$ up until $(t+T_{reach})$. The algorithm utilized within this work is based on mixed face-lifting, which is part of a class of methods that deal with \textit{flow-pipe construction} or \textit{reachtube computation} \cite{Johnson2016}. This is done using snapshots of the set of reachable states that are enumerated at successive points in time. To formalise this concept, we define the reachable set below.
 \smallskip
 \begin{definition}%
 (REACHABLE SET). Given a system with state vector $\textbf{x}(t) \in \mathbb{R}^n$, input vector $\textbf{u}(t) \in \mathbb{R}^m$, and dynamics $\dot{\textbf{x}}(t)=f(\textbf{x}(t),\textbf{u}(t))$, where $t$ is time, and the initial states $\textbf{x}_0 = \textbf{x}(0)$ and inputs $\textbf{u}_0 = \textbf{u}(0)$ are bounded by sets, $\textbf{x}_0 \in \chi_0$, $\textbf{u}_0 \in \mathnormal{U}$. The reachable set of the system for a time interval $ t \in [0,T_{reach}]$ is:%
@@ -425,14 +439,14 @@ With that, the real-time reachability algorithm works as follows. Using the dyna
 
 \begin{figure*}[htbp]%[tb]
   \centering
-  \includegraphics[width=\linewidth]{figures/refinement_cropped.pdf}
-  \caption{The real-time reachability algorithm always returns an over-approximation of the reachable set of states. The over-approximation error decreases with successive iterations, provided that there is enough runtime for re-computations. The above images demonstrate this aspect by simulating a left hand turn control action for a reachtime of two seconds. The green boxes represent the set of reachable states, the red rectangle represents the interval hull of the reachable states, and the purple points are points obtained from a simulation of the vehicles physical dynamics.}
+  \includegraphics[width=0.90\linewidth]{figures/refinement_cropped.pdf}
+  \caption{The real-time reachability algorithm always returns an over-approximation of the reachable set of states. The over-approximation error decreases with successive iterations, provided that there is enough runtime for re-computations. The above images demonstrate this aspect by simulating a left hand turn control action for a reachtime of two seconds. The green boxes represent the set of reachable states, the red rectangle represents the interval hull of the reachable states, and the purple points are points obtained from a simulation of the vehicles dynamics.}
   \label{fig:reach_refine}
 \end{figure*}%
 In general for nonlinear systems, it is not possible to obtain the exact set of reachable states $\mathnormal{R}_{[0,T_{reach}]}$, so we customarily compute a sound over-approximation such that the actual system behavior is contained within the over-approximation \cite{AlthoffNonlinear,Lin2020,Asarin2003}. The algorithm utilized in this work utilizes $n$-dimensional hyper-rectangles ("boxes") as the set representation to generate reachtubes \cite{Johnson2016}. Over long reachtimes, the over-approximation error resulting from the use of this representation can be problematic. However, for short reach-times it is ideal in terms of its simplicity and speed \cite{Bak2014}. 
 %\diego{There is a paper that formally reasons that computing the exact reachable set of nonlinear systems (bycicle model) is NP-hard... I could try to find it if we want to cite it, although not sure how important it is for the runtime verification since even if it was possible, it would be too computationally expensive to use it in this regime},
 
-The over-approximation error and the number of steps used in generating the reachable set can be controlled by a reachtime step size $h$. This parameter defines the level of discretization  of the time interval $[0,T_{reach}]$ and can be used to tune the runtime time of the reachability computation. Bak et al. leverage the step size to make the reachability algorithm amenable to the anytime computation model in the real-time scheduling literature \cite{Liu1991}. Thus, given a fixed runtime, $T_{runtime}$, we compute the reachable set $\mathnormal{R}_{[0,T_{reach}]}$, and if there is remaining runtime, we restart the reachability computation with a smaller step size. In both this work and \cite{Bak2014}, the step-size is halved in each successive iteration. This allows for progressively more accurate answers in each iteration. The relationship between the over-approximation error and the step size can be seen in Figure \ref{fig:reach_refine}. We refer readers to the following papers for an in depth treatment of these procedures \cite{dang2000,Bak2014,Johnson2016}.
+The over-approximation error and the number of steps used in generating the reachable set can be controlled by a reachtime step size $h$. This parameter defines the level of discretization  of the time interval $[0,T_{reach}]$ and can be used to tune the runtime time of the reachability computation. Bak et al. leverage the step size to make the reachability algorithm amenable to the anytime computation model in the real-time scheduling literature \cite{Liu1991}. Thus, given a fixed runtime, $T_{runtime}$, we compute the reachable set $\mathnormal{R}_{[0,T_{reach}]}$, and if there is remaining runtime, we restart the reachability computation with a smaller step size. In both this work and \cite{Bak2014}, the step-size is halved in each successive iteration, leading to more accurate determinations of the reachable set. The relationship between the over-approximation error and the step size can be seen in Figure \ref{fig:reach_refine}. We refer readers to the following papers for an in depth treatment of these procedures \cite{dang2000,Bak2014,Johnson2016}.
 
 
 
@@ -444,7 +458,18 @@ The over-approximation error and the number of steps used in generating the reac
 
  %A high level overview is presented in Algorithm~\ref{alg:algo_rtreach}, and we refer readers to the following papers for an in depth treatment of these procedures \cite{}. 
 
-\begin{algorithm}[]%
+
+\section{SAFETY CHECKING}
+
+We define the notion of safety considered in this work below. \smallskip
+%work consists of checking for intersections between the set of unsafe states and $\mathnormal{R}_{[0,T_{reach}]}$. We define
+\begin{definition}%
+(SAFETY). Let $\Lambda$ represent the set of unsafe states. A system is considered safe over the finite time horizon, $T_{reach}$, if  $\mathnormal{R}_{[0,T_{reach}]} \  \cap \ \Lambda \ = \ \emptyset$. Here, $\Lambda$, consists of all static obstacles within the environment and the boundaries of the racetrack.
+\end{definition}%\smallskip
+
+
+
+\begin{algorithm}[htbp]%
 \DontPrintSemicolon 
 INITIALIZE{
 \\
@@ -478,66 +503,28 @@ $T_{remaining} = T_{runtime}$\;
 \label{alg:algo_rtreach}
 \end{algorithm}%
 
-\section{SAFETY CHECKING}
-
-The safety verification problem for our system consists of checking for intersections between the set of unsafe states and $\mathnormal{R}_{[0,T_{reach}]}$. Let $\Lambda$ represent the set of unsafe states.\smallskip
-
-\begin{definition}%
-(SAFETY). A system is considered safe over the finite time horizon, $T_{reach}$, if  $\mathnormal{R}_{[0,T_{reach}]} \  \cap \ \Lambda \ = \ \emptyset$. Here, $\Lambda$, consists of all static obstacles within the environment and the boundaries of the racetrack.
-\end{definition}%\smallskip
+Each obstacle within the environment is described by a bounding-box, and the racetrack boundaries are characterized by a list of finely separated points. These representations are then converted into their hyper-rectangle formulations that make up $\Lambda$. Figure~\ref{fig:reachset} provides a visualization of the obstacles and Figure \ref{fig:lab_setup} displays our discretization of the racetrack boundaries. If there are no intersections between $\mathnormal{R}_{[0,T_{reach}]}$ and $\Lambda$ then we conclude that the system is safe. However, since our approach computes an  over-approximation of $\mathnormal{R}_{[0,T_{reach}]}$, it may lead to false positives. This occurs when the error in the over-approximation results in intersections with the set of unsafe states, but these intersections would not occur with the exact reachable set. By refining $\mathnormal{R}_{[0,T_{reach}]}$ in successive iterations, our regime seeks to mitigate the occurrence of false positives.  
 
 
-Each obstacle within the environment is described by a corresponding bounding-box, and the racetrack boundaries are characterized by a list of finely separated points. These representations are then converted into their hyper-rectangle formulations defining the set  $\Lambda$. Figure~\ref{fig:reachset} provides a visualization of the obstacles and Figure \ref{fig:lab_setup} displays our discretization of the racetrack boundaries. If there are no intersections between $\mathnormal{R}_{[0,T_{reach}]}$ and $\Lambda$  then we conclude that the system is safe over the finite time horizon. However, since our approach computes a sound over-approximation of $\mathnormal{R}_{[0,T_{reach}]}$, it may lead to false positives. This occurs when the error in the over-approximation results in intersections with the set of unsafe states but these intersections would not occur with the exact reachable set. By refining $\mathnormal{R}_{[0,T_{reach}]}$ in successive iterations, our regime seeks to mitigate the occurrence of false positives.  
+There were two chief considerations in the anytime implementation of the safety checking procedure and these constitute the novel aspects of our algorithm. The first was with respect to the overall soundness of our approach and the second was related to the real-time nature of our scheme. For the results of the verification to be sound, the safety checking process must be carried out in its entirety before a safety result is issued. At the same time, we need to ensure that fulfilling this requirement does not result in missing timing deadlines. To satisfy both requirements we modify the algorithm presented in \cite{Bak2014} to include an estimate of how long an additional iteration of the reachability and safety checking process would take. This is based on observing how long the current iteration takes, and reasoning about the number of hyper-rectangles that would be involved in the next iteration. If the remaining runtime is less than our estimate then we terminate the computation and use the current safety result. We formalize this process below.
 
-
-There were two chief considerations in the safety checking procedure. The first was with respect to the overall soundness of our approach and the second was related to the real-time nature of our scheme. For the results of the verification to be sound, the safety checking process must be carried out in its entirety before a safety result is issued.  At the same time, we need to ensure that fulfilling this requirement does not result in missing timing deadlines. Thus to satisfy both requirements an estimate of how long an additional iteration of the safety checking process and reachtube generation would take. This was based on how long the current iteration took, and reasoning about the number of hyper-rectangles that would be involved in the subsequent iteration. If the remaining runtime was less than our derived estimate then we terminated the reachability and safety checking process. We formalize this process below.
-
-Let $k$ denote the number of hyper-rectangles, used to represent the reachable set. We can characterize $k$ by the following equation: $k = T_{reach} / h$. Since in each successive iteration we decrease the step size by half, the number of hyper-rectangles that make up $\mathnormal{R}_{[0,T_{reach}]}$ doubles. Thus the complexity of our algorithm is $O(2^k)$.\footnote{This analysis neglects consideration of the obstacles and the points used to represent the racetrack boundaries. Since these do not change between iterations, reasoning about only the hyper-rectangles is sufficient.} Therefore, we can estimate that a subsequent iteration of our algorithm will take twice as long as the current one and bloat this estimate to be conservative. Finally, rather than computing $\mathnormal{R}_{[0,T_{reach}]}$, and then checking whether or not the system has entered an unsafe scenario, the reachability algorithm we utilize does the checking during the computation with the intermediate hyper-rectangles. This prevents us from needing to dynamically store the reachable set and allows us to restart the computation sooner in an unsafe state is detected. A high level overview is presented in Algorithm~\ref{alg:algo_rtreach}. The implementation details can be found in the code supporting this paper.\footnote{All the code will be provided upon the completion of the double-blind review process} %If an unsafe state is encountered, then the computation can recommence and determine whether or not the unsafe declaration is overly conservative.
-
-
-
-%\diego{How are these boundaries represented? Are they exact / over-approximation representations?}
-%Given a set of $N$ dynamic obstacles, and a set $O$ of static obstacles within the environment, let $\mathnormal{R_i}_{[0,T_{reach}]}$ denote the reachable set of the $i$-\textit{th} dynamic obstacle. The set of unsafe states $\Lambda$ is:
-%\begin{equation*}
-%    \Lambda \ = \ O \ \cup \ \bigcup\limits_{i=1}^{N} \ \mathnormal{R_i}_{[0,T_{reach}]}.
-%\end{equation*}
-%\end{definition}\smallskip
-
-
-
-
-%\subsection{Dynamic Obstacle Model}
-
-%The obstacle tracking problem is a well studied and challenging topic within the autonomous vehicle, computer vision, and robotics literature \cite{YilmazObjectTracking}. Typically some assumptions are required in order to constrain the tracking problem to best suit the context of the application. In our framework we assume that the obstacles are described by a two dimensional kinematic model and a corresponding bounding box. The equations describing the ODE are given as follows: 
-%
-%\begin{align*}%
-%    \Dot{x} & = v_x,\\%
-%    \Dot{y} & = v_y,%
-%\end{align*}%
-%
-%\noindent where $v_x$ and $v_y$ are the velocities in the x and y direction respectively. Additionally, we make the assumption that we have access to the position and velocity of the other race participants. The use of a multi-object tracking approach is left for future work.
+Let $k$ denote the number of hyper-rectangles, used in representing the reachable set. $k$ is characterized by the following equation: $k = T_{reach} / h$.\footnote{We begin the flow-pipe construction with an initial time step of $h = T_{reach}/10$.} Since in each successive iteration we decrease the step size by half, the number of hyper-rectangles that make up $\mathnormal{R}_{[0,T_{reach}]}$ doubles. Thus the complexity of the safety checking process is $O(2^k)$.\footnote{This analysis neglects consideration of the obstacles and the points used to represent the racetrack boundaries. Since these do not change between iterations, reasoning only about the hyper-rectangles is sufficient.} Therefore, we can estimate that a subsequent iteration of the algorithm will take twice as long as the current one and bloat this estimate to be conservative. To ensure that our estimates are accurate, in our implementation, rather than deriving $\mathnormal{R}_{[0,T_{reach}]}$, and then checking whether or not the system has entered an unsafe scenario, the safety checking is done during the computation with intermediate hyper-rectangles as outlined in \cite{Bak2014}. This prevents us from needing to dynamically store the reachable set and allows us to restart the computation sooner if an unsafe state is detected. A high-level overview is presented in Algorithm~\ref{alg:algo_rtreach}. The implementation details can be found in the code supporting this paper.\footnote{All the code will be provided upon the completion of the double-blind review process.} 
 
 \section{ROS Simplex Architecture}
 
-
-
 \label{section:simplex}
-The simplex architecture for the F1/10 is designed using ROS \cite{ROS}, and an overview of this design is shown in Figure~\ref{fig:simplex_arch}. There are two considerations that play a major role in design of the simplex architecture. The first consideration is the finite time horizon, $T_{reach}$, over which we are reasoning about safety. The second consideration is the amount of time, $T_{runtime}$, allocated for the computation of the reachsets. In our experiments we utilized a reach time of 1.0 $s$. This was determined by empirical determinations of how long it took the F1/10 to come to a stop at speeds less than $1.5 m/s.$\footnote{The selection of velocities below 1.5 $ms$ was due to the size of our physical track that was ~13.08 meters in length. Races held by the F1/10 community are around typically 30-50 meters in length with large distances between the track walls.} The runtime allocated for the reachability algorithm was set at 25 $ms$ so as to ensure execution within a 20 $Hz$ control period.  
+The simplex architecture for the F1/10 is designed using ROS \cite{ROS}, and an overview of this design is shown in Figure~\ref{fig:simplex_arch}. 
 
+There are two considerations that play a major role in design of the simplex architecture. The first consideration is the finite time horizon, $T_{reach}$, over which we are reasoning about safety. The second consideration is the amount of time, $T_{runtime}$, allocated for the computation of the reachsets. In our experiments we utilized a reach time of 1.0 $s$. This was determined by empirical determinations of how long it took the F1/10 to come to a stop at speeds less than $1.5 m/s.$\footnote{The selection of velocities below 1.5 $ms$ was due to the size of our physical track that was ~13.08 meters in length. Races held by the F1/10 community are around typically 30-50 meters in length with large distances between the track walls.} The runtime allocated for the reachability algorithm was set at 25 $ms$ so as to ensure execution within a 20 $Hz$ control period.\footnote{The limiting factors are the Camera messages that are published at $20 \ Hz$.}  
 
-
-
-
-
-
-Within this architecture, the primary sensors we rely on are a LiDAR and Stereo Labs' Zed Depth Camera. The messages from the LiDAR are published at $40 \ Hz$, and the Camera messages are published at $20 \ Hz$. Additionally, we rely on odometry information, published at $40 \ Hz$, in order to accurately ascertain the state of the F1/10 vehicle. In our design, we decouple the control of the car's steering and throttle control. The steering control, $\delta$, is governed by the machine learning controller, and the throttle control is designed to maintain a constant speed, $u$, when the learning-based controller is in use. 
+Within this architecture, the primary sensors we rely on are a LiDAR and Stereo Labs' Zed Depth Camera. The messages from the LiDAR are published at $40 \ Hz$, and the Camera messages are published at $20 \ Hz$. Additionally, we rely on odometry information, published at $40 \ Hz$, in order to ascertain the state of the F1/10 vehicle. In our design, we decouple the control of the car's steering and throttle control. The steering control, $\delta$, is governed by the machine learning controller, and the throttle control is designed to maintain a constant speed, $u$, when the learning-based controller is in use. 
 
 %The publishing rate of the decision manager within the simplex architecture is limited by the on-board camera, which captures images at 20 frames-per-second (FPS)\footnote{On the hardware platform, the camera can capture images as fast as 100 FPS. However, to keep the experiments consistent we limited the FPS to 20 FPS.}. Thus, as mentioned previously, we limited $T_{runtime}$, to $25 ms$ which corresponds to half the length of a control period. This was chosen based on empirical observations of the average execution time of the reachability algorithm, as well as a desire to ensure that the other parts of the decision logic could be successfully processed within a single control loop.
 
 \begin{figure}[htbp]%
   \centering
-  \includegraphics[width=0.7\linewidth]{figures/simplex_real.pdf}
-  \caption{Overview of the Simplex architecture deployed on the F1/10 System as described in Section \ref{section:simplex}. The switching logic consists of monitoring the intersection between the F1/10 reachable set and the positions of static obstacles within the environment.}
+  \includegraphics[width=0.8\linewidth]{figures/simplex_real.pdf}
+  \caption{Overview of the Simplex architecture deployed on the F1/10 System as described in Section \ref{section:simplex}. The switching logic consists of monitoring the intersection between the F1/10 reachable set and the positions of static obstacles within the environment.\todo{Nate is redoing this with new parts}}
   \label{fig:simplex_arch}
 \end{figure}%
 
@@ -558,70 +545,126 @@ In the traditional simplex architecture, for the system to be verified as correc
 
 % machine with We utilized two different laptop configurations to evaluate the simulation experiments. The first machine was a Dell Precision 7520 with 32GB RAM, an eight-core Intel Core i7-6820HQ CPU $@ 2.70\textrm{GHz}$ processor, and an Nvidia Quadro M2200 4GB graphics card. The second machine was 
 
-Having described the details of our reachability algorithm, controller development, and the simplex architecture construction, we now present the results of our empirical evaluations both in simulation and on the hardware platform. We ran our experiments on platforms running Linux (Ubuntu 16.04 LTS). The simulation experiments were conducted on a Dell XPS-15 (9570) with 32GB RAM, a six-core Intel Core i7-8750 $@ 4.1\textrm{GHz}$ processor, and an Nvidia GeForce GTX 1050Ti 4GB graphics card. The motivation for conducting simulation experiments stemmed from a desire to ensure fair comparisons over a large number of experiments, and to promote reproducibility for those without hardware access.\footnote{We plan on participating in the artifact evaluation by submitting the source code and experiments that enabled this work.} The hardware experiments were done on an Nvidia Jetson-TX2 with a Dual-core Nvidia Denver 64-bit CPU (ARM), a quad-core ARM A57 Complex, and an NVIDIA Pascal Architecture GPU with 256 CUDA cores. The latter configuration validates our claims that our safety architecture admits minimal resource requirements. 
+Having described the details of our reachability algorithm, controller construction, and the simplex architecture construction, we now present the results of our empirical evaluations both in simulation and on the hardware platform. We ran our experiments on platforms running Linux (Ubuntu 16.04 LTS). The simulation experiments were conducted on a Dell XPS-15 (9570) with 32GB RAM, a six-core Intel Core i7-8750 $@ 4.1\textrm{GHz}$ processor, and an Nvidia GeForce GTX 1050Ti 4GB graphics card. The motivation for conducting simulation experiments stemmed from a desire to ensure fair comparisons over a large number of experiments, and to promote reproducibility for those without hardware access.\footnote{All the code will be provided upon the completion of the double-blind review process.} The hardware experiments were done on an Nvidia Jetson-TX2 with a Dual-core Nvidia Denver 64-bit CPU (ARM), a quad-core ARM A57 Complex, and an NVIDIA Pascal Architecture GPU with 256 CUDA cores. The latter configuration validates our claims that our safety architecture admits minimal resource requirements. 
 
 
-Our evaluation included a sizeable diversity of experiments with respect to the speed set-point utilized by the machine learning controller, $u$, the wall-time utilized by the real-time reachability algorithm, $T_{runtime}$, the presence and configuration of obstacles, and an examination of how each controller performed when transferred to the real-world hardware platform with no additional training. This allowed for an enlightening analysis on the various trade-offs that exist within our safety architecture. For context, the speed and wall-time analysis was evaluated on 48 different combinations of 30 experimental executions. %Due to space limits, we present a summary of those experiments and have included the remaining experiments in Appendix~\ref{app:experiments}. 
-In the tables that follow, ML refers to the machine learning controller, SC refers to the safe controller, and std refers to standard deviation. %The simulation results were conducted on the Dell Precision 7520.
+The evaluation included a sizeable diversity of experiments with respect to the speed set-point utilized by the machine learning controller, $u$, the wall-time utilized by the real-time reachability algorithm, $T_{runtime}$, the presence and configuration of obstacles, and an examination of how each controller performed in each context. This allowed for an enlightening analysis on the various trade-offs that exist within our safety architecture. For context, the speed and wall-time analysis was evaluated on 48 different combinations of 30 experimental executions. %Due to space limits, we present a summary of those experiments and have included the remaining experiments in Appendix~\ref{app:experiments}. 
+In the tables that follow, ML refers to the machine learning controller, and SC refers to the safe controller. %The simulation results were conducted on the Dell Precision 7520.
 
 \subsection{Simulation}
-In the considered simulation scenarios, the F1/10 vehicle is tasked with navigating a racetrack environment that has a number of cones\footnote{For the benchmark experiments, we used six cones.} placed at random locations before the start of the experiment. The locations of the cones are known \emph{a priori}, and Figure~\ref{fig:reachset} provides a snapshot of this setup. Utilizing the control architecture discussed in Section \ref{section:simplex}, we ran 1080 simulation episodes with a timeout of 60 seconds each. That is roughly enough time to complete 2 laps at a speed of 1 $m/s$. %Of these simulations, 400 were done with the reinforcement learning controller, and the other 400 were done using the end-to-end controller. 
+In the considered simulation scenarios, the F1/10 vehicle is tasked with navigating a racetrack environment that has a number of cones\footnote{For the benchmark experiments, we used six cones.} placed at random locations before the start of the experiment. The locations of the cones are known \emph{a priori}, and Figure~\ref{fig:reachset} provides a snapshot of this setup. Utilizing the control architecture discussed in Section \ref{section:simplex}, we ran 1440 simulation episodes with a timeout of 60 seconds each. That is roughly enough time to complete 2 laps at a speed of 1 $m/s$. %Of these simulations, 400 were done with the reinforcement learning controller, and the other 400 were done using the end-to-end controller. 
 
 
-For benchmarking purposes, we recorded the mean execution-times (Mean ET)\footnote{The mean execution time was calculated using a cumulative moving average \cite{Jin2019}.} of our real-time reachability algorithm, as well as the average number of iterations utilized in constructing the reachable set (Mean Iters). While typically a discussion of upper bounds on execution times involves a discussion of the \emph{Worst-Case Execution Time} (WCET), we instead report the Mean ET. In general, the WCET is unknown or difficult to derive without the use of static analysis proofs \cite{Reinhard2008}. Since our safety regime relies on ROS, which is highly dynamic and distributed, it is prohibitively difficult to perform an exhaustive exploration of the space of all execution times, and thus derive the WCET.  However, we provide a rough proxy of the WCET by reporting the \emph{Maximal Observed Execution Times} (MOET) \nate{<--- should this value just be the maximum observed across all experiments instead of the mean and std?}  \cite{Reinhard2008} in Table~\ref{tab:additional}. %Lastly, we analyzed what percentage of the time the safety-controller was used during the experiments%\footnote{The benchmarking experiments and accompanying code can be found at:\url{https://github.com/pmusau17/rtreach_f1tenth/tree/master/ros_src/rtreach/benchmarking}}
+For benchmarking purposes, we recorded the mean execution-times (Mean ET)\footnote{The mean execution time was calculated using a cumulative moving average \cite{Jin2019}.} of our real-time reachability algorithm, as well as the average number of iterations utilized in constructing the reachable set (Mean Iters). While typically a discussion of upper bounds on execution times involves a discussion of the \emph{Worst-Case Execution Time} (WCET), we instead report the Mean ET. In general, the WCET is unknown or difficult to derive without the use of static analysis proofs \cite{Reinhard2008}. Since our safety regime relies on ROS, which is highly dynamic and distributed, it is prohibitively difficult to perform an exhaustive exploration of the space of all execution times, and thus derive the WCET.  However, we provide a rough proxy of the WCET by reporting the \emph{Maximal Observed Execution Times} (MOET)  \cite{Reinhard2008} in Table~\ref{tab:additional}. %Lastly, we analyzed what percentage of the time the safety-controller was used during the experiments%\footnote{The benchmarking experiments and accompanying code can be found at:\url{https://github.com/pmusau17/rtreach_f1tenth/tree/master/ros_src/rtreach/benchmarking}}
 %\hspace{0.05em} in order to gauge how conservative our approach was.
-A summary of the simulation experiments is presented in Tables~\ref{tab:simulation} and \ref{tab:simulation_conservative}.
+A summary of the simulation experiments is presented in Tables~\ref{tab:additional} and \ref{tab:simulation_conservative}.
 
 
 
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.3}
+\caption{Analysis of Wall-Time and Speed Variation (Without Obstacles):  Simulation Platform}
+\centering
+\resizebox{0.8\linewidth}{!}{
+\begin{tabular}{ccccccc}% cccc}
+    Ml Conroller & $u$ (m/s) & $T_{runtime}$ & MOET (ms) & Mean ET (ms) & Mean Iters & ML Usage (\%) \\
+    \hline
+
+VBN & 0.5 & 10 &   8.50 $\pm$  0.28 &    6.54 $\pm$  0.18 &           3.98 $\pm$  0.01 &    94.03 $\pm$   1.62 \\
+    &     & 25 &  27.17 $\pm$  0.79 &   14.44 $\pm$  0.70 &           5.10 $\pm$  0.08 &    94.38 $\pm$   0.37 \\
+    & 1.0 & 10 &   8.72 $\pm$  0.38 &    6.59 $\pm$  0.15 &           4.02 $\pm$  0.20 &    80.99 $\pm$  13.44 \\
+    &     & 25 &  27.39 $\pm$  0.70 &   14.21 $\pm$  0.22 &           5.08 $\pm$  0.16 &    83.21 $\pm$   6.39 \\
+    & 1.5 & 10 &   8.93 $\pm$  0.47 &    6.55 $\pm$  0.17 &           4.04 $\pm$  0.22 &    55.21 $\pm$   5.89 \\
+    &     & 25 &  27.32 $\pm$  0.94 &   14.36 $\pm$  0.30 &           5.13 $\pm$  0.18 &    54.79 $\pm$  10.33 \\
+LBC & 0.5 & 10 &   9.03 $\pm$  0.39 &    6.60 $\pm$  0.09 &           3.93 $\pm$  0.02 &    99.18 $\pm$   2.24 \\
+    &     & 25 &  28.25 $\pm$  0.92 &   14.50 $\pm$  0.11 &           5.04 $\pm$  0.02 &   100.00 $\pm$   0.00 \\
+    & 1.0 & 10 &   9.10 $\pm$  0.49 &    6.61 $\pm$  0.06 &           3.93 $\pm$  0.02 &    96.70 $\pm$   2.74 \\
+    &     & 25 &  27.85 $\pm$  0.60 &   14.57 $\pm$  0.20 &           5.04 $\pm$  0.03 &    95.09 $\pm$  14.59 \\
+    & 1.5 & 10 &   9.67 $\pm$  1.19 &    6.68 $\pm$  0.51 &           4.00 $\pm$  0.25 &    35.42 $\pm$  18.69 \\
+    &     & 25 &  27.80 $\pm$  0.76 &   15.01 $\pm$  1.18 &           5.27 $\pm$  0.51 &    38.96 $\pm$  17.11 \\
+SAC & 0.5 & 10 &   9.82 $\pm$  2.53 &    6.37 $\pm$  0.19 &           4.18 $\pm$  0.35 &    52.33 $\pm$  13.43 \\
+    &     & 25 &  27.38 $\pm$  1.16 &   13.99 $\pm$  0.31 &           5.26 $\pm$  0.32 &    51.06 $\pm$  13.28 \\
+    & 1.0 & 10 &   9.70 $\pm$  1.75 &    6.42 $\pm$  0.24 &           4.44 $\pm$  0.51 &     9.94 $\pm$   8.13 \\
+    &     & 25 &  27.39 $\pm$  1.99 &   13.76 $\pm$  0.50 &           5.69 $\pm$  0.61 &    12.72 $\pm$  10.02 \\
+    & 1.5 & 10 &   9.38 $\pm$  1.08 &    6.29 $\pm$  0.28 &           4.73 $\pm$  0.54 &     8.66 $\pm$   4.74 \\
+    &     & 25 &  27.98 $\pm$  2.11 &   13.69 $\pm$  0.40 &           5.89 $\pm$  0.53 &     8.73 $\pm$   4.38 \\
+ARS & 0.5 & 10 &  11.00 $\pm$  2.91 &    5.99 $\pm$  0.26 &           4.77 $\pm$  0.05 &    67.57 $\pm$   6.42 \\
+    &     & 25 &  27.24 $\pm$  1.53 &   14.08 $\pm$  0.87 &           5.89 $\pm$  0.14 &    66.01 $\pm$   6.24 \\
+    & 1.0 & 10 &  14.21 $\pm$  2.39 &    5.97 $\pm$  0.23 &           4.99 $\pm$  0.11 &    47.72 $\pm$   7.29 \\
+    &     & 25 &  28.38 $\pm$  2.33 &   14.07 $\pm$  0.51 &           5.95 $\pm$  0.17 &    48.57 $\pm$   6.14 \\
+    & 1.5 & 10 &   9.13 $\pm$  1.42 &    6.27 $\pm$  0.24 &           4.09 $\pm$  0.26 &    30.63 $\pm$   7.69 \\
+    &     & 25 &  27.12 $\pm$  1.72 &   14.24 $\pm$  0.33 &           5.17 $\pm$  0.19 &    34.38 $\pm$   3.47 \\
+% VBN & 0.5 & 10 &   8.50 $\pm$    0.28 &    6.54 $\pm$   0.18 &           3.98 $\pm$   0.01 &    94.03 $\pm$    1.62 \\
+%     &     & 25 &  27.17 $\pm$    0.79 &   14.44 $\pm$   0.70 &           5.10 $\pm$   0.08 &    94.38 $\pm$    0.37 \\
+%     & 1.0 & 10 &   8.72 $\pm$    0.38 &    6.59 $\pm$   0.15 &           4.02 $\pm$   0.20 &    80.99 $\pm$   13.44 \\
+%     &     & 25 &  27.39 $\pm$    0.70 &   14.21 $\pm$   0.22 &           5.08 $\pm$   0.16 &    83.21 $\pm$    6.39 \\
+%     & 1.5 & 10 &   8.93 $\pm$    0.47 &    6.55 $\pm$   0.17 &           4.04 $\pm$   0.22 &    55.21 $\pm$    5.89 \\
+%     &     & 25 &  27.32 $\pm$    0.94 &   14.36 $\pm$   0.30 &           5.13 $\pm$   0.18 &    54.79 $\pm$   10.33 \\
+% LBC & 0.5 & 10 &   9.03 $\pm$    0.39 &    6.60 $\pm$   0.09 &           3.93 $\pm$   0.02 &    99.18 $\pm$    2.24 \\
+%     &     & 25 &  28.25 $\pm$    0.92 &   14.50 $\pm$   0.11 &           5.04 $\pm$   0.02 &   100.00 $\pm$    0.00 \\
+%     & 1.0 & 10 &   9.10 $\pm$    0.49 &    6.61 $\pm$   0.06 &           3.93 $\pm$   0.02 &    96.70 $\pm$    2.74 \\
+%     &     & 25 &  27.85 $\pm$    0.60 &   14.57 $\pm$   0.20 &           5.04 $\pm$   0.03 &    95.09 $\pm$   14.59 \\
+%     & 1.5 & 10 &   9.67 $\pm$    1.19 &    6.68 $\pm$   0.51 &           4.00 $\pm$   0.25 &    35.42 $\pm$   18.69 \\
+%     &     & 25 &  27.80 $\pm$    0.76 &   15.01 $\pm$   1.18 &           5.27 $\pm$   0.51 &    38.96 $\pm$   17.11 \\
+% SAC & 0.5 & 10 &  10.37 $\pm$    4.10 &    6.36 $\pm$   0.18 &           4.19 $\pm$   0.35 &    52.09 $\pm$   13.30 \\
+%     &     & 25 &  27.38 $\pm$    1.16 &   13.99 $\pm$   0.31 &           5.26 $\pm$   0.32 &    51.06 $\pm$   13.28 \\
+%     & 1.0 & 10 &  11.32 $\pm$    5.63 &    6.41 $\pm$   0.24 &           4.48 $\pm$   0.51 &    10.69 $\pm$    8.16 \\
+%     &     & 25 &  28.15 $\pm$    4.90 &   13.78 $\pm$   0.50 &           5.68 $\pm$   0.60 &    12.96 $\pm$    9.97 \\
+%     & 1.5 & 10 &  13.79 $\pm$   17.42 &    6.29 $\pm$   0.27 &           4.76 $\pm$   0.51 &     8.91 $\pm$    4.56 \\
+%     &     & 25 &  28.61 $\pm$    4.54 &   13.53 $\pm$   1.02 &           6.08 $\pm$   1.20 &     8.80 $\pm$    4.26 \\
+% ARS & 0.5 & 10 &  14.73 $\pm$    9.06 &    6.00 $\pm$  0.25 &           4.78 $\pm$   0.07 &    67.71 $\pm$    6.37 \\
+%     &     & 25 &  32.48 $\pm$   18.85 &   14.05 $\pm$   0.83 &           5.88 $\pm$   0.14 &    65.92 $\pm$   6.23 \\
+%     & 1.0 & 10 &  16.86 $\pm$    8.47 &    5.96 $\pm$   0.22 &           4.99 $\pm$   0.13 &    47.27 $\pm$    7.30 \\
+%     &     & 25 &  36.09 $\pm$   19.63 &   14.07 $\pm$   0.48 &           5.93 $\pm$   0.17 &    48.50 $\pm$    6.05 \\
+%     & 1.5 & 10 &  10.00 $\pm$    4.52 &    6.27 $\pm$   0.24 &           4.10 $\pm$   0.26 &    30.63 $\pm$    7.53 \\
+%     &     & 25 &  28.77 $\pm$   11.83 &   14.25 $\pm$   0.34 &           5.18 $\pm$   0.20 &    34.27 $\pm$    3.53 \\
+
+\end{tabular}}
+\label{tab:additional}
+% \footnotemark{CC refers to the complex controller, and SC refers to the safe controller. The results displayed in this table were conducted on the Dell Precision 7520.}
+\end{table}%
 
 
 
+%%%%% FOR EXTENSION OF THIS PAPER%%%%%%%
+% \begin{table}[!htbp]
+%     \centering
+%     \caption{Analysis of Real-Time Reachability Algorithm Execution Time: Simulation Platform}
+% \resizebox{0.7\linewidth}{!}{
+%     \begin{tabular}{cc|cc|cc}
+% %\toprule
+% \multicolumn{1}{c}{\multirow{2}{*}{}} & \multicolumn{1}{c|}{\multirow{2}{*}{}}  &  \multicolumn{2}{c|}{Obstacles} & \multicolumn{2}{c}{No Obstacles} \\ %\cline{2-7}
 
-\begin{table}[!htbp]
-    \centering
-    \caption{Analysis of Real-Time Reachability Algorithm Execution Time: Simulation Platform}
-\resizebox{0.7\linewidth}{!}{
-    \begin{tabular}{cc|cc|cc}
-%\toprule
-\multicolumn{1}{c}{\multirow{2}{*}{}} & \multicolumn{1}{c|}{\multirow{2}{*}{}}  &  \multicolumn{2}{c|}{Obstacles} & \multicolumn{2}{c}{No Obstacles} \\ %\cline{2-7}
+% \multicolumn{1}{c}{ML Controller} & \multicolumn{1}{c|}{$T_{runtime}$} &  \multicolumn{1}{c}{Mean ET (ms)} & \multicolumn{1}{c|}{Mean Iters} &  \multicolumn{1}{c}{Mean ET (ms)}  & \multicolumn{1}{c}{Mean Iters} \\
 
-\multicolumn{1}{c}{ML Controller} & \multicolumn{1}{c|}{$T_{runtime}$} &  \multicolumn{1}{c}{Mean ET (ms)} & \multicolumn{1}{c|}{Mean Iters} &  \multicolumn{1}{c}{Mean ET (ms)}  & \multicolumn{1}{c}{Mean Iters} \\
+% \midrule
 
-\midrule
+% VBN & 10 &    6.28 $\pm$   0.60 &           4.44 $\pm$   1.55 &    6.56 $\pm$   0.16 &           4.01 $\pm$   0.14 \\
+%     & 25 &   14.52 $\pm$  0.66 &           5.27 $\pm$   0.46 &   14.34 $\pm$  0.41 &           5.10 $\pm$   0.14 \\
+% LBC & 10 &    6.37 $\pm$   0.36 &           4.11 $\pm$   0.79 &    6.63 $\pm$   0.22 &           3.95 $\pm$   0.10 \\
+%     & 25 &   14.60 $\pm$   1.54 &           5.45 $\pm$   1.59 &   14.69 $\pm$   0.50 &           5.11 $\pm$   0.19 \\
+% SAC & 10 &    6.23 $\pm$   0.25 &           4.55 $\pm$   0.48 &    6.36 $\pm$   0.23 &           4.48 $\pm$   0.46 \\
+%     & 25 &   14.04 $\pm$   0.64 &           5.63 $\pm$   0.67 &   13.76 $\pm$   0.61 &           5.67 $\pm$   0.71 \\
+% ARS & 10 &    6.04 $\pm$   0.34 &           4.64 $\pm$   0.62 &    6.08 $\pm$   0.24 &           4.62 $\pm$   0.15 \\
+%     & 25 &   14.31 $\pm$   0.74 &           5.68 $\pm$   0.44 &   14.12 $\pm$   0.55 &           5.66 $\pm$   0.17 \\
+% \end{tabular}
+% \label{tab:simulation}}
+% \end{table}
 
-VBN & 10 &    6.28 $\pm$   0.60 &           4.44 $\pm$   1.55 &    6.56 $\pm$   0.16 &           4.01 $\pm$   0.14 \\
-    & 25 &   14.52 $\pm$  0.66 &           5.27 $\pm$   0.46 &   14.34 $\pm$  0.41 &           5.10 $\pm$   0.14 \\
-LBC & 10 &    6.37 $\pm$   0.36 &           4.11 $\pm$   0.79 &    6.63 $\pm$   0.22 &           3.95 $\pm$   0.10 \\
-    & 25 &   14.60 $\pm$   1.54 &           5.45 $\pm$   1.59 &   14.69 $\pm$   0.50 &           5.11 $\pm$   0.19 \\
-SAC & 10 &    6.23 $\pm$   0.25 &           4.55 $\pm$   0.48 &    6.36 $\pm$   0.23 &           4.48 $\pm$   0.46 \\
-    & 25 &   14.04 $\pm$   0.64 &           5.63 $\pm$   0.67 &   13.76 $\pm$   0.61 &           5.67 $\pm$   0.71 \\
-ARS & 10 &    6.04 $\pm$   0.34 &           4.64 $\pm$   0.62 &    6.08 $\pm$   0.24 &           4.62 $\pm$   0.15 \\
-    & 25 &   14.31 $\pm$   0.74 &           5.68 $\pm$   0.44 &   14.12 $\pm$   0.55 &           5.66 $\pm$   0.17 \\
-\end{tabular}
-\label{tab:simulation}}
-\end{table}
-
-
-
-
+Each of the controllers was trained with an assumption that the F1/10 moves at a speed $u=1.0 m/s$. Thus, the experiments at this speed provide a baseline as we consider variations in speed, obstacles, and runtime. Moving at speeds faster than $1.0 m/s$ was correlated with lower levels of safety, and the SAC controller was the least tolerant to increases in speed. Since the SAC controller was trained to complete laps as quickly as possible, it was often aggressive around turns, resulting in a higher declarations of unsafe behavior. In contrast, the VBN controller was the most robust to speed changes. Still its performance varied significantly as displayed by the standard deviation of the controller usage at speeds of $1.5 m/s$. It is worth noting however that the VBN has 340 times more parameters than the reinforcement learning and LBC controllers.\footnote{The DAVE model that we utilized has 1,595,511 trainable parameters. The Multilayer perceptron was characterized by 4685 parameters.}
 
 
 
+The experiments demonstrated that Mean ET of our regime fell well within our desired $T_{runtime}$. Our estimates of future iterations of the reachability computations were quite conservative in nature. However this did not greatly impact the overall conservativeness of the approach. As an example, the VBN controller was utilized for more than 80\% of the time at speeds below $1.0 \ m/s$. Though a few deviations were observed as displayed by the MOET, these did not significantly impact the performance of our approach. Rather they are a result of our requirement that the safety checking process complete.
 
 
-
-
-Each of the controllers was trained with an assumption that the F1/10 moves at a speed $u=1.0 m/s$. Thus, the experiments at this speed provide a baseline as we consider variations in speed, obstacles, and runtime. Moving at speeds faster than $1.0 m/s$ was correlated with lower levels of safety, and the SAC controller was the least tolerant to increases in speed. Since the SAC controller was trained to complete laps as quickly as possible, it was often aggressive around turns, resulting in a higher declarations of unsafe behavior. In contrast, the IL (Camera) controller, was the most robust to speed changes. Still its performance was tenous as displayed by the standard deviation of the controller usage at speeds of $1.5 m/s$. It is worth noting however that the IL (Camera) neural network has 340 times more parameters than the reinforcement learning and IL (Lidar) controllers.\footnote{The DAVE model that we utilized has 1,595,511 trainable parameters. The Multilayer perceptron was characterized by 4685 parameters.}
-
-
-Our experiments also demonstrated that our simplex strategy was quite conservative in practice. Despite being evaluated as the most "perilous" controller, the SAC controller was the only controller that demonstrated an ability to handle obstacles. Surprisingly, it saw an increase in the time it was used in these contexts. Adding obstacles into the environment allowed us to measure each controller's ability to mimic the driving task, rather than measure robustness of their pattern matching competencies. Unsurprisingly, the imitation learners failed to generalize to this scenario, whereas the reinforcement learning components performed better. Moreover, despite being the simplest controller, the ARS regime enjoyed the most consistent behavior across all experiments as measured by the standard deviation across experiments.\nate{Should we be comparing the different controllers here, or are we demonstrating that this method works for multiple styles of control? Not sure this fits with the "story"}
+%Our experiments also demonstrated that our simplex strategy was quite conservative in practice. Despite being evaluated as the most "perilous" controller, the SAC controller was the only controller that demonstrated an ability to handle obstacles. Surprisingly, it saw an increase in the time it was used in these contexts. Adding obstacles into the environment allowed us to measure each controller's ability to mimic the driving task, rather than measure robustness of their pattern matching competencies. Unsurprisingly, the imitation learners failed to generalize to this scenario, whereas the reinforcement learning components performed better. Moreover, despite being the simplest controller, the ARS regime enjoyed the most consistent behavior across all experiments as measured by the standard deviation across experiments.\nate{Should we be comparing the different controllers here, or are we demonstrating that this method works for multiple styles of control? Not sure this fits with the "story"}
 
 \begin{table}[htbp!]%[]
     \centering
     \caption{Machine Learning Controller Use in the Simplex Architecture: Simulation Platform}
    
-\resizebox{0.55\linewidth}{!}{
+\resizebox{0.6\linewidth}{!}{
     \begin{tabular}{cccc}
 %\toprule
 \multicolumn{1}{c}{\multirow{2}{*}{}} &
@@ -688,55 +731,16 @@ ARS & 0.5 &    66.06 $\pm$   9.10 &    66.82 $\pm$   6.30 \\
 % % \footnotemark{CC refers to the complex controller, and SC refers to the safe controller. The results displayed in this table were conducted on the Dell Precision 7520.}
 % \end{table}
 
-\begin{table}[ht]
-\renewcommand{\arraystretch}{1.3}
-\caption{Analysis of Wall-Time and Speed Variation (Without Obstacles):  Simulation Platform}
-\centering
-\resizebox{0.7\linewidth}{!}{
-\begin{tabular}{ccccccc}% cccc}
-    Ml Conroller & $u$ (m/s) & $T_{runtime}$ & MOET (ms) & Mean ET (ms) & Mean Iters & ML Usage (\%) \\
-    \hline
-    
-    
-VBN & 0.5 & 10 &   8.50 $\pm$    0.28 &    6.54 $\pm$   0.18 &           3.98 $\pm$   0.01 &    94.03 $\pm$    1.62 \\
-    &     & 25 &  27.17 $\pm$    0.79 &   14.44 $\pm$   0.70 &           5.10 $\pm$   0.08 &    94.38 $\pm$    0.37 \\
-    & 1.0 & 10 &   8.72 $\pm$    0.38 &    6.59 $\pm$   0.15 &           4.02 $\pm$   0.20 &    80.99 $\pm$   13.44 \\
-    &     & 25 &  27.39 $\pm$    0.70 &   14.21 $\pm$   0.22 &           5.08 $\pm$   0.16 &    83.21 $\pm$    6.39 \\
-    & 1.5 & 10 &   8.93 $\pm$    0.47 &    6.55 $\pm$   0.17 &           4.04 $\pm$   0.22 &    55.21 $\pm$    5.89 \\
-    &     & 25 &  27.32 $\pm$    0.94 &   14.36 $\pm$   0.30 &           5.13 $\pm$   0.18 &    54.79 $\pm$   10.33 \\
-LBC & 0.5 & 10 &   9.03 $\pm$    0.39 &    6.60 $\pm$   0.09 &           3.93 $\pm$   0.02 &    99.18 $\pm$    2.24 \\
-    &     & 25 &  28.25 $\pm$    0.92 &   14.50 $\pm$   0.11 &           5.04 $\pm$   0.02 &   100.00 $\pm$    0.00 \\
-    & 1.0 & 10 &   9.10 $\pm$    0.49 &    6.61 $\pm$   0.06 &           3.93 $\pm$   0.02 &    96.70 $\pm$    2.74 \\
-    &     & 25 &  27.85 $\pm$    0.60 &   14.57 $\pm$   0.20 &           5.04 $\pm$   0.03 &    95.09 $\pm$   14.59 \\
-    & 1.5 & 10 &   9.67 $\pm$    1.19 &    6.68 $\pm$   0.51 &           4.00 $\pm$   0.25 &    35.42 $\pm$   18.69 \\
-    &     & 25 &  27.80 $\pm$    0.76 &   15.01 $\pm$   1.18 &           5.27 $\pm$   0.51 &    38.96 $\pm$   17.11 \\
-SAC & 0.5 & 10 &  10.37 $\pm$    4.10 &    6.36 $\pm$   0.18 &           4.19 $\pm$   0.35 &    52.09 $\pm$   13.30 \\
-    &     & 25 &  27.38 $\pm$    1.16 &   13.99 $\pm$   0.31 &           5.26 $\pm$   0.32 &    51.06 $\pm$   13.28 \\
-    & 1.0 & 10 &  11.32 $\pm$    5.63 &    6.41 $\pm$   0.24 &           4.48 $\pm$   0.51 &    10.69 $\pm$    8.16 \\
-    &     & 25 &  28.15 $\pm$    4.90 &   13.78 $\pm$   0.50 &           5.68 $\pm$   0.60 &    12.96 $\pm$    9.97 \\
-    & 1.5 & 10 &  13.79 $\pm$   17.42 &    6.29 $\pm$   0.27 &           4.76 $\pm$   0.51 &     8.91 $\pm$    4.56 \\
-    &     & 25 &  28.61 $\pm$    4.54 &   13.53 $\pm$   1.02 &           6.08 $\pm$   1.20 &     8.80 $\pm$    4.26 \\
-ARS & 0.5 & 10 &  14.73 $\pm$    9.06 &    6.00 $\pm$  0.25 &           4.78 $\pm$   0.07 &    67.71 $\pm$    6.37 \\
-    &     & 25 &  32.48 $\pm$   18.85 &   14.05 $\pm$   0.83 &           5.88 $\pm$   0.14 &    65.92 $\pm$   6.23 \\
-    & 1.0 & 10 &  16.86 $\pm$    8.47 &    5.96 $\pm$   0.22 &           4.99 $\pm$   0.13 &    47.27 $\pm$    7.30 \\
-    &     & 25 &  36.09 $\pm$   19.63 &   14.07 $\pm$   0.48 &           5.93 $\pm$   0.17 &    48.50 $\pm$    6.05 \\
-    & 1.5 & 10 &  10.00 $\pm$    4.52 &    6.27 $\pm$   0.24 &           4.10 $\pm$   0.26 &    30.63 $\pm$    7.53 \\
-    &     & 25 &  28.77 $\pm$   11.83 &   14.25 $\pm$   0.34 &           5.18 $\pm$   0.20 &    34.27 $\pm$    3.53 \\
 
-\end{tabular}}
-\label{tab:additional}
-% \footnotemark{CC refers to the complex controller, and SC refers to the safe controller. The results displayed in this table were conducted on the Dell Precision 7520.}
-\end{table}%
 %Moreover, there were no collisions detected in any of the experiments with the reinforcement learning controller. However, in certain scenarios, the end-to-end controller drove the system into an unsafe situation.} While we were able to eliminate these collisions by making the safety controller more conservative and stop more frequently, this is not always a feasible solution within autonomous applications. Upon further inspection, it seems that one of the limitations of our approach is our assumption that the control action remains constant throughout the flow-pipe construction. For nonlinear and highly complex models like neural networks, this is often not the case, and it is likely that the instability arises from this fact. 
 
 %In an effort to further refine the analysis of the conservativeness of our safety regime, we now discuss the 720 additional experiments with varying speeds, configurations of obstacles, and wall-times mentioned previously. The results of these experiments are displayed in Table~\ref{tab:additional}. For brevity we limit our discussion to two key observations. 
 
 %Table \ref{tab:sim2} deals with the use of our regime in the absence of obstacles. In doing so, we reproduced the training conditions from which the controllers were synthesized. From an intuitive standpoint, the use of the safety controller should have significantly decreased, and while this was the case for the reinforcement learning controller, there were only tenuous improvements for end-to-end controller. 
 
-One of the most interesting revelations from these experiments was the divergence in Mean ET. In general, the IL controllers had a higher Mean ET than the RL controllers. The IL controllers
-also exhibited higher levels of safety. Thus, the divergence in execution times was primarily due to the termination conditions of the real-time reachability algorithm. In general, in cases where the ML controller was determined "unsafe" more frequently, the Mean ET decreased, and the number of iterations utilized in constructing the reachable set increased. Supporting this claim are the results of the ARS and SAC controllers, which on average utilized more than 9 iterations in the reach set construction. This trend in is analyzed in more detail in Table~\ref{tab:additional} as well as in the presentation of the hardware experiments that follow, where this effect is more pronounced.
+%One of the most interesting revelations from these experiments was the divergence in Mean ET. In general, the IL controllers had a higher Mean ET than the RL controllers. The IL controllersalso exhibited higher levels of safety. Thus, the divergence in execution times was primarily due to the termination conditions of the real-time reachability algorithm. In general, in cases where the ML controller was determined "unsafe" more frequently, the Mean ET decreased, and the number of iterations utilized in constructing the reachable set increased. Supporting this claim are the results of the ARS and SAC controllers, which on average utilized more than 9 iterations in the reach set construction. This trend in is analyzed in more detail in Table~\ref{tab:additional} as well as in the presentation of the hardware experiments that follow, where this effect is more pronounced.
 
-Finally, out of the 1080 experiments conducted in simulation, we observed collisions in 21 of them. This corresponds to to a 98.1\% success rate in preventing unsafe behavior. The collisions typically occurred at a speed set point of $1.5 \ m/s$ and solely involved the IL controllers. There were no collisions observed with the RL agents. We were able to eliminate these collisions in subsequent experiments by increasing the reach time horizon. However in practice in order to provably eliminate all collisions, one must also verify the decision module and the safety controller utilized within the simplex regime.
+Out of the 1440 experiments conducted in simulation, we observed collisions in 82 of them. This corresponds to to a 94.3\% success rate in preventing unsafe behavior. The collisions typically occurred at a speed set point of $1.5 \ m/s$ and when using the the IL controllers. We were able to eliminate these collisions in subsequent experiments by increasing the reach time horizon.\footnote{The friction model used in the simulator is quite different from our hardware setup. This requires a longer reach-time to ensure safety.} However in practice in order to provably eliminate all collisions, one must also verify the decision module and the safety controller utilized within the simplex regime. This is the focus of our future work.
 
 
 
@@ -815,34 +819,44 @@ Finally, out of the 1080 experiments conducted in simulation, we observed collis
 % % \footnotemark{CC refers to the complex controller, and SC refers to the safe controller.}
 % \end{table}
 \subsection{Hardware}
-Training ML controllers in simulation and deploying them on real-world hardware platforms (\textit{sim2real} transfer) is a challenging problem \cite{jang2019ICCPS, kadian2019we}. Often, the learned strategies do not perform as expected, sometimes resulting in unsafe or catastrophic behavior. Thus, it is often critical to monitor these components to ensure that their underlying design assumptions are valid during operation. While their performance can improved with additional training in the real world, this is not always possible. The process of transferring a learned policy and evaluating before additional training is referred to as \emph{zero-shot policy transfer} and it is within this framework that our hardware experiments are presented.
+Training ML controllers in simulation and deploying them on real-world hardware platforms (\textit{sim2real} transfer) is a challenging problem \cite{jang2019ICCPS, kadian2019we}. Often, policies that are learned in simulation do not perform as expected in the noisy real-world. Due to the risk of unsafe or catastrophic behavior, it is critical to monitor these components during operation. While their performance can improved with additional training in the real world, this is not always possible, particularly when it comes to RL regimes. The process of transferring a learned policy and evaluating it before additional training is referred to as \emph{zero-shot policy transfer} and it is within this framework that we present the hardware experiments.
 
 
-Our proposed safety regime was evaluated on the hardware platform with a few minor differences. The first difference is that we did not consider static obstacles within the racetrack due to the space constraints of our laboratory environment shown in \ref{fig:lab_setup}. Additionally, we chose to offload the machine learning computations to a separate machine for two reasons. The first reason was that the VBN required a prohibitively large amount of the computation resources on the Jetson TX2. It is possible to optimize these ML models to run more efficiently on the Jetson platform, but we elected not to do so. The second and more important reason, was that our primary concern was to analyze the variation of execution times of our safety regime on the embedded platform, and offloading the expensive machine learning computations to another computer, allowed us to evaluate our regime with a finer level of granularity.
+We evaluated the proposed safety regime on the F1/10 hardware platform with two minor differences. Firstly due to the space constraints of our laboratory environment, we did not consider the addition of obstacles within the racetrack. Our experimental setup is shown in Figure~\ref{fig:lab_setup}. Secondly, we chose to offload the machine learning components to a separate computer. Compared to the other controllers the VBN required a prohibitively large amount of the computation resources on the Jetson TX2. It is possible to optimize these ML models to run more efficiently on the Jetson platform, but we elected not to do so.our primary concern was to analyze the variation of execution times of our safety regime on the embedded platform, and offloading the expensive machine learning computations to another computer, allowed us to evaluate our regime with a finer level of granularity. Moreover it allowed for fairer comparisons of the controllers.
+
+
+
+
+
+
 %\ttj{may want to clarify previous a bit more, someone may comment on this set up; I revised a bit, I assume you ran the real-time reachability on the jetson, and the ML models on a desktop, but double check; likewise, may want to give names for these machines to make it clearer what is running where}
 
 \begin{table}[h]%
 \renewcommand{\arraystretch}{1.3}
 \caption{Analysis of Wall-Time and Speed Variation: Jetson TX2}
-\label{tab:sim3}
+\label{tab:hardware}
 \centering
 \resizebox{0.7\linewidth}{!}{
 \begin{tabular}{ccccccc}
 ML Conroller &   $u$ (m/s) &  $T_{runtime}$ & MOET (ms) &  Mean ET (ms) &  Mean Iters &  ML Usage (\%) \\
 \hline
 
-VBN & 0.5 & 10 &  13.76 $\pm$   5.31 &    5.79 $\pm$   0.36 &           4.84 $\pm$   0.33 &    21.01 $\pm$   4.68 \\
-    &     & 25 &  24.49 $\pm$   0.89 &   11.90 $\pm$   0.38 &           5.62 $\pm$   0.33 &    25.66 $\pm$   5.09 \\
-    & 1.0 & 25 &  24.64 $\pm$   1.41 &   11.15 $\pm$   0.44 &           5.46 $\pm$   0.18 &    17.26 $\pm$   2.11 \\
-ARS & 0.5 & 10 &  13.81 $\pm$   6.39 &    4.88 $\pm$   0.26 &           4.90 $\pm$   0.71 &    20.22 $\pm$   5.30 \\
-    &     & 25 &  23.74 $\pm$   0.64 &   11.27 $\pm$   0.66 &           5.95 $\pm$   0.63 &    33.94 $\pm$   8.15 \\
-    & 1.0 & 25 &  24.53 $\pm$   0.86 &   11.15 $\pm$   0.18 &           5.54 $\pm$   0.24 &    22.64 $\pm$   5.38 \\
-LBC & 0.5 & 10 &  13.36 $\pm$   2.61 &    6.22 $\pm$   0.52 &           4.77 $\pm$   0.16 &    21.75 $\pm$   6.90 \\
-    &     & 25 &  24.82 $\pm$   0.99 &   11.34 $\pm$   0.64 &           5.37 $\pm$   0.19 &    29.15 $\pm$   5.57 \\
-    & 1.0 & 25 &  25.02 $\pm$   1.02 &   10.72 $\pm$   0.29 &           5.16 $\pm$   0.07 &    21.33 $\pm$   2.35 \\
-SAC & 0.5 & 10 &  12.18 $\pm$   1.41 &    5.29 $\pm$   0.38 &           4.86 $\pm$   0.29 &    16.02 $\pm$   6.92 \\
-    &     & 25 &  24.70 $\pm$   0.92 &   11.48 $\pm$   0.60 &           5.83 $\pm$   0.17 &    27.62 $\pm$   8.53 \\
-    & 1.0 & 25 &  24.42 $\pm$   0.96 &   10.51 $\pm$   0.46 &           5.79 $\pm$   0.81 &    16.82 $\pm$   3.96 \\
+VBN & 0.5 & 10 &  13.76 $\pm$   5.31 &    5.79 $\pm$   0.36 &           4.84 $\pm$   0.33 &    21.01 $\pm$    4.68 \\
+    &     & 25 &  24.49 $\pm$   0.89 &   11.90 $\pm$   0.38 &           5.62 $\pm$   0.33 &    25.66 $\pm$    5.09 \\
+    & 1.0 & 10 &  16.90 $\pm$   6.79 &    5.30 $\pm$   0.21 &           4.79 $\pm$   0.25 &    12.15 $\pm$    6.05 \\
+    &     & 25 &  24.64 $\pm$   1.41 &   11.15 $\pm$   0.44 &           5.46 $\pm$   0.18 &    17.26 $\pm$    2.11 \\
+ARS & 0.5 & 10 &  13.81 $\pm$   6.39 &    4.88 $\pm$   0.26 &           4.90 $\pm$   0.71 &    20.22 $\pm$    5.30 \\
+    &     & 25 &  23.74 $\pm$   0.64 &   11.27 $\pm$   0.66 &           5.95 $\pm$   0.63 &    33.94 $\pm$    8.15 \\
+    & 1.0 & 10 &  11.21 $\pm$   0.87 &    5.09 $\pm$   0.42 &           4.64 $\pm$   0.46 &    34.24 $\pm$   36.91 \\
+    &     & 25 &  24.53 $\pm$   0.86 &   11.15 $\pm$   0.18 &           5.54 $\pm$   0.24 &    22.64 $\pm$    5.38 \\
+LBC & 0.5 & 10 &  13.36 $\pm$   2.61 &    6.22 $\pm$   0.52 &           4.77 $\pm$   0.16 &    21.75 $\pm$    6.90 \\
+    &     & 25 &  24.82 $\pm$   0.99 &   11.34 $\pm$   0.64 &           5.37 $\pm$   0.19 &    29.15 $\pm$    5.57 \\
+    & 1.0 & 10 &  13.87 $\pm$   5.66 &    5.15 $\pm$   0.28 &           4.46 $\pm$   0.40 &    16.22 $\pm$    2.89 \\
+    &     & 25 &  25.02 $\pm$   1.02 &   10.72 $\pm$   0.29 &           5.16 $\pm$   0.07 &    21.33 $\pm$    2.35 \\
+SAC & 0.5 & 10 &  12.18 $\pm$   1.41 &    5.29 $\pm$   0.38 &           4.86 $\pm$   0.29 &    16.02 $\pm$    6.92 \\
+    &     & 25 &  24.70 $\pm$   0.92 &   11.48 $\pm$   0.60 &           5.83 $\pm$   0.17 &    27.62 $\pm$    8.53 \\
+    & 1.0 & 10 &  12.10 $\pm$   1.91 &    4.88 $\pm$   0.13 &           4.93 $\pm$   0.57 &    10.81 $\pm$    2.01 \\
+    &     & 25 &  24.42 $\pm$   0.96 &   10.51 $\pm$   0.46 &           5.79 $\pm$   0.81 &    16.82 $\pm$    3.96 \\
 
 \end{tabular}}%
 % \footnotemark{CC refers to the complex controller, and SC refers to the safe controller. The results displayed in this table were conducted on the Dell Precision 7520.}
@@ -868,7 +882,6 @@ SAC & 0.5 & 10 &  12.18 $\pm$   1.41 &    5.29 $\pm$   0.38 &           4.86 $\p
 % \end{table}
 
 % \ttj{another notational/consistency issue that is going to show up: you have complex vs safety controller, as well as the end-to-end vs RL controller; you need to use consistent and clear termonology, e.g., each controller in the next sentence could refer to any of these permutations (RL + sc, RL + cc, E2E + sc, E2E + cc, E2E + RL, etc.)}
-\todo{Write this after the hardware experiments have been conducted}%
 
 \begin{figure}[ht]%[ht]
   \centering
@@ -877,11 +890,11 @@ SAC & 0.5 & 10 &  12.18 $\pm$   1.41 &    5.29 $\pm$   0.38 &           4.86 $\p
 %   \url{https://github.com/pmusau17/F1TenthHardware}.}
   \label{fig:lab_setup}
 \end{figure}%
-We ran a total of 80 experiments, 5 for each ML controller with the same length as the simulation episodes.
 
-These results were significantly faster than the simulation experiments, but the simplex strategy was far more conservative. While the positive result of this observation was that there were no collisions in any of the experiments, the end-to-end controller was only used for $3.9\%$ of the time, and the reinforcement learning controller was utilized for a meager $5.3\%$ of the time. This is the primary reason that the mean execution time was much faster than the simulation experiments. 
+We ran a total of 80 experiments, 5 for each controller, with the same structure as the simulation episodes. The results of these experiments demonstrated a large increase in the amount of time that the safety controller was used and a corresponding decrease in the execution time of the approach. However, this result can be explained by the size of our racetrack as well as the known challenges of using ML controllers within the real world. Still, there were no collisions observed in the hardware experiments.
 
-Within the real-time reachability algorithm, the reachable-set computations terminate whenever an unsafe state is detected. The algorithm then restarts with half the step-size in order to refine the over-approximation error and determine if the "unsafe" declaration is spurious. This strategy continues, until the step size falls below a pre-specified threshold specified to guarantee numerical stability. On the hardware platform, this threshold was met consistently, which demonstrates the frequency of unsafe declarations. The subsequent testing in the simulation environment, where obstacles were removed thus reducing the uncertainty, provided evidence in support of this assertion. For further details on the termination conditions of the real-time reachability algorithm, see~\cite{Johnson2016}.
+Within the real-time reachability algorithm, the reachable-set computations terminate whenever an unsafe state is detected. The algorithm then restarts with half the step-size in order to refine the over-approximation error and determine if the "unsafe" declaration is spurious. This strategy continues, until the step size falls below a pre-specified threshold specified to guarantee numerical stability. On the hardware platform, this threshold was met consistently, which demonstrates the frequency of unsafe declarations. Evidence for this observation is provided in Tables~\ref{tab:additional} and \ref{tab:hardware}. Experiments with higher levels of safety utilize fewer iterations in constructing the reachable set, and generally have higher execution times. 
+The numerical stability termination conditions are discussed in more detail in~\cite{Johnson2016}.
 
 
 
@@ -895,12 +908,12 @@ Having evaluated the applicability of our approach and a timing analysis of the 
 
 \subsection{Challenges Moving from Simulation to the Real World}
 
-Moving from simulation to the real-world hardware platform saw a significant expansion in the frequency that the safety controller was used. This increased reliance on the safety controller is a direct result of \emph{sim2real} challenges in deep learning. Because the real world is inherently more noisy and more complex than the simulation environments that machine learning models are typically trained in, when these models are deployed in the real world, they are tasked with making generalizations on data that may significantly differ from their training distribution. Furthermore, this challenge is exacerbated by the reality of imperfect dynamic and sensor perception models\cite{ivanov2020case}.
+Moving from simulation to the real-world hardware platform saw a significant expansion in the frequency that the safety controller was used. This increased reliance on the safety controller is a direct result of \emph{sim2real} challenges in machine learning. Because the real world is inherently more noisy and more complex than the simulation environments that machine learning models are typically trained in, when these models are deployed in the real world, they are tasked with making generalizations on data that may significantly differ from their training distribution. Furthermore, this challenge is exacerbated by the reality of imperfect dynamic and sensor perception models \cite{ivanov2020case}.
 
 The challenges that we faced during the transition from simulation to reality arose in two main fashions: the small track size and environment-induced sensor noise.
 
-\subsubsection{The Small Track} The track shown in \ref{fig:reachset} is much larger than the real world track we tested on, shown in \ref{fig:lab_setup}. At the narrowest point, the simulated track is $2m$ wide. In contrast, the widest part of our track is scarcely larger than that. The bulk of the racetrack has a width of less than one meter. Since $T_{runtime}$ is constant across the simulation and real world experiments, the real world vehicle spends the majority of its time forecasting unsafe actions due to its close proximity to the track walls. The hardware experiments were quite revelatory in motivating our desire to extend the current methodologies to integrate closed-loop reachability techniques. Our current assumption that the control decision remains fixed throughout the reachset construction is quite conservative. Closed-loop reachability techniques would allow us to weaken this assumption and compute approximations of the real inputs during the reachset construction. However, the difficulty in performing closed-loop reachset generation lies in developing accurate sensor models. As an example, for IL controller based on camera images it is not clear how to generate camera images based on the state of the system so as to provide a meaningful and useful reachable set.
-\diego{Maybe mention something along the lines where this F1Tenth idea comes from: F1. Mention that the simulation track looks like how it should look, but due to space constraints we could not replicate this. TRACK SPECIFICATION (F1): Track width– 12 to 15 metre. This avoids bad congestion. There should be 3 m minimum clear space along both sides of the track, usually consisting of grass.}
+\subsubsection{The Small Track} The track shown in \ref{fig:reachset} is much larger than the real world track we tested on, shown in \ref{fig:lab_setup}. At the narrowest point, the simulated track is $2m$ wide.\footnote{Races held by the F1/10 community are around typically 30-50 meters in length with a minimum of 3 meters between the racetrack walls. The rules are described in more detail here: \url{https://f1tenth.org/misc-docs/rules.pdf}} In contrast, the widest part of our track is scarcely larger than that. The bulk of the racetrack has a width of less than one meter. Since $T_{runtime}$ is constant across the simulation and real world experiments, the real world vehicle spends the majority of its time forecasting unsafe actions due to its close proximity to the track walls. The hardware experiments were quite revelatory in motivating our desire to extend the current methodologies to integrate closed-loop reachability techniques. Our current assumption that the control decision remains fixed throughout the reachset construction is quite conservative. Closed-loop reachability techniques would allow us to weaken this assumption and compute approximations of the real inputs during the reachset construction. However, the difficulty in performing closed-loop reachset generation lies in developing accurate sensor models. As an example, for the VBN it is not clear how to generate camera images based on the state of the system so as to provide a meaningful and useful reachable set.
+%\diego{Maybe mention something along the lines where this F1Tenth idea comes from: F1. Mention that the simulation track looks like how it should look, but due to space constraints we could not replicate this. TRACK SPECIFICATION (F1): Track width– 12 to 15 metre. This avoids bad congestion. There should be 3 m minimum clear space along both sides of the track, usually consisting of grass.}
 
 \subsubsection{Environment-Induced Noise} Noisy sensor data is expected because no sensor is always perfectly accurate. However, environment-induced noise refers to additional noise that exists because of differences in the environments. This is best highlighted in the case of the RL controller. The environment the agent trained in had smooth, solid walls. Meanwhile, our track is made out of a series of flexible vinyl duct piping hose segments\footnote{\url{https://www.amazon.com/dp/B01G198P8W?psc=1}}, which contain ridges and occasionally expose gaps in between the stacked structure.
 While it is possible to try and model these variations in the simulator, this was not within the scope of our study. However, our future work will explore the relationship between simulator fidelity and the safety of each controller. Since the controllers are "black box" in nature, we cannot know for sure how the policies will respond to these variations. Despite this challenge, we were able to get the F1/10 vehicle to successfully complete laps in the real world because of our simplex architecture. The overall performance might have been reduced, but we were able to ensure safe operation.
@@ -926,18 +939,18 @@ As cyber-physical systems have become increasingly more complex in recent years,
  
  Rtreach \cite{Johnson2016} &  \checkmark & $\times$ & x86, ARM, AVR & $\times$ & \checkmark\\
  
- BACH2 \cite{Bu2011,BU2020} & $\times$ & \checkmark & x86     & $\times$ & \checkmark\\
+ BACH2 \cite{Bu2011,BU2020} & $\checkmark$ & \checkmark & x86     & $\times$ & \checkmark\\
  
- Flow* \cite{Lin2020}  & $\times$ & \checkmark & x86     & \checkmark & \checkmark \\
+ ReachFlow (Flow*) \cite{Lin2020}  & $\times$ & \checkmark & x86     & \checkmark & \checkmark \\
  
 PHaVer \cite{Ti2014} & $\times$ & \checkmark & x86     & $\times$ & \checkmark \\
-FaSTrack \cite{Bajcsy2019Provably} & $\times$ & \checkmark & x86    & $\times$ & $\times$ \\
+FaSTrack \cite{HerbertFastrack} & $\times$ & \checkmark & x86    & $\times$ & $\times$ \\
 
- ARMTD \cite{holmes2020reachable} & $\times$ & \checkmark & x86  & $\times$ & $\times$ \\
+ ARMTD \cite{holmes2020reachable} & $\checkmark$  & \checkmark & x86  & $\times$ & $\times$ \\
  
-  CORA \cite{Althoff2014} & $\times$ & \checkmark & x86  & $\times$ & $\checkmark$ \\
+  CORA \cite{Althoff2014} & $\checkmark$  & \checkmark & x86  & $\times$ & $\checkmark$ \\
   
-  SafeTrafficWeaving \cite{LeungReach2020} & $\times$ & \checkmark & x86  & $\times$ & $\times$  \\
+  SafeTrafficWeaving \cite{LeungReach2020} & $\checkmark$ & \checkmark & x86  & $\times$ & $\times$  \\
   
    ROSRV \cite{Huang2014} & $\times$ & \checkmark & x86  & $\times$ & $\times$ \\
    
@@ -948,7 +961,7 @@ FaSTrack \cite{Bajcsy2019Provably} & $\times$ & \checkmark & x86    & $\times$ &
 \end{tabular}}
 % \footnotemark{CC refers to the complex controller, and SC refers to the safe controller.}
 \end{table}%
-\diego{I have some questions about this table... Why is CORA there? In the paper they mention they do online reachability but they table says they do not. They also mention that their code is in C++ but CORA is written in MATLAB, and based on the quick glance I took at it, I'm unsure those methods are implemented in CORA, but I have not really checked.}
+%\diego{I have some questions about this table... Why is CORA there? In the paper they mention they do online reachability but they table says they do not. They also mention that their code is in C++ but CORA is written in MATLAB, and based on the quick glance I took at it, I'm unsure those methods are implemented in CORA, but I have not really checked.}
 
 
 The simplex architecture has been used widely in the research literature to provide guarantees for systems with unverified logic. The contexts in which it has been applied include aerospace systems \cite{SetoCaseStudy2000}, fleets of remote controlled cars \cite{Crenshaw2007}, industrial embedded infrastructure \cite{Bak2009Simplex,Yang2017}, and distributed mobile robotics applications \cite{Desai2018,Tran2020}. In \cite{Lin2020}, the authors utilize a reachability regime to guarantee the safety of an autonomous vehicle that makes use of a reinforcement learning controller for a way-point-following task. Most similar to this work in \cite{Tran2020}, the authors utilize a real-time reachability approach to verify that a group of quadcopters executing a distributed search mission defined by a series of waypoints is free from collisions. Their approach is implemented in simulation and can theoretically deal with over 64 quadcopters. These works primarily deal with developing provably correct motion planners, while the focus of this work is abstracting away the underlying nature of a set of ML components and reasoning about the consequence of their actions on overall system safety.
@@ -970,14 +983,17 @@ Table \ref{tab:related_work} presents several state-of-the-art online reachabili
 
 \section{Conclusions and Future Work}
 
-In this work we proposed a simplex architecture for the safety assurance of a one-tenth scale autonomous car through the use of a real-time reachability algorithm compatible with the anytime computation model in the real-time scheduling literature. Our experiments conducted both in simulation and on an embedded hardware platform validate the real-time aspects of our approach and demonstrate its efficacy in assuring safety in different scenarios. \diego{What does it mean to validate real time aspects? Where is this done?}
+In this work we proposed a simplex architecture for the safety assurance of a one-tenth scale autonomous car through the use of a real-time reachability algorithm compatible with the anytime computation model in the real-time scheduling literature. Our experiments conducted both in simulation and on an open-source embedded hardware platform validate the real-time aspects of our approach and demonstrate its efficacy in assuring safety in different scenarios. Furthermore, we have presented a method for providing formal guarantees for a variety of controllers by abstracting away the need to formally analyze these controllers and instead reasoning online about the the future effect of their decisions on system behavior through the use of reachability analysis. Improving the over-conservativeness of the reachability framework,  closed-loop reach-set generation, and incorporating dynamic obstacles into our regime are left for future work.
 
-In the future, we hope to expand the work shown in this manuscript to include closed-loop reachability analysis. The current approach is limited to repeating the same control action for the duration of the reach time. This assumption results in an overly conservative use of the safety controller. %, which could prevent mission critical tasks from being performed in certain contexts. 
-We did not consider closed-loop reach-set generation within our context due to the difficulties in developing an accurate sensor model. More specifically, it is not clear how to generate synthetic camera images that would provide a meaningful and useful reachable set. Even when the only sensor considered is the lidar, constructing an accurate sensor model is quite complicated, as shown by Ivanov et al. \cite{ivanov2020case}. In the future, we hope to work toward developing useful sensor models through the use of Generative Adversarial Networks, which are known for their ability to synthesize new examples that plausibly come from an existing distribution of samples \cite{Radford2016,Brock2018,goodfellow2014}. \diego{Really? GANs with ever-growing reach sets (position, angle...) But then at that point is not really close-loop reachability, but a more probable/better prediction of controller's output at next steps...}
 
-\todo{Take a look at the references, some of them aren't displaying author's properly...}
+%\diego{What does it mean to validate real time aspects? Where is this done?}
 
-\bibliographystyle{ACM-Reference-Format}
+%In the future, we hope to expand the work shown in this manuscript to include closed-loop reachability analysis. The current approach is limited to repeating the same control action for the duration of the reach time. This assumption results in an overly conservative use of the safety controller. %, which could prevent mission critical tasks from being performed in certain contexts. 
+%We did not consider closed-loop reach-set generation within our context due to the difficulties in developing an accurate sensor model. More specifically, it is not clear how to generate synthetic camera images that would provide a meaningful and useful reachable set. Even when the only sensor considered is the lidar, constructing an accurate sensor model is quite complicated, as shown by Ivanov et al. \cite{ivanov2020case}. In the future, we hope to work toward developing useful sensor models through the use of Generative Adversarial Networks, which are known for their ability to synthesize new examples that plausibly come from an existing distribution of samples \cite{Radford2016,Brock2018,goodfellow2014}. \diego{Really? GANs with ever-growing reach sets (position, angle...) But then at that point is not really close-loop reachability, but a more probable/better prediction of controller's output at next steps...}
+
+%\todo{Take a look at the references, some of them aren't displaying author's properly...}
+
+\bibliographystyle{acm}
 \bibliography{references.bib}
 
 
