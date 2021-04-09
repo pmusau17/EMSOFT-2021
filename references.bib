@@ -1022,13 +1022,25 @@ isbn="978-3-319-66266-4"
   year={2013}
 }
 
+
+@inproceedings{TranSimulation2019,
+   abstract = {Reachability analysis is a fundamental problem for safety verification and falsification of Cyber-Physical Systems (CPS) whose dynamics follow physical laws usually represented as differential equations. In the last two decades, numerous reachability analysis methods and tools have been proposed for a common class of dynamics in CPS known as ordinary differential equations (ODE). However, there is lack of methods dealing with differential algebraic equations (DAE), which is a more general class of dynamics that is widely used to describe a variety of problems from engineering and science, such as multibody mechanics, electrical circuit design, incompressible fluids, molecular dynamics, and chemical process control. Reachability analysis for DAE systems is more complex than ODE systems, especially for high-index DAEs because they contain both a differential part (i.e., ODE) and algebraic constraints (AC). In this paper, we propose a scalable reachability analysis for a class of high-index large linear DAEs. In our approach, a high-index linear DAE is first decoupled into one ODE and one or several AC subsystems based on the well-known Marz decoupling method utilizing admissible projectors. Then, the discrete reachable set of the DAE, represented as a list of star-sets, is computed using simulation. Unlike ODE reachability analysis where the initial condition is freely defined by a user, in DAE cases, the consistency of the initial condition is an essential requirement to guarantee a feasible solution. Therefore, a thorough check for the consistency is invoked before computing the discrete reachable set. Our approach successfully verifies (or falsifies) a wide range of practical, high-index linear DAE systems in which the number of state variables varies from several to thousands.},
+   author = {Hoang Dung Tran and Luan Viet Nguyen and Nathaniel Hamilton and Weiming Xiang and Taylor T. Johnson},
+   doi = {10.1007/978-3-030-29662-9_10},
+   issn = {16113349},
+   booktitle = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+   title = {Reachability Analysis for High-Index Linear Differential Algebraic Equations},
+   volume = {11750 LNCS},
+   year = {2019},
+}
+
 %State Explosion Problem
 @Inbook{Valmari1998,
 author="Valmari, Antti",
 editor="Reisig, Wolfgang
 and Rozenberg, Grzegorz",
 title="The state explosion problem",
-bookTitle="Lectures on Petri Nets I: Basic Models: Advances in Petri Nets",
+booktitle="Lectures on Petri Nets I: Basic Models: Advances in Petri Nets",
 year="1998",
 publisher="Springer Berlin Heidelberg",
 address="Berlin, Heidelberg",
@@ -1570,7 +1582,6 @@ keywords = {Hard real time, worst-case execution times}
 }
 
 % bojarski
-
 @inproceedings{bojarski2016end,
    abstract = {This paper proposes a new method, that we call VisualBackProp, for visualizing which sets of pixels of the input image contribute most to the predictions made by the convolutional neural network (CNN). The method heavily hinges on exploring the intuition that the feature maps contain less and less irrelevant information to the prediction decision when moving deeper into the network. The technique we propose is dedicated for CNN-based systems for steering self-driving cars and is therefore required to run in real-time. This makes the proposed visualization method a valuable debugging tool which can be easily used during both training and inference. We justify our approach with theoretical arguments and confirm that the proposed method identifies sets of input pixels, rather than individual pixels, that collaboratively contribute to the prediction. We utilize the proposed visualization tool in the NVIDIA neural-network-based end-to-end learning system for autonomous driving, known as PilotNet. We demonstrate that VisualBackProp determines which elements in the road image most influence PilotNet's steering decision and indeed captures relevant objects on the road. The empirical evaluation furthermore shows the plausibility of the proposed approach on public road video data as well as in other applications and reveals that it compares favorably to the layer-wise relevance propagation approach, i.e. it obtains similar visualization results and achieves order of magnitude speed-ups.},
    author = {Mariusz Bojarski and Anna Choromanska and Krzysztof Choromanski and Bernhard Firner and Larry J. Ackel and Urs Muller and Phil Yeres and Karol Zieba},
@@ -1684,3 +1695,20 @@ doi={10.1109/RTSS.2012.70}}
   number={},
   pages={1517-1522},
   doi={10.1109/CDC.2017.8263867}}
+  
+  
+  @ARTICLE{Bui2021,
+       author = {{Bui}, Minh and {Lu}, Michael and {Hojabr}, Reza and {Chen}, Mo and {Shriraman}, Arrvindh},
+        title = "{Real-Time Formal Verification of Autonomous Systems With An FPGA}",
+      journal = {arXiv e-prints},
+     keywords = {Electrical Engineering and Systems Science - Systems and Control, Computer Science - Robotics},
+         year = 2020,
+        month = dec,
+          eid = {arXiv:2012.04011},
+        pages = {arXiv:2012.04011},
+archivePrefix = {arXiv},
+       eprint = {2012.04011},
+ primaryClass = {eess.SY},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv201204011B},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
